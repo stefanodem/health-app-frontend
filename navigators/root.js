@@ -1,14 +1,16 @@
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
-import TabNavigator from './tabs'
-import TemplateScreen from '../screens/TemplateScreen'
+import Tabs from './tabs';
+//import Settings from './settings';
+import Settings from '../components/Settings/Settings';
+import TemplateScreen from '../screens/TemplateScreen';
 
 export default DrawerNavigator({
 
-    Home:       { screen: TabNavigator, navigationOptions: { header: { visible: false }}},
-    Settings:   { screen: StackNavigator({ template: { screen: TemplateScreen } }) }
+  Home:       { screen: Tabs, navigationOptions: { header: { visible: true }}},
+  Settings:   { screen: Settings, navigationOptions: { title: 'Settings' } }
 
 }, {
-    headerMode: 'screen',
-    initialRouteName: 'Home',
+  headerMode: 'screen',
+  initialRouteName: 'Home',
 });

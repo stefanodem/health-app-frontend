@@ -16,3 +16,7 @@
 //   uid: '',
 //   avatar: '',
 // },
+
+export const fetchPost = (uid) => {
+
+}

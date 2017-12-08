@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Styles from '../../styles/tab.style'
+import Styles from '../../../styles/tab.style';
 
 class Tab extends Component {
 

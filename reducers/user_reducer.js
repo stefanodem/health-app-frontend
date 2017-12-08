@@ -1,5 +1,4 @@
 import {
-import {
   //AUTH_USER,
   //UNAUTH_USER,
   FETCHING_USER,
@@ -15,11 +14,12 @@ const initialState = {
   //authedId: '',
   user: {
     lastUpdated: 0,
-    info : {
+    info: {
       name: '',
       uid: '',
       avatar: '',
     },
+    postIds: [],
   }
 }
 
@@ -35,8 +35,8 @@ export default function(state = initialState, action) {
       ? {
         ...state,
         isFetching: false,
-        user.lastUpdated: action.timestamp,
-        user.info: action.user,
+        //user.lastUpdated: action.timestamp,
+        //user.info: action.user,
       }
       : {
         ...state,

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import template from './template_reducer';
+import user from './user_reducer';
+import post from './post_reducer';
 
 export default combineReducers({
-  template,
+  user, post
 })

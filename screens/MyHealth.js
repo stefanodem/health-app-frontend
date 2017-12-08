@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView, Text, AsyncStorage } from 'react-native';
-import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-class TemplateScreen extends Component {
+class MyHealthScreen extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is a Template</Text>
+        <Text>This is the Health Center Screen</Text>
       </View>
     );
   }
@@ -24,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(null, actions)(TemplateScreen);
+export default connect(null, actions)(MyHealthScreen);
