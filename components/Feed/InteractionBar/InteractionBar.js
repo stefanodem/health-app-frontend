@@ -22,11 +22,11 @@ const InteractionComponent = ({ name, icon, callback }) => {
   )
 }
 
-const InteractionBar = (props) => {
+const InteractionBar = ({ handleLikes, handleComments, handleShares }) => {
 
-  const handleLikes = props.handleLikes;
-  const handleComments = props.handleComments;
-  const handleShares = props.handleShares;
+  // const handleLikes = props.handleLikes;
+  // const handleComments = props.handleComments;
+  // const handleShares = props.handleShares;
 
   return (
     <View

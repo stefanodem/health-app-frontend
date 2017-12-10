@@ -6,12 +6,22 @@ const imageRadius = imageSize / 2;
 
 export const replyInput = {
   mainStyle: {
-    flex: 1,
     flexDirection: 'row',
+    backgroundColor: '#eee',
   },
-  submitButton: {
-
-  }
+  input: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    fontSize: 18,
+    flex: 1,
+  },
+  send: {
+    alignSelf: 'center',
+    color: 'lightseagreen',
+    fontSize: 16,
+    fontWeight: 'bold',
+    padding: 20,
+  },
 }
 
 export const reply = {

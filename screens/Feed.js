@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Text, AsyncStorage, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, AsyncStorage, ActivityIndicator, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Post from '../components/Feed/Post';
@@ -7,7 +7,7 @@ import ButtonBack from '../components/Navigation/Header/ButtonBack';
 
 //import testUser from '../testData/testUser';
 //TODO: integrate testPosts into testUser
-import { testPosts, testUser } from '../testData/testUser';
+import { testUser } from '../testData/testUser';
 
 class FeedScreen extends Component {
 
@@ -17,24 +17,11 @@ class FeedScreen extends Component {
   // const userMessages = this.props.user.messages;
   // const messageDate = '';
 
-  // static navigationOptions = ({ navigation }) => {
-  //   const { navigate } = navigation;
-  //   return {
-  //     title: 'MyFeed',
-  //     headerTitle: 'Feed', //can be String, React Element or React Componen
-  //     //header: can be React Element or a function --> for customizing headers
-  //     //TODO: Change drawer button from hamburger to profile picture (similar to Twitter)
-  //     headerLeft: (
-  //       <ButtonBack />
-  //     )
-  //   }
-  // }
-
-
   fetchPosts = () => {
 
   }
 
+  //TODO: Handle with redux actions:
   handleLikes = () => {
     console.log("Liked");
   }
@@ -53,31 +40,24 @@ class FeedScreen extends Component {
     console.log("Pressed profile")
   }
 
-  renderPosts() {
-    //TODO: hook up to backend
-    //TODO: testPosts.posts will be integrated into testUser
-    //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
+  _keyExtractor = (item, index) => item.postId;
+
+  //TODO: Hook up to backend
+  //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
+  renderPosts = ({item}) => {
     const userInfo = testUser.info;
 
-    if (!testUser) {
-      return (
-        <Text>Empty</Text>
-      )
-    }
-
-    return testUser.posts.map(post => {
-      return (
-        <Post
-          key={post.postId}
-          post={post}
-          user={userInfo}
-          handleLikes={this.handleLikes}
-          handleComments={this.handleComments.bind(this, { post, userInfo })}
-          handleShares={this.handleShares}
-          onProfilePress={this.onProfilePress}
-        />
-      )
-    });
+    return (
+      <Post
+        key={item.postId}
+        post={item}
+        user={userInfo}
+        handleLikes={this.handleLikes}
+        handleComments={this.handleComments.bind(this, { item, userInfo })}
+        handleShares={this.handleShares}
+        onProfilePress={this.onProfilePress}
+      />
+    )
   }
 
   render() {
@@ -90,9 +70,11 @@ class FeedScreen extends Component {
     // }
 
     return (
-      <ScrollView>
-        { this.renderPosts() }
-      </ScrollView>
+      <FlatList
+        keyExtractor={this._keyExtractor}
+        data={ testUser.posts }
+        renderItem={ this.renderPosts }
+      />
     );
   }
 }

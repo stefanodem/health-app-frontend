@@ -3,6 +3,8 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Text,
 } from 'react-native';
 
 import {
@@ -13,24 +15,31 @@ const ReplyInput = (props) => {
 
   const { onChangeReply } = props;
 
+  //TODO: the value should be derived from redux
+  //--> hook up value to Reply.js and pass to ReplyInput as props
   return (
-    <View
-      style={ replyInput.mainStyle }
+    <KeyboardAvoidingView
+      behavior="padding"
     >
-
-      <TextInput
-        placeholder="Reply"
-        onChangeText={ onChangeReply }
-        keyboardType="default"
-        returnKeyType="send"
-      />
-
-      <TouchableOpacity
-        style={ replyInput.submitButton }
+      <View
+        style={ replyInput.mainStyle }
       >
-      </TouchableOpacity>
 
-    </View>
+        <TextInput
+          //value={ "Hi" }
+          placeholder="Reply"
+          onChangeText={ onChangeReply }
+          keyboardType="default"
+          returnKeyType="send"
+          style={ replyInput.input }
+        />
+
+        <TouchableOpacity onPress={() => {}}>
+          <Text style={replyInput.send}>Send</Text>
+        </TouchableOpacity>
+
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 

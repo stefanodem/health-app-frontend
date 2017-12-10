@@ -33,9 +33,9 @@ class ThreadScreen extends Component {
 
   renderPost() {
     //TODO: hook up to backend
-    const { post, userInfo } = this.props.navigation.state.params;
+    const { item, userInfo } = this.props.navigation.state.params;
 
-    if (!post) {
+    if (!item) {
       return (
         <Text>Empty</Text>
       )
@@ -43,8 +43,8 @@ class ThreadScreen extends Component {
     //TODO: use {...this.props} to send pass all props to component
     return (
       <Post
-        key={post.postId}
-        post={post}
+        key={item.postId}
+        post={item}
         user={userInfo}
         handleLikes={this.handleLikes}
         //handleComments={this.handleComments.bind(this, post)}
@@ -68,7 +68,6 @@ class ThreadScreen extends Component {
       <View style={{flex: 1}} >
         <ScrollView>
           { this.renderPost() }
-          { this.renderReplies() }
         </ScrollView>
         <View>
           { this.renderReplies() }
