@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const deviceWidth = Dimensions.get('window').width;
-const imageSize = deviceWidth / 9;
+const imageSize = deviceWidth / 11;
 const imageRadius = imageSize / 2;
 
 export const replyInput = {
@@ -49,7 +49,7 @@ export const header = {
     flexDirection: 'column',
     flex: 4,
     justifyContent: 'center',
-    paddingLeft: 20,
+    paddingLeft: 8,
     paddingTop: 5,
     paddingBottom: 5,
   },
@@ -82,7 +82,7 @@ export const body = {
     flex: 1,
     paddingTop: 10,
     paddingBottom: 10,
-    paddingLeft: 10,
+    paddingLeft: 65,
     paddingRight: 10,
     backgroundColor: '#f6f6f6',
     borderBottomColor: '#bbb',

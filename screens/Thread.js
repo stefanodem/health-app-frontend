@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Text, AsyncStorage } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, AsyncStorage, FlatList } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Post from '../components/Feed/Post';
 import ReplyInput from '../components/Feed/ReplyInput';
+import Reply from '../components/Feed/Reply';
 import ButtonBack from '../components/Navigation/Header/ButtonBack';
 
 class ThreadScreen extends Component {
@@ -23,15 +24,17 @@ class ThreadScreen extends Component {
     }
   }
 
-  onChangeReply() {
+  _onChangeReply() {
 
   }
 
-  handleReply() {
+  _handleReply() {
 
   }
 
-  renderPost() {
+  _keyExtractor = (item, index) => item.replyId;
+
+  _renderPost() {
     //TODO: hook up to backend
     const { item, userInfo } = this.props.navigation.state.params;
 
@@ -54,24 +57,40 @@ class ThreadScreen extends Component {
     );
   }
 
-  renderReplies() {
+  _renderReplies = ({item}) => {
     return (
-      <ReplyInput
-        onChangeReply={ this.onChangeReply }
-        handleReply={this.handleReply}
+      <Reply
+        key={item.postId}
+        post={item}
+        user={item.userInfo}
+        onProfilePress={this._onProfilePress}
       />
     )
   }
 
   render() {
+    const { item, userInfo } = this.props.navigation.state.params;
+
     return (
       <View style={{flex: 1}} >
+
         <ScrollView>
-          { this.renderPost() }
+
+          { this._renderPost() }
+
+          <FlatList
+            keyExtractor={this._keyExtractor}
+            data={ item.replies }
+            renderItem={ this._renderReplies }
+          />
+
         </ScrollView>
-        <View>
-          { this.renderReplies() }
-        </View>
+
+        <ReplyInput
+          onChangeReply={ this._onChangeReply }
+          handleReply={this._handleReply}
+        />
+
       </View>
     );
   }

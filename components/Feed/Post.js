@@ -23,27 +23,33 @@ const Post = (props) => {
   const renderMessages = () => {
     return (
       <View style={ post.mainStyle }>
+
         <Header
           userName={name}
           userAvatar={avatar}
           postDate={timestamp}
           onProfilePress={onProfilePress}
         />
+
         <Body
           postBody={body}
         />
+
         <InteractionBar
           handleLikes={handleLikes}
           handleComments={handleComments}
           handleShares={handleShares}
         />
+
       </View>
     )
   }
 
   return (
     <View>
+
       { renderMessages() }
+
     </View>
   );
 }

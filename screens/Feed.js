@@ -17,26 +17,26 @@ class FeedScreen extends Component {
   // const userMessages = this.props.user.messages;
   // const messageDate = '';
 
-  fetchPosts = () => {
+  _fetchPosts = () => {
 
   }
 
   //TODO: Handle with redux actions:
-  handleLikes = () => {
+  _handleLikes = () => {
     console.log("Liked");
   }
 
-  handleComments = (post) => {
+  _handleComments = (post) => {
     console.log("Commented");
     console.log("comment post: " + post.body)
     this.props.navigation.navigate('Thread', post);
   }
 
-  handleShares = () => {
+  _handleShares = () => {
     console.log("Shared");
   }
 
-  onProfilePress = () => {
+  _onProfilePress = () => {
     console.log("Pressed profile")
   }
 
@@ -44,18 +44,18 @@ class FeedScreen extends Component {
 
   //TODO: Hook up to backend
   //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
-  renderPosts = ({item}) => {
-    const userInfo = testUser.info;
+  _renderPosts = ({item}) => {
+    const userInfo = testUser.userInfo;
 
     return (
       <Post
         key={item.postId}
         post={item}
         user={userInfo}
-        handleLikes={this.handleLikes}
-        handleComments={this.handleComments.bind(this, { item, userInfo })}
-        handleShares={this.handleShares}
-        onProfilePress={this.onProfilePress}
+        handleLikes={this._handleLikes}
+        handleComments={this._handleComments.bind(this, { item, userInfo })}
+        handleShares={this._handleShares}
+        onProfilePress={this._onProfilePress}
       />
     )
   }
@@ -69,11 +69,14 @@ class FeedScreen extends Component {
     //   );
     // }
 
+    //TODO: research and include flatlist features,
+    //e.g. pull to refresh, scroll loading, etc.
+    //https://facebook.github.io/react-native/docs/flatlist.html
     return (
       <FlatList
         keyExtractor={this._keyExtractor}
         data={ testUser.posts }
-        renderItem={ this.renderPosts }
+        renderItem={ this._renderPosts }
       />
     );
   }

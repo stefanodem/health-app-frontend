@@ -33,11 +33,12 @@ const posts = {
 }
 
 const replies = {
-  replyId: {
+  replyId: 123,
+  reply: {
     name: ,
     uid: ,
     avatar: ,
-    reply: ,
+    body: ,
     timestamp: ,
   },
 }
