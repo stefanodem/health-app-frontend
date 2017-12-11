@@ -13,11 +13,11 @@ import {
 const InteractionComponent = ({ name, icon, callback }) => {
   return (
     <TouchableOpacity
-      style={ interaction.componentStyle }
+      style={ interaction.component }
       onPress={ callback }
     >
-      <Icon name={icon} style={ interaction.iconStyle }/>
-      <Text style={ interaction.textStyle }> {name} </Text>
+      <Icon name={icon} style={ interaction.icon }/>
+      <Text style={ interaction.text }> {name} </Text>
     </TouchableOpacity>
   )
 }
@@ -30,7 +30,7 @@ const InteractionBar = ({ handleLikes, handleComments, handleShares }) => {
 
   return (
     <View
-      style={ interaction.mainStyle }
+      style={ interaction.mainContainer }
     >
       <InteractionComponent
         name={"Like"}
@@ -38,7 +38,7 @@ const InteractionBar = ({ handleLikes, handleComments, handleShares }) => {
         callback={ handleLikes }
       />
       <InteractionComponent
-        name={"Comment"}
+        name={"Reply"}
         icon={"comment"}
         callback={ handleComments }
       />

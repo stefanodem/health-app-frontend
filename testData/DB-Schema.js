@@ -23,7 +23,7 @@ const posts = {
     uid: ,
     avatar: ,
     body: ,
-    likes: ,
+    likeCount: ,
     replies: [
       //replyId?
       1, 2, 3, 4

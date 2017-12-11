@@ -14,7 +14,7 @@ const Body = (props) => {
 
   return (
     <View
-      style={ body.mainStyle }
+      style={ body.container }
     >
       <Text> { postBody } </Text>
     </View>

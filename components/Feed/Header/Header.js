@@ -17,13 +17,13 @@ const Header = (props) => {
 
   return (
     <View
-      style={ header.mainStyle }
+      style={ header.container }
     >
       <TouchableOpacity
         onPress={ onProfilePress }
       >
         <Image
-          style={ header.imageStyle }
+          style={ header.image }
           source={{ uri: userAvatar }}
         />
       </TouchableOpacity>
@@ -31,10 +31,10 @@ const Header = (props) => {
         onPress={ onProfilePress }
       >
         <View
-          style={ header.titleStyle }
+          style={ header.title }
         >
-          <Text style={ header.nameStyle }> { userName } </Text>
-          <Text style={ header.dateStyle }> { postDate } </Text>
+          <Text style={ header.name }> { userName } </Text>
+          <Text style={ header.date }> { postDate } </Text>
         </View>
       </TouchableOpacity>
     </View>

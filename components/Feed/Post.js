@@ -10,10 +10,12 @@ import {
 import Header from './Header/Header';
 import Body from './Body/Body';
 import InteractionBar from './InteractionBar/InteractionBar';
+import InteractionInfo from './InteractionBar/InteractionInfo';
 
 const Post = (props) => {
 
-  const { body, timestamp } = props.post;
+  const { body, timestamp, likeCount } = props.post;
+  const replyCount = props.post.replies.length;
   const { name, avatar } = props.user;
   const handleLikes = props.handleLikes;
   const handleComments = props.handleComments;
@@ -33,6 +35,11 @@ const Post = (props) => {
 
         <Body
           postBody={body}
+        />
+
+        <InteractionInfo
+          likeCount={likeCount}
+          replyCount={replyCount}
         />
 
         <InteractionBar
