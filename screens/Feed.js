@@ -5,8 +5,6 @@ import * as actions from '../actions';
 import Post from '../components/Feed/Post';
 import ButtonBack from '../components/Navigation/Header/ButtonBack';
 
-//import testUser from '../testData/testUser';
-//TODO: integrate testPosts into testUser
 import { testUser } from '../testData/testUser';
 
 class FeedScreen extends Component {
@@ -16,6 +14,11 @@ class FeedScreen extends Component {
   // const userPicture = this.props.user.picture;
   // const userMessages = this.props.user.messages;
   // const messageDate = '';
+
+  componentDidMount () {
+    //setAndHandleFeedListener?
+
+  }
 
   _fetchPosts = () => {
 
@@ -36,15 +39,16 @@ class FeedScreen extends Component {
     console.log("Shared");
   }
 
-  _onProfilePress = () => {
+  _onProfilePress = (uid) => {
     console.log("Pressed profile")
+    this.props.fetchAndHandleUser(uid)
   }
 
   _keyExtractor = (item, index) => item.postId;
 
   //TODO: Hook up to backend
   //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
-  _renderPosts = ({item}) => {
+  _renderPosts = ({ item }) => {
     const userInfo = testUser.userInfo;
 
     return (
@@ -72,6 +76,7 @@ class FeedScreen extends Component {
     //TODO: research and include flatlist features,
     //e.g. pull to refresh, scroll loading, etc.
     //https://facebook.github.io/react-native/docs/flatlist.html
+    console.log(this.props)
     return (
       <FlatList
         keyExtractor={this._keyExtractor}
@@ -83,11 +88,11 @@ class FeedScreen extends Component {
 }
 
 //TODO: set up backend and connect to redux
-// function mapStateToProps({ user, post }) {
-//   return {
-//     user: user.info,
-//     post
-//   }
-// }
+function mapStateToProps({ user, post }) {
+  return {
+    user,
+    post
+  }
+}
 
 export default connect(null, actions)(FeedScreen);

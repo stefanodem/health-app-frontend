@@ -14,7 +14,7 @@ import InteractionInfo from './InteractionBar/InteractionInfo';
 
 const Post = (props) => {
 
-  const { body, timestamp, likeCount } = props.post;
+  const { body, createdAt, likeCount } = props.post;
   const replyCount = props.post.replies.length;
   const { name, avatar } = props.user;
   const handleLikes = props.handleLikes;
@@ -29,7 +29,7 @@ const Post = (props) => {
         <Header
           userName={name}
           userAvatar={avatar}
-          postDate={timestamp}
+          createdAt={createdAt}
           onProfilePress={onProfilePress}
         />
 

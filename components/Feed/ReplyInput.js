@@ -24,7 +24,7 @@ const ReplyInput = (props) => {
       behavior="padding"
     >
       <View
-        style={ replyInput.mainStyle }
+        style={ replyInput.container }
       >
 
         <TextInput

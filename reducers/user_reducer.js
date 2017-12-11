@@ -7,20 +7,35 @@ import {
   REMOVE_FETCHING_USER,
 } from '../actions/types';
 
+const initialUserState = {
+  lastUpdated: 0,
+  userInfo: {
+    name: '',
+    uid: '',
+    avatar: '',
+  },
+  posts: [],
+}
+
+function user(state = initialUserState, action) {
+  switch (action.type) {
+    case FETCHING_USER_SUCCESS:
+      return {
+        ...state,
+        info: action.user,
+        lastUpdated: action.timestamp,
+        posts: action.posts,
+      }
+    default:
+      return state
+  }
+}
+
 const initialState = {
   isFetching: true,
   error: '',
   //isAuthed: false,
   //authedId: '',
-  user: {
-    lastUpdated: 0,
-    info: {
-      name: '',
-      uid: '',
-      avatar: '',
-    },
-    postIds: [],
-  }
 }
 
 export default function(state = initialState, action) {
@@ -35,13 +50,13 @@ export default function(state = initialState, action) {
       ? {
         ...state,
         isFetching: false,
-        //user.lastUpdated: action.timestamp,
-        //user.info: action.user,
+        error: `Error while fetching user id: ${action.uid}`
       }
       : {
         ...state,
         isFetching: false,
-        error: `Error while fetching user id: ${action.uid}`
+        error: '',
+        [action.uid]: user(state[action.uid], action),
       }
     case FETCHING_USER_FAILURE:
       return {

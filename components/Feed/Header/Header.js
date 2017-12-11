@@ -13,7 +13,7 @@ import {
 
 const Header = (props) => {
 
-  const { userName, userAvatar, postDate, onProfilePress } = props;
+  const { userName, userAvatar, createdAt, onProfilePress } = props;
 
   return (
     <View
@@ -34,7 +34,7 @@ const Header = (props) => {
           style={ header.title }
         >
           <Text style={ header.name }> { userName } </Text>
-          <Text style={ header.date }> { postDate } </Text>
+          <Text style={ header.date }> { createdAt } </Text>
         </View>
       </TouchableOpacity>
     </View>

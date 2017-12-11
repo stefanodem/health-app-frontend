@@ -57,7 +57,7 @@ class ThreadScreen extends Component {
     );
   }
 
-  _renderReplies = ({item}) => {
+  _renderReplies = ({ item }) => {
     return (
       <Reply
         key={item.postId}

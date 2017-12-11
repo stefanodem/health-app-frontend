@@ -5,11 +5,12 @@ const imageSize = deviceWidth / 11;
 const imageRadius = imageSize / 2;
 
 export const replyInput = {
-  mainStyle: {
+  container: {
     flexDirection: 'row',
     backgroundColor: '#eee',
   },
   input: {
+    alignSelf: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
     fontSize: 18,
@@ -132,7 +133,7 @@ export const interaction = {
   infoText: {
     //flex: 1,
     color: 'grey',
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'right',
     paddingLeft: 20,
     paddingRight: 20,

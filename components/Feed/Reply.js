@@ -12,7 +12,7 @@ import Body from './Body/Body';
 
 const Reply = (props) => {
 
-  const { body, timestamp } = props.post;
+  const { body, createdAt } = props.post;
   const { name, avatar } = props.user;
   const onProfilePress = props.onProfilePress;
 
@@ -23,7 +23,7 @@ const Reply = (props) => {
         <Header
           userName={name}
           userAvatar={avatar}
-          postDate={timestamp}
+          createdAt={createdAt}
           onProfilePress={onProfilePress}
         />
 

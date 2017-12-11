@@ -10,6 +10,8 @@ import {
   REMOVE_FETCHING_USER,
 } from './types';
 
+//Description: this will probably be used for profile detail views
+
 // export function authUser (uid) {
 //   return {
 //     type: AUTH_USER,
@@ -52,12 +54,12 @@ export function removeFetchingUser () {
   }
 }
 
-export function fetchAndHandleUser (uid) {
-  return function (dispatch) {
-    dispatch(fetchingUser())
-
-    return fetchUser(uid)
-      .then((user) => dispatch(fetchingUserSuccess(uid, user, Date.now())))
-      .catch((error) => dispatch(fetchingUserFailure(error)))
+export const fetchAndHandleUser = (uid) => async (dispatch) => {
+  dispatch(fetchingUser());
+  try {
+    let user = await fetchUser(uid);
+    dispatch(fetchingUserSuccess(uid, user, Date.now()));
+  } catch(e) {
+    dispatch(fetchingUserFailure(e));
   }
 }
