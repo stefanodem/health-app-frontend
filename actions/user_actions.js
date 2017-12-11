@@ -1,5 +1,5 @@
 //import { saveUser } from 'services/api';
-//import { fetchUser } from 'helpers/api'
+import { fetchUser } from '../services/api';
 
 import {
   //AUTH_USER,
@@ -54,11 +54,14 @@ export function removeFetchingUser () {
   }
 }
 
-export const fetchAndHandleUser = (uid) => async (dispatch) => {
+export const fetchAndHandleUser = (uid) => async dispatch => {
   dispatch(fetchingUser());
   try {
     let user = await fetchUser(uid);
-    dispatch(fetchingUserSuccess(uid, user, Date.now()));
+
+    if (user) {
+      dispatch(fetchingUserSuccess(uid, user, Date.now()));
+    }
   } catch(e) {
     dispatch(fetchingUserFailure(e));
   }

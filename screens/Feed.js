@@ -7,6 +7,11 @@ import ButtonBack from '../components/Navigation/Header/ButtonBack';
 
 import { testUser } from '../testData/testUser';
 
+//TODO: where do we initially get the uid?
+//after authentication
+//or Async.Storage if auth is persisted through sessions
+const UID = '111'
+
 class FeedScreen extends Component {
 
   // const user = this.props.user;
@@ -17,6 +22,7 @@ class FeedScreen extends Component {
 
   componentDidMount () {
     //setAndHandleFeedListener?
+    this.props.fetchAndHandleUser(UID);
 
   }
 
@@ -41,7 +47,10 @@ class FeedScreen extends Component {
 
   _onProfilePress = (uid) => {
     console.log("Pressed profile")
-    this.props.fetchAndHandleUser(uid)
+    //this.props.navigation.navigate('UserProfile');
+
+    //move to User Profile Screen:
+    //this.props.fetchAndHandleUser(uid)
   }
 
   _keyExtractor = (item, index) => item.postId;
@@ -49,8 +58,9 @@ class FeedScreen extends Component {
   //TODO: Hook up to backend
   //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
   _renderPosts = ({ item }) => {
-    const userInfo = testUser.userInfo;
+    const userInfo = this.props.user[UID].userInfo;
 
+    //TODO: think about using {...this.props} to pass props down to 'Post'
     return (
       <Post
         key={item.postId}
@@ -77,6 +87,14 @@ class FeedScreen extends Component {
     //e.g. pull to refresh, scroll loading, etc.
     //https://facebook.github.io/react-native/docs/flatlist.html
     console.log(this.props)
+    if (this.props.user.isFetching) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
+
     return (
       <FlatList
         keyExtractor={this._keyExtractor}
@@ -88,11 +106,11 @@ class FeedScreen extends Component {
 }
 
 //TODO: set up backend and connect to redux
-function mapStateToProps({ user, post }) {
+function mapStateToProps({ user, posts }) {
   return {
     user,
-    post
+    posts
   }
 }
 
-export default connect(null, actions)(FeedScreen);
+export default connect(mapStateToProps, actions)(FeedScreen);

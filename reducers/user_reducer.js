@@ -14,7 +14,7 @@ const initialUserState = {
     uid: '',
     avatar: '',
   },
-  posts: [],
+  //posts: [],
 }
 
 function user(state = initialUserState, action) {
@@ -22,7 +22,7 @@ function user(state = initialUserState, action) {
     case FETCHING_USER_SUCCESS:
       return {
         ...state,
-        info: action.user,
+        userInfo: action.user,
         lastUpdated: action.timestamp,
         posts: action.posts,
       }

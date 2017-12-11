@@ -18,13 +18,14 @@ import { testUser } from '../testData/testUser';
 //   avatar: '',
 // },
 
+//TODO: Hook up to backend
 export const fetchPost = (uid) => {
   const { posts } = testUser;
-  setTimeout(() => posts, 2000);
+  return new Promise(resolve => setTimeout(() => resolve(posts), 2000));
 }
 
 //TODO: Hook up to backend
 export const fetchUser = (uid) => {
   const { userInfo } = testUser;
-  setTimeout(() => userInfo, 2000);
+  return new Promise(resolve => setTimeout(() => resolve(userInfo), 2000));
 }

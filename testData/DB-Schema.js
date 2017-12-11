@@ -2,6 +2,7 @@
 const users = {
   uid: {
     info: {
+      uid:,
       name:,
       avatar:,
     },
@@ -10,10 +11,6 @@ const users = {
         //postID?
         1, 2, 3, 4
       ],
-    replies:
-      [
-        1, 2, 3, 4
-      ]
   }
 }
 
