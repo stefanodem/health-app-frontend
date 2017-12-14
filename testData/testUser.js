@@ -7,13 +7,14 @@ export const testUser = {
   posts: [
     {
       postId: 1,
+      uid: '11111',
       createdAt: 1511854675244,
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       likeCount: 4,
       replies: [
         {
           replyId: 123,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -23,7 +24,7 @@ export const testUser = {
         },
         {
           replyId: 124,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -34,21 +35,25 @@ export const testUser = {
       ],
       shares: [
         {
-          sharingUid: '123',
-          sharedUid: '456',
+          user: {
+            uid: '123',
+            name: 'SpongeBob',
+            avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          },
           createdAt: 1511854675244,
         },
       ]
     },
     {
       postId: 2,
+      uid: '11111',
       createdAt: 1511854675244,
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       likeCount: 4,
       replies: [
         {
           replyId: 125,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -58,7 +63,7 @@ export const testUser = {
         },
         {
           ureplyId: 126,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -69,21 +74,25 @@ export const testUser = {
       ],
       shares: [
         {
-          sharingUid: '123',
-          sharedUid: '456',
+          user: {
+            uid: '123',
+            name: 'SpongeBob',
+            avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          },
           createdAt: 1511854675244,
         },
       ]
     },
     {
       postId: 3,
+      uid: '11111',
       createdAt: 1511854675244,
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       likeCount: 4,
       replies: [
         {
           replyId: 127,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -93,7 +102,7 @@ export const testUser = {
         },
         {
           replyId: 128,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -104,21 +113,25 @@ export const testUser = {
       ],
       shares: [
         {
-          sharingUid: '123',
-          sharedUid: '456',
+          user: {
+            uid: '123',
+            name: 'SpongeBob',
+            avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          },
           createdAt: 1511854675244,
         },
       ]
     },
     {
       postId: 4,
+      uid: '11111',
       createdAt: 1511854675244,
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       likeCount: 4,
       replies: [
         {
           replyId: 129,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -128,7 +141,7 @@ export const testUser = {
         },
         {
           replyId: 130,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -139,21 +152,25 @@ export const testUser = {
       ],
       shares: [
         {
-          sharingUid: '123',
-          sharedUid: '456',
+          user: {
+            uid: '123',
+            name: 'SpongeBob',
+            avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          },
           createdAt: 1511854675244,
         },
       ]
     },
     {
       postId: 5,
+      uid: '11111',
       createdAt: 1511854675244,
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       likeCount: 4,
       replies: [
         {
           replyId: 131,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -163,7 +180,7 @@ export const testUser = {
         },
         {
           replyId: 132,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -174,21 +191,25 @@ export const testUser = {
       ],
       shares: [
         {
-          sharingUid: '123',
-          sharedUid: '456',
+          user: {
+            uid: '123',
+            name: 'SpongeBob',
+            avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          },
           createdAt: 1511854675244,
         },
       ]
     },
     {
       postId: 6,
+      uid: '11111',
       createdAt: 1511854675244,
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       likeCount: 4,
       replies: [
         {
           replyId: 133,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -198,7 +219,7 @@ export const testUser = {
         },
         {
           replyId: 134,
-          userInfo: {
+          user: {
             uid: '123',
             name: 'SpongeBob',
             avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
@@ -209,8 +230,11 @@ export const testUser = {
       ],
       shares: [
         {
-          sharingUid: '123',
-          sharedUid: '456',
+          user: {
+            uid: '123',
+            name: 'SpongeBob',
+            avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          },
           createdAt: 1511854675244,
         },
       ]

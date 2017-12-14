@@ -1,10 +1,19 @@
 //Users
 const users = {
-  uid: {
+  [uid]: {
     info: {
       uid:,
-      name:,
-      avatar:,
+      firstName:,
+      secondName:,
+      email:,
+      profileImage:,
+      language:,
+      location:,
+      description:,
+      createdAt:,
+      friendsCount:,
+      timeZone:,
+      lastUpdate:,
     },
     posts:
       [
@@ -15,12 +24,13 @@ const users = {
 }
 
 const posts = {
-  postId: {
-    name: ,
+  [postId]: {
+    screenName: ,
     uid: ,
-    avatar: ,
+    profileImage: ,
     body: ,
     likeCount: ,
+    type: ,
     replies: [
       //replyId?
       1, 2, 3, 4
@@ -30,18 +40,17 @@ const posts = {
 }
 
 const replies = {
-  replyId: 123,
-  reply: {
+  [replyId]: {
     name: ,
     uid: ,
-    avatar: ,
+    profileImage: ,
     body: ,
     timestamp: ,
   },
 }
 
 const shares = {
-  shareId: {
+  [shareId]: {
 
   }
 }
@@ -54,4 +63,13 @@ const feed = {
 
       }
     ]
+}
+
+const privateMessage = {
+  id:,
+  userSenderId:,
+  userReceiverId:,
+  content:,
+  title:,
+  sendDate:,
 }

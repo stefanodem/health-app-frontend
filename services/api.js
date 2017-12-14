@@ -1,6 +1,7 @@
 // import { ref } from 'config/constants';
 // import axios from 'axios';
 import { testUser } from '../testData/testUser';
+import { user, posts } from '../testData/testUser2';
 
 // function saveUser (user, userId) {
 //   return ref.child(`usersDucks/${user.uid}/${userId}`)
@@ -20,12 +21,11 @@ import { testUser } from '../testData/testUser';
 
 //TODO: Hook up to backend
 export const fetchPost = (uid) => {
-  const { posts } = testUser;
-  return new Promise(resolve => setTimeout(() => resolve(posts), 2000));
+  return new Promise(resolve => setTimeout(() => resolve(posts), 1000));
 }
 
 //TODO: Hook up to backend
 export const fetchUser = (uid) => {
   const { userInfo } = testUser;
-  return new Promise(resolve => setTimeout(() => resolve(userInfo), 2000));
+  return new Promise(resolve => setTimeout(() => resolve(user), 1000));
 }

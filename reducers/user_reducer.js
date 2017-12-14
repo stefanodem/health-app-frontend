@@ -14,7 +14,7 @@ const initialUserState = {
     uid: '',
     avatar: '',
   },
-  //posts: [],
+  posts: [],
 }
 
 function user(state = initialUserState, action) {

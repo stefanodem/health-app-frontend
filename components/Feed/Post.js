@@ -22,6 +22,7 @@ const Post = (props) => {
   const handleShares = props.handleShares;
   const onProfilePress = props.onProfilePress;
 
+  //TODO: add touchable opacity for clicking on whole post
   const renderMessages = () => {
     return (
       <View style={ post.mainStyle }>

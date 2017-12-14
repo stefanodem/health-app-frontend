@@ -13,7 +13,7 @@ import Body from './Body/Body';
 const Reply = (props) => {
 
   const { body, createdAt } = props.post;
-  const { name, avatar } = props.user;
+  const { name, avatar } = props.post.user;
   const onProfilePress = props.onProfilePress;
 
   const renderMessages = () => {
