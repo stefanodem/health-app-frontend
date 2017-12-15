@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingView,
   Text,
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 import {
   replyInput,
@@ -39,6 +40,10 @@ const ReplyInput = (props) => {
           onPress={ handleReply }
         >
           <Text style={replyInput.send}>Send</Text>
+          {/*<Icon
+            name="send"
+            color="rgb(0,122,255)"
+          />*/}
         </TouchableOpacity>
 
       </View>

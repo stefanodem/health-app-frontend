@@ -1,58 +1,62 @@
 //Users
 const users = {
-  [uid]: {
-    info: {
-      uid:,
-      firstName:,
-      secondName:,
-      email:,
-      profileImage:,
-      language:,
-      location:,
-      description:,
-      createdAt:,
-      friendsCount:,
-      timeZone:,
-      lastUpdate:,
-    },
-    posts:
-      [
-        //postID?
-        1, 2, 3, 4
-      ],
-  }
+  uid:,
+  firstName:,
+  secondName:,
+  email:,
+  profileImage:,
+  language:,
+  location:,
+  description:,
+  createdAt:,
+  friendsCount:,
+  friends: [
+    1, 2, 3, 4
+  ],
+  timeZone:,
+  lastUpdate:,
+  posts:
+    [
+      //postID?
+      1, 2, 3, 4
+    ],
 }
 
 const posts = {
-  [postId]: {
-    screenName: ,
+  id:
+  user: {
     uid: ,
+    name: ,
+    screenName: ,
     profileImage: ,
-    body: ,
-    likeCount: ,
-    type: ,
-    replies: [
-      //replyId?
-      1, 2, 3, 4
-    ],
-    timestamp: ,
-  },
+  }
+  body: ,
+  likeCount: ,
+  type: ,
+  replies: [
+    //replyId?
+    1, 2, 3, 4
+  ],
+  timestamp: ,
 }
 
 const replies = {
-  [replyId]: {
-    name: ,
+  id: ,
+  replier: {
     uid: ,
+    name: ,
+    screenName: ,
     profileImage: ,
-    body: ,
-    timestamp: ,
-  },
+  }
+  body: ,
+  timestamp: ,
 }
 
 const shares = {
-  [shareId]: {
-
-  }
+  id: ,
+  sharingUid: ,
+  sharedUid: ,
+  timestamp: ,
 }
 
 const feed = {

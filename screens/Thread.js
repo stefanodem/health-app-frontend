@@ -45,6 +45,7 @@ class ThreadScreen extends Component {
   _renderPost() {
     //TODO: hook up to backend
     const { post } = this.props.navigation.state.params;
+    const postId = post ? post.postId : null;
 
     if (!post) {
       return (

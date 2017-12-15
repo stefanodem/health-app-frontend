@@ -3,11 +3,11 @@ import { TabNavigator } from 'react-navigation';
 
 // Screens
 // Only one for now, add more as required
-import Feed from './Feed.js'
-import MyHealth from './MyHealth'
+import Feed from './Feed.js';
+import MyHealth from './MyHealth';
 
 // Tabs
-import Tab from '../../components/Navigation/Tab/Tab'
+import Tab from '../../components/Navigation/Tab/Tab';
 import { Icon } from 'react-native-elements';
 
 // TabNavigator options
@@ -15,7 +15,8 @@ const options = {
     lazyLoad: true,
     tabBarOptions: {
         inactiveTintColor: '#aaa',
-        activeTintColor: '#fff',
+        activeTintColor: 'rgb(255,45,85)',
+        //activeTintColor: '#fff',
         showIcon: true,
         showLabel: false,
         style: {
@@ -27,9 +28,9 @@ const options = {
 
 export default Tabs = TabNavigator({
 
-    List:       { screen: Feed, navigationOptions: { tabBarLabel: '', tabBarIcon: (props) => (<Tab {...props} icon="home" />) }},
-    Groups:     { screen: MyHealth, navigationOptions: { tabBarLabel: '', tabBarIcon: (props) => (<Tab {...props} icon="chat" />) }},
-    Stats:      { screen: MyHealth, navigationOptions: { tabBarLabel: '', tabBarIcon: (props) => (<Tab {...props} icon="show-chart" />) }},
+    Feed:       { screen: Feed, navigationOptions: { tabBarLabel: '', tabBarIcon: (props) => (<Tab {...props} icon="home" />) }},
+    MyHealth:   { screen: MyHealth, navigationOptions: { tabBarLabel: '', tabBarIcon: (props) => (<Tab {...props} icon="favorite" />) }},
+    Stats:      { screen: MyHealth, navigationOptions: { tabBarLabel: '', tabBarIcon: (props) => (<Tab {...props} icon="chat" />) }},
     User:       { screen: MyHealth, navigationOptions: { tabBarLabel: '', tabBarIcon: (props) => (<Tab {...props} icon="person" />) }},
     Admin:      { screen: MyHealth, navigationOptions: { tabBarLabel: '', tabBarIcon: (props) => (<Tab {...props} icon="settings" />) }},
 

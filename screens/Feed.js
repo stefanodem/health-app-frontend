@@ -29,8 +29,10 @@ class FeedScreen extends Component {
   }
 
   //TODO: Handle with redux actions:
-  _handleLikes = () => {
+  //TODO: allow only one like per user
+  _handleLikes = (postId, likeCount) => {
     console.log("Liked");
+    this.props.addLike(postId, likeCount);
   }
 
   _handleComments = (params) => {
@@ -56,14 +58,13 @@ class FeedScreen extends Component {
   //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
   _renderPosts = ({ item }) => {
     //TODO: think about using {...this.props} to pass props down to 'Post'
-
     return (
       <Post
-        key={item.id}
+        key={item.postId}
         post={item}
         user={item.user}
-        handleLikes={this._handleLikes}
-        handleComments={this._handleComments.bind(this, { post: item })}
+        handleLikes={() => this._handleLikes(item.postId, item.likeCount)}
+        handleComments={() => this._handleComments({ post: item })}
         handleShares={this._handleShares}
         onProfilePress={this._onProfilePress}
       />
@@ -71,14 +72,6 @@ class FeedScreen extends Component {
   }
 
   render() {
-    // if (!this.state.mapLoaded) {
-    //   return (
-    //     <View style={{ flex: 1, justifyContent: 'center' }}>
-    //       <ActivityIndicator size="large" />
-    //     </View>
-    //   );
-    // }
-
     //TODO: research and include flatlist features,
     //e.g. pull to refresh, scroll loading, etc.
     //https://facebook.github.io/react-native/docs/flatlist.html

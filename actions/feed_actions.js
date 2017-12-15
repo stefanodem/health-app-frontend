@@ -4,6 +4,8 @@ import {
   FETCHING_USER_POSTS_SUCCESS,
   FETCHING_REPLIES_SUCCESS,
   FETCHING_POSTS_ERROR,
+  ADD_LIKE,
+  ADD_REPLY,
   ADD_POST,
   ADD_MULTIPLE_POSTS,
   REMOVE_FETCHING,
@@ -44,9 +46,13 @@ const fetchingPostsError = (error) => {
   }
 }
 
-// const fetchTestPost = () => {
-//   return testPosts;
-// }
+const addingLike = (postId, likeCount) => {
+  return {
+    type: ADD_LIKE,
+    postId,
+    likeCount
+  }
+}
 
 export const fetchAndHandlePosts = (postId) => async (dispatch) => {
   dispatch(fetchingFeedData());
@@ -86,7 +92,6 @@ export const fetchAndHandleReplies = (postId) => async (dispatch) => {
   dispatch(fetchingFeedData());
   try {
     let replies = await fetchReplies(postId);
-    console.log(replies)
     if (replies) {
       dispatch(
         fetchingRepliesSuccess(
@@ -99,5 +104,15 @@ export const fetchAndHandleReplies = (postId) => async (dispatch) => {
     }
   } catch(e) {
     fetchingPostsError(e);
+  }
+}
+
+export const addLike = (postId, likeCount) => async (dispatch) => {
+  likeCount++
+  dispatch(addingLike(postId, likeCount));
+  try {
+    //dispatch(addingLike(postId));
+  } catch(e) {
+
   }
 }

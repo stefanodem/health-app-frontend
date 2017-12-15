@@ -5,6 +5,7 @@ import {
   FETCHING_REPLIES_SUCCESS,
   FETCHING_POSTS_ERROR,
   ADD_POST,
+  ADD_LIKE,
   ADD_MULTIPLE_POSTS,
   REMOVE_FETCHING,
 } from '../actions/types';
@@ -67,6 +68,19 @@ export default function(state = initialState, action) {
       return {
         ...state,
         ...action.posts,
+      };
+    case ADD_LIKE:
+      return typeof state.posts[action.postId] === 'undefined'
+      ? state
+      : {
+        ...state,
+        posts: {
+          ...state.posts,
+          [action.postId]: {
+            ...state.posts[action.postId],
+            likeCount: action.likeCount,
+          }
+        },
       };
     default:
       return state;
