@@ -11,7 +11,7 @@ export const user = {
 export const posts = {
   1: {
     lastUpdated: null,
-    id: 1,
+    postId: 1,
     user: {
       uid: '11111',
       name: 'Steve the Chief',
@@ -34,7 +34,7 @@ export const posts = {
   },
   2: {
     lastUpdated: null,
-    id: 2,
+    postId: 2,
     user: {
       uid: '11111',
       name: 'Steve the Chief',
@@ -57,7 +57,7 @@ export const posts = {
   },
   3: {
     lastUpdated: null,
-    id: 3,
+    postId: 3,
     user: {
       uid: '11111',
       name: 'Steve the Chief',
@@ -80,7 +80,7 @@ export const posts = {
   },
   4: {
     lastUpdated: null,
-    id: 4,
+    postId: 4,
     user: {
       uid: '11111',
       name: 'Steve the Chief',
@@ -103,7 +103,7 @@ export const posts = {
   },
   5: {
     lastUpdated: null,
-    id: 5,
+    postId: 5,
     user: {
       uid: '11111',
       name: 'Steve the Chief',
@@ -126,7 +126,7 @@ export const posts = {
   },
   6: {
     lastUpdated: null,
-    id: 6,
+    postId: 6,
     user: {
       uid: '11111',
       name: 'Steve the Chief',
@@ -151,152 +151,158 @@ export const posts = {
 
 export const replies = {
   1: {
+    postId: 1,
     lastUpdated: null,
     replies: {
       1: {
-        id: 1,
+        replyId: 1,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "Thats so cool man"
+        body: "1 Thats so cool man"
       },
       2: {
-        id: 2,
+        replyId: 2,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "No way bro"
+        body: "2 No way bro"
       },
     }
   },
   2: {
+    postId: 2,
     lastUpdated: null,
     replies: {
       3: {
-        id: 3,
+        replyId: 3,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "Thats so cool man"
+        body: "3 Thats so cool man"
       },
       4: {
-        id: 4,
+        replyId: 4,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "No way bro"
+        body: "4 No way bro"
       },
     }
   },
   3: {
+    postId: 3,
     lastUpdated: null,
     replies: {
       5: {
-        id: 5,
+        replyId: 5,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "Thats so cool man"
+        body: "5 Thats so cool man"
       },
       6: {
-        id: 6,
+        replyId: 6,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "No way bro"
+        body: "6 No way bro"
       },
     }
   },
   4: {
+    postId: 4,
     lastUpdated: null,
     replies: {
       7: {
-        id: 7,
+        replyId: 7,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "Thats so cool man"
+        body: "7 Thats so cool man"
       },
       8: {
-        id: 8,
+        replyId: 8,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "No way bro"
+        body: "8 No way bro"
       },
     }
   },
   5: {
+    postId: 5,
     lastUpdated: null,
     replies: {
       9: {
-        id: 9,
+        replyId: 9,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "Thats so cool man"
+        body: "9 Thats so cool man"
       },
       10: {
-        id: 10,
+        replyId: 10,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "No way bro"
+        body: "10 No way bro"
       },
     }
   },
   6: {
+    postId: 6,
     lastUpdated: null,
     replies: {
       11: {
-        id: 11,
+        replyId: 11,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "Thats so cool man"
+        body: "11 Thats so cool man"
       },
       12: {
-        id: 12,
+        replyId: 12,
         user: {
           uid: '123',
           name: 'SpongeBob',
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "No way bro"
+        body: "12 No way bro"
       }
     }
   }

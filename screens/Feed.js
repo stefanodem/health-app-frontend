@@ -7,7 +7,7 @@ import Post from '../components/Feed/Post';
 import ButtonBack from '../components/Navigation/Header/ButtonBack';
 
 //import { testUser } from '../testData/testUser';
-import { user, posts } from '../testData/testUser2';
+import { user } from '../testData/testUser2';
 
 //TODO: where do we initially get the uid?
 //after authentication
@@ -16,15 +16,12 @@ const UID = '11111'
 
 class FeedScreen extends Component {
 
-  // const user = this.props.user;
-  // const userName = this.props.user.name;
-  // const userPicture = this.props.user.picture;
-  // const userMessages = this.props.user.messages;
-  // const messageDate = '';
-
   componentDidMount () {
     //setAndHandleFeedListener?
-    this.props.fetchAndHandleUser(UID);
+    //move to authentication:
+    //this.props.fetchAndHandleUser(UID);
+
+    this.props.fetchAndHandleUserPosts(UID);
   }
 
   _fetchPosts = () => {
@@ -53,13 +50,11 @@ class FeedScreen extends Component {
     //this.props.fetchAndHandleUser(uid)
   }
 
-  _keyExtractor = (item, index) => item.id;
+  _keyExtractor = (item, index) => item.postId;
 
   //TODO: Hook up to backend
   //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
   _renderPosts = ({ item }) => {
-    const userInfo = this.props.user[UID].userInfo;
-
     //TODO: think about using {...this.props} to pass props down to 'Post'
 
     return (
@@ -87,7 +82,9 @@ class FeedScreen extends Component {
     //TODO: research and include flatlist features,
     //e.g. pull to refresh, scroll loading, etc.
     //https://facebook.github.io/react-native/docs/flatlist.html
-    if (this.props.user.isFetching) {
+    const posts = this.props.feed.posts;
+
+    if (this.props.feed.isFetching) {
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <ActivityIndicator size="large" />
@@ -106,10 +103,10 @@ class FeedScreen extends Component {
 }
 
 //TODO: set up backend and connect to redux
-function mapStateToProps({ user, posts }) {
+function mapStateToProps({ user, feed }) {
   return {
     user,
-    posts
+    feed
   }
 }
 

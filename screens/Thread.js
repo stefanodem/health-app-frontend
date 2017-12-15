@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Text, AsyncStorage, FlatList } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, AsyncStorage, FlatList, ActivityIndicator } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
@@ -9,7 +9,7 @@ import ReplyInput from '../components/Feed/ReplyInput';
 import Reply from '../components/Feed/Reply';
 import ButtonBack from '../components/Navigation/Header/ButtonBack';
 
-import { replies } from '../testData/testUser2';
+//import { replies } from '../testData/testUser2';
 
 class ThreadScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -28,7 +28,8 @@ class ThreadScreen extends Component {
   }
 
   componentDidMount() {
-    //this.props.fetchReplies(postId)
+    const { postId } = this.props.navigation.state.params.post;
+    this.props.fetchAndHandleReplies(postId)
   }
 
   _onChangeReply() {
@@ -39,7 +40,7 @@ class ThreadScreen extends Component {
 
   }
 
-  _keyExtractor = (item, index) => item.id;
+  _keyExtractor = (item, index) => item.replyId;
 
   _renderPost() {
     //TODO: hook up to backend
@@ -53,7 +54,7 @@ class ThreadScreen extends Component {
     //TODO: use {...this.props} to send pass all props to component
     return (
       <Post
-        key={post.id}
+        key={post.postId}
         post={post}
         user={post.user}
         handleLikes={this.handleLikes}
@@ -67,7 +68,7 @@ class ThreadScreen extends Component {
   _renderReplies = ({ item }) => {
     return (
       <Reply
-        key={item.id}
+        key={item.replyId}
         post={item}
         user={item.user}
         onProfilePress={this._onProfilePress}
@@ -76,9 +77,19 @@ class ThreadScreen extends Component {
   }
 
   render() {
-    console.log(this.props)
-    const { post } = this.props.navigation.state.params;
-    console.log(_values(replies[post.id].replies))
+    const { postId } = this.props.navigation.state.params.post;
+    const replies = this.props.postReplies[postId]
+                    ? this.props.postReplies[postId].replies
+                    : null;
+
+    if (this.props.isFetching) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
+
     return (
       <View style={{flex: 1}} >
 
@@ -88,7 +99,7 @@ class ThreadScreen extends Component {
 
           <FlatList
             keyExtractor={this._keyExtractor}
-            data={ _values(replies[post.id].replies) }
+            data={ _values(replies) }
             renderItem={ this._renderReplies }
           />
 
@@ -104,10 +115,11 @@ class ThreadScreen extends Component {
   }
 }
 
-function mapStateToProps () {
+function mapStateToProps ({ feed }) {
   return {
-
+    isFetching: feed.isFetching,
+    postReplies: feed.postReplies
   }
 }
 
-export default connect(null, actions)(ThreadScreen);
+export default connect(mapStateToProps, actions)(ThreadScreen);

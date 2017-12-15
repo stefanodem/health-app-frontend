@@ -1,6 +1,8 @@
 import {
-  FETCHING_POSTS,
+  FETCHING_FEED_DATA,
   FETCHING_POSTS_SUCCESS,
+  FETCHING_USER_POSTS_SUCCESS,
+  FETCHING_REPLIES_SUCCESS,
   FETCHING_POSTS_ERROR,
   ADD_POST,
   ADD_MULTIPLE_POSTS,
@@ -10,11 +12,15 @@ import {
 const initialState = {
   isFetching: true,
   error: '',
+  lastUpdated: '',
+  posts: {},
+  postReplies: {},
+  shares: {},
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCHING_POSTS:
+    case FETCHING_FEED_DATA:
       return {
         ...state,
         isFetching: true,
@@ -26,6 +32,24 @@ export default function(state = initialState, action) {
         isFetching: false,
         error: '',
         //[action.message.messageId]: action.message,
+      };
+    case FETCHING_USER_POSTS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: '',
+        lastUpdated: action.lastUpdated,
+        posts: action.posts,
+        //[action.message.messageId]: action.message,
+      };
+    case FETCHING_REPLIES_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: '',
+        //alternative: cache previous replies
+        //e.g. postReplies[action.replies.postId]: action.replies
+        postReplies: action.replies,
       };
     case FETCHING_POSTS_ERROR:
       return {
