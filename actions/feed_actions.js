@@ -5,7 +5,9 @@ import {
   FETCHING_REPLIES_SUCCESS,
   FETCHING_POSTS_ERROR,
   ADD_LIKE,
+  REMOVE_LIKE,
   ADD_REPLY,
+  UPDATE_REPLY_TEXT,
   ADD_POST,
   ADD_MULTIPLE_POSTS,
   REMOVE_FETCHING,
@@ -50,7 +52,15 @@ const addingLike = (postId, likeCount) => {
   return {
     type: ADD_LIKE,
     postId,
-    likeCount
+    likeCount,
+  }
+}
+
+const removingLike = (postId, likeCount) => {
+  return {
+    type: REMOVE_LIKE,
+    postId,
+    likeCount,
   }
 }
 
@@ -78,7 +88,8 @@ export const fetchAndHandleUserPosts = (uid) => async (dispatch) => {
         fetchingUserPostsSuccess(
           posts,
           //Object.keys(posts).sort((a, b) => posts[b].timestamp - posts[a].timestamp),
-          Date.now())
+          Date.now()
+        )
       );
     } else {
       //handle non posts
@@ -114,5 +125,22 @@ export const addLike = (postId, likeCount) => async (dispatch) => {
     //dispatch(addingLike(postId));
   } catch(e) {
 
+  }
+}
+
+export const removeLike = (postId, likeCount) => async (dispatch) => {
+  likeCount--
+  dispatch(removingLike(postId, likeCount));
+  try {
+    //dispatch(addingLike(postId));
+  } catch(e) {
+
+  }
+}
+
+export const updateReplyText = (replyText) => {
+  return {
+    type: UPDATE_REPLY_TEXT,
+    replyText,
   }
 }

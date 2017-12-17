@@ -14,7 +14,7 @@ import InteractionInfo from './InteractionBar/InteractionInfo';
 
 const Post = (props) => {
 
-  const { body, createdAt, likeCount, postId } = props.post;
+  const { body, createdAt, likeCount, postId, liked } = props.post;
   const replyCount = props.post.replies.length;
   const { name, avatar } = props.user;
   const handleLikes = props.handleLikes;
@@ -44,6 +44,7 @@ const Post = (props) => {
         />
 
         <InteractionBar
+          liked={liked}
           handleLikes={handleLikes}
           handleComments={handleComments}
           handleShares={handleShares}

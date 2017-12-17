@@ -10,23 +10,27 @@ import {
   interaction,
 } from '../styles';
 
-const InteractionComponent = ({ name, icon, callback }) => {
+const InteractionComponent = ({ name, icon, callback, color }) => {
   return (
     <TouchableOpacity
       style={ interaction.component }
       onPress={ callback }
     >
-      <Icon name={icon} style={ interaction.icon }/>
+      <Icon
+        name={icon}
+        color={color}
+        style={ interaction.icon }
+      />
       <Text style={ interaction.text }> {name} </Text>
     </TouchableOpacity>
   )
 }
 
-const InteractionBar = ({ handleLikes, handleComments, handleShares }) => {
+const InteractionBar = ({ handleLikes, handleComments, handleShares, liked }) => {
 
-  // const handleLikes = props.handleLikes;
-  // const handleComments = props.handleComments;
-  // const handleShares = props.handleShares;
+  const likeColor = liked ? 'red' : 'black';
+  const replyColor = 'black';
+  const shareColor = 'black';
 
   return (
     <View
@@ -35,16 +39,19 @@ const InteractionBar = ({ handleLikes, handleComments, handleShares }) => {
       <InteractionComponent
         name={"Like"}
         icon={"heart"}
+        color={likeColor}
         callback={ handleLikes }
       />
       <InteractionComponent
         name={"Reply"}
         icon={"comment"}
+        color={replyColor}
         callback={ handleComments }
       />
       <InteractionComponent
         name={"Share"}
         icon={"share"}
+        color={shareColor}
         callback={ handleShares }
       />
     </View>

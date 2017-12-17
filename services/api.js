@@ -28,6 +28,11 @@ export const fetchUserPosts = (uid) => {
   return new Promise(resolve => setTimeout(() => resolve(posts), 1000));
 }
 
+export const fetchUserLikes = (uid) => {
+  const { userInfo } = testUser;
+  return new Promise(resolve => setTimeout(() => resolve(user), 1000));
+}
+
 export const fetchReplies = (postId) => {
   return new Promise(resolve => setTimeout(() => resolve({ [postId]: replies[postId] }), 500));
 }

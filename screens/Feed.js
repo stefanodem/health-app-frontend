@@ -30,9 +30,13 @@ class FeedScreen extends Component {
 
   //TODO: Handle with redux actions:
   //TODO: allow only one like per user
-  _handleLikes = (postId, likeCount) => {
+  _handleLikes = (postId, likeCount, liked) => {
     console.log("Liked");
-    this.props.addLike(postId, likeCount);
+    if (liked) {
+      this.props.removeLike(postId, likeCount);
+    } else {
+      this.props.addLike(postId, likeCount);
+    }
   }
 
   _handleComments = (params) => {
@@ -58,12 +62,13 @@ class FeedScreen extends Component {
   //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
   _renderPosts = ({ item }) => {
     //TODO: think about using {...this.props} to pass props down to 'Post'
+    //console.log(this.props)
     return (
       <Post
         key={item.postId}
         post={item}
         user={item.user}
-        handleLikes={() => this._handleLikes(item.postId, item.likeCount)}
+        handleLikes={() => this._handleLikes(item.postId, item.likeCount, item.liked)}
         handleComments={() => this._handleComments({ post: item })}
         handleShares={this._handleShares}
         onProfilePress={this._onProfilePress}

@@ -14,7 +14,7 @@ import {
 
 const ReplyInput = (props) => {
 
-  const { onChangeReply, handleReply } = props;
+  const { onChangeReply, handleReply, replyText } = props;
 
   //TODO: the value should be derived from redux
   //--> hook up value to Reply.js and pass to ReplyInput as props
@@ -29,9 +29,9 @@ const ReplyInput = (props) => {
       >
 
         <TextInput
-          //value={ "Hi" }
+          value={ replyText }
           placeholder="Reply"
-          onChangeText={ onChangeReply }
+          onChangeText={ (text) => onChangeReply(text) }
           style={ replyInput.input }
           multiline={ true }
         />

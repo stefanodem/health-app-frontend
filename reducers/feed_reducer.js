@@ -6,6 +6,8 @@ import {
   FETCHING_POSTS_ERROR,
   ADD_POST,
   ADD_LIKE,
+  REMOVE_LIKE,
+  UPDATE_REPLY_TEXT,
   ADD_MULTIPLE_POSTS,
   REMOVE_FETCHING,
 } from '../actions/types';
@@ -14,6 +16,10 @@ const initialState = {
   isFetching: true,
   error: '',
   lastUpdated: '',
+  feedActions: {
+    replyText: '',
+    postText: '',
+  },
   posts: {},
   postReplies: {},
   shares: {},
@@ -64,7 +70,7 @@ export default function(state = initialState, action) {
         error: '',
         isFetching: false,
       };
-    case ADD_MULTIPLE_POSTS :
+    case ADD_MULTIPLE_POSTS:
       return {
         ...state,
         ...action.posts,
@@ -79,8 +85,31 @@ export default function(state = initialState, action) {
           [action.postId]: {
             ...state.posts[action.postId],
             likeCount: action.likeCount,
+            liked: true,
           }
         },
+      };
+    case REMOVE_LIKE:
+      return typeof state.posts[action.postId] === 'undefined'
+      ? state
+      : {
+        ...state,
+        posts: {
+          ...state.posts,
+          [action.postId]: {
+            ...state.posts[action.postId],
+            likeCount: action.likeCount,
+            liked: false,
+          }
+        },
+      };
+    case UPDATE_REPLY_TEXT:
+      return {
+        ...state,
+        feedActions: {
+          ...state.feedActions,
+          replyText: action.replyText,
+        }
       };
     default:
       return state;

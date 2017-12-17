@@ -16,7 +16,7 @@ class ThreadScreen extends Component {
     const { navigate, goBack } = navigation;
     return {
       title: 'Thread',
-      headerTitle: 'Thread', //can be String, React Element or React Componen
+      headerTitle: 'Thread', //can be String, React Element or React Component
       //header: can be React Element or a function --> for customizing headers
       //TODO: Change drawer button from hamburger to profile picture (similar to Twitter)
       headerLeft: (
@@ -32,10 +32,6 @@ class ThreadScreen extends Component {
     this.props.fetchAndHandleReplies(postId)
   }
 
-  _onChangeReply() {
-
-  }
-
   _handleReply() {
 
   }
@@ -49,7 +45,7 @@ class ThreadScreen extends Component {
 
     if (!post) {
       return (
-        <Text>Empty</Text>
+        <Text>No posts yet</Text>
       )
     }
     //TODO: use {...this.props} to send pass all props to component
@@ -78,6 +74,7 @@ class ThreadScreen extends Component {
   }
 
   render() {
+    const { updateReplyText, replyText } = this.props;
     const { postId } = this.props.navigation.state.params.post;
     const replies = this.props.postReplies[postId]
                     ? this.props.postReplies[postId].replies
@@ -90,7 +87,7 @@ class ThreadScreen extends Component {
         </View>
       );
     }
-
+    console.log(this.props)
     return (
       <View style={{flex: 1}} >
 
@@ -107,7 +104,8 @@ class ThreadScreen extends Component {
         </ScrollView>
 
         <ReplyInput
-          onChangeReply={ this._onChangeReply }
+          replyText={replyText}
+          onChangeReply={ updateReplyText }
           handleReply={this._handleReply}
         />
 
@@ -119,7 +117,8 @@ class ThreadScreen extends Component {
 function mapStateToProps ({ feed }) {
   return {
     isFetching: feed.isFetching,
-    postReplies: feed.postReplies
+    postReplies: feed.postReplies,
+    replyText: feed.feedActions.replyText,
   }
 }
 
