@@ -32,7 +32,7 @@ class ThreadScreen extends Component {
     this.props.fetchAndHandleReplies(postId)
   }
 
-  _handleReply() {
+  _onReplySubmit() {
 
   }
 
@@ -74,8 +74,9 @@ class ThreadScreen extends Component {
   }
 
   render() {
-    const { updateReplyText, replyText } = this.props;
-    const { postId } = this.props.navigation.state.params.post;
+    //TODO decide whether to use updateReplyText/addAndHandleReply (redux action) or move to separate function in Thread component
+    const { updateReplyText, addAndHandleReply, replyText, isPosting } = this.props;
+    const { postId, user } = this.props.navigation.state.params.post;
     const replies = this.props.postReplies[postId]
                     ? this.props.postReplies[postId].replies
                     : null;
@@ -104,9 +105,12 @@ class ThreadScreen extends Component {
         </ScrollView>
 
         <ReplyInput
+          userId={user.uid}
+          postId={postId}
           replyText={replyText}
-          onChangeReply={ updateReplyText }
-          handleReply={this._handleReply}
+          onChangeReply={updateReplyText}
+          onReplySubmit={addAndHandleReply}
+          isPosting={isPosting}
         />
 
       </View>
@@ -116,6 +120,7 @@ class ThreadScreen extends Component {
 
 function mapStateToProps ({ feed }) {
   return {
+    isPosting: feed.isPosting,
     isFetching: feed.isFetching,
     postReplies: feed.postReplies,
     replyText: feed.feedActions.replyText,

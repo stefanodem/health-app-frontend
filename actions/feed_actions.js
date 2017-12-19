@@ -7,13 +7,16 @@ import {
   ADD_LIKE,
   REMOVE_LIKE,
   ADD_REPLY,
+  POSTING_FEED_DATA,
+  POSTING_REPLY_SUCCESS,
+  POSTING_REPLY_ERROR,
   UPDATE_REPLY_TEXT,
   ADD_POST,
   ADD_MULTIPLE_POSTS,
   REMOVE_FETCHING,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies } from '../services/api';
+import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText } from '../services/api';
 
 const fetchingFeedData = () => {
   return {
@@ -41,9 +44,32 @@ const fetchingRepliesSuccess = (replies) => {
     replies,
   }
 }
+
 const fetchingPostsError = (error) => {
   return {
     type: FETCHING_POSTS_ERROR,
+    error: error,
+  }
+}
+
+const postingFeedData = () => {
+  return {
+    type: POSTING_FEED_DATA,
+  }
+}
+
+const postingReplySuccess = (postId, replyId, reply) => {
+  return {
+    type: POSTING_REPLY_SUCCESS,
+    postId,
+    replyId,
+    reply,
+  }
+}
+
+const postingReplyError = (error) => {
+  return {
+    type: POSTING_REPLY_ERROR,
     error: error,
   }
 }
@@ -135,6 +161,23 @@ export const removeLike = (postId, likeCount) => async (dispatch) => {
     //dispatch(addingLike(postId));
   } catch(e) {
 
+  }
+}
+
+export const addAndHandleReply = (userId, postId, replyText) => async (dispatch) => {
+  dispatch(postingFeedData())
+  console.log(userId)
+  console.log(postId)
+  console.log(replyText)
+  let reply = await addReplyText(userId, postId, replyText);
+  // if (reply) {
+  //   dispatch(postingReplySuccess(reply));
+  // }
+  console.log(reply)
+  dispatch(postingReplySuccess(postId, reply.replyId, reply))
+  try {
+  } catch(e) {
+    postingReplyError(e);
   }
 }
 

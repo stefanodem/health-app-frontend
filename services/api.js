@@ -37,8 +37,23 @@ export const fetchReplies = (postId) => {
   return new Promise(resolve => setTimeout(() => resolve({ [postId]: replies[postId] }), 500));
 }
 
-//TODO: Hook up to backend
 export const fetchUser = (uid) => {
   const { userInfo } = testUser;
   return new Promise(resolve => setTimeout(() => resolve(user), 1000));
 }
+
+export const addReplyText = (userId, postId, replyText) => {
+  //TODO: handle replyId generation --> probably on backend side
+  const reply = {
+      replyId: 13,
+      user: {
+        uid: '123456',
+        name: 'Stefano De Micheli',
+        avatar: 'http://profile.actionsprout.com/default.jpeg',
+      },
+      createdAt: Date.now(),
+      body: replyText,
+    };
+  return new Promise(resolve => setTimeout(() => resolve(reply), 1000));
+}
+

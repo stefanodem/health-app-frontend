@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Text,
+  ActivityIndicator,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 
@@ -12,9 +13,24 @@ import {
   replyInput,
 } from './styles';
 
+const _renderSendButton = (isPosting) => {
+  if (isPosting) {
+    return (
+      <ActivityIndicator size="small" />
+    )
+  }
+
+  return (
+    <Icon
+      name="send"
+      color="rgb(0,122,255)"
+    />
+  )
+}
+
 const ReplyInput = (props) => {
 
-  const { onChangeReply, handleReply, replyText } = props;
+  const { onChangeReply, onReplySubmit, replyText, userId, postId, isPosting } = props;
 
   //TODO: the value should be derived from redux
   //--> hook up value to Reply.js and pass to ReplyInput as props
@@ -37,13 +53,16 @@ const ReplyInput = (props) => {
         />
 
         <TouchableOpacity
-          onPress={ handleReply }
+          onPress={ () => onReplySubmit(userId, postId, replyText) }
         >
-          <Text style={replyInput.send}>Send</Text>
-          {/*<Icon
-            name="send"
-            color="rgb(0,122,255)"
-          />*/}
+
+          <View
+            style={ replyInput.sendButton }
+          >
+            {_renderSendButton(isPosting)}
+            {/*<Text style={replyInput.send}>Send</Text>*/}
+          </View>
+
         </TouchableOpacity>
 
       </View>

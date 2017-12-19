@@ -4,6 +4,10 @@ import {
   FETCHING_USER_POSTS_SUCCESS,
   FETCHING_REPLIES_SUCCESS,
   FETCHING_POSTS_ERROR,
+  POSTING_FEED_DATA,
+  POSTING_REPLY_SUCCESS,
+  POSTING_REPLY_ERROR,
+  REMOVE_POSTING,
   ADD_POST,
   ADD_LIKE,
   REMOVE_LIKE,
@@ -14,6 +18,7 @@ import {
 
 const initialState = {
   isFetching: true,
+  isPosting: false,
   error: '',
   lastUpdated: '',
   feedActions: {
@@ -69,6 +74,43 @@ export default function(state = initialState, action) {
         ...state,
         error: '',
         isFetching: false,
+      };
+    case POSTING_FEED_DATA:
+      return {
+        ...state,
+        isPosting: true,
+      };
+    case POSTING_REPLY_SUCCESS:
+      return {
+        ...state,
+        isPosting: false,
+        error: '',
+        feedActions: {
+          replyText: '',
+          postText: '',
+        },
+        postReplies: {
+          ...state.postReplies,
+          [action.postId] : {
+            ...state.postReplies[action.postId],
+            replies: {
+              ...state.postReplies[action.postId].replies,
+              [action.replyId]: action.reply,
+            }
+          }
+        }
+      };
+    case POSTING_REPLY_ERROR:
+      return {
+        ...state,
+        isPosting: false,
+        error,
+      };
+    case REMOVE_POSTING:
+      return {
+        ...state,
+        error: '',
+        isPosting: false,
       };
     case ADD_MULTIPLE_POSTS:
       return {

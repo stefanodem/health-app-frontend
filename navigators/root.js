@@ -5,6 +5,10 @@ import Tabs from './tabs';
 import Settings from '../components/Settings/Settings';
 import TemplateScreen from '../screens/TemplateScreen';
 
+//source: https://github.com/si-harps/RNExperimental
+//TODO: redux integration (e.g. menu --> when authed)
+//https://reactnavigation.org/docs/guides/redux
+
 export default DrawerNavigator({
 
   Home:       { screen: Tabs, navigationOptions: { header: { visible: true }}},

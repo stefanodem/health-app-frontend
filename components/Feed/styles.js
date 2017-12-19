@@ -16,6 +16,10 @@ export const replyInput = {
     fontSize: 18,
     flex: 1,
   },
+  sendButton: {
+    alignSelf: 'center',
+    padding: 15,
+  },
   send: {
     alignSelf: 'center',
     color: 'lightseagreen',
