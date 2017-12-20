@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Text, AsyncStorage, ActivityIndicator, FlatList } from 'react-native';
+import {
+  View,
+  ActivityIndicator,
+  FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
 import * as actions from '../actions';
@@ -12,7 +15,7 @@ import { user } from '../testData/testUser2';
 //TODO: where do we initially get the uid?
 //after authentication
 //or Async.Storage if auth is persisted through sessions
-const UID = '11111'
+const UID = '11111';
 
 class FeedScreen extends Component {
 
@@ -80,6 +83,7 @@ class FeedScreen extends Component {
     //TODO: research and include flatlist features,
     //e.g. pull to refresh, scroll loading, etc.
     //https://facebook.github.io/react-native/docs/flatlist.html
+
     const posts = this.props.feed.posts;
 
     if (this.props.feed.isFetching) {

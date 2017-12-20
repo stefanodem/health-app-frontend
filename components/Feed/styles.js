@@ -20,13 +20,13 @@ export const replyInput = {
     alignSelf: 'center',
     padding: 15,
   },
-  send: {
-    alignSelf: 'center',
-    color: 'lightseagreen',
-    fontSize: 16,
-    fontWeight: 'bold',
-    padding: 20,
-  },
+  // send: {
+  //   alignSelf: 'center',
+  //   color: 'lightseagreen',
+  //   fontSize: 16,
+  //   fontWeight: 'bold',
+  //   padding: 20,
+  // },
 }
 
 export const reply = {

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Text, AsyncStorage, FlatList, ActivityIndicator } from 'react-native';
+import {
+  View,
+  ScrollView,
+  FlatList,
+  ActivityIndicator } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
@@ -23,7 +27,8 @@ class ThreadScreen extends Component {
         <ButtonBack
           onPress={ goBack }
         />
-      )
+      ),
+      headerRight: null,
     }
   }
 
@@ -88,7 +93,7 @@ class ThreadScreen extends Component {
         </View>
       );
     }
-    console.log(this.props)
+
     return (
       <View style={{flex: 1}} >
 

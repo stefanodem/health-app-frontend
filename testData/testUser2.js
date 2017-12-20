@@ -8,6 +8,36 @@ export const user = {
   posts: [1, 2, 3, 4, 5, 6],
 }
 
+export const circles = {
+  1: {
+    name: 'Dr. Schmock',
+    type: 'person',
+    users: {
+      2344: {
+        uid: 2344,
+        name: 'Dr. Schmock',
+        avatar: 'http://profile.actionsprout.com/default.jpeg',
+      },
+    },
+  },
+  2: {
+    name: 'Circle of Trust',
+    type: 'group',
+    users: {
+      1234: {
+        uid: 1234,
+        name: 'Steve the Chief',
+        avatar: 'http://profile.actionsprout.com/default.jpeg',
+      },
+      5678: {
+        uid: 5678,
+        name: 'Dr. Schmock',
+        avatar: 'http://profile.actionsprout.com/default.jpeg',
+      },
+    },
+  },
+}
+
 export const posts = {
   1: {
     lastUpdated: null,

@@ -4,7 +4,6 @@ import {
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
-  Text,
   ActivityIndicator,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
@@ -59,8 +58,9 @@ const ReplyInput = (props) => {
           <View
             style={ replyInput.sendButton }
           >
+
             {_renderSendButton(isPosting)}
-            {/*<Text style={replyInput.send}>Send</Text>*/}
+
           </View>
 
         </TouchableOpacity>
