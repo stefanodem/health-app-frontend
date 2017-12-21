@@ -12,6 +12,7 @@ export const circles = {
   1: {
     name: 'Dr. Schmock',
     type: 'person',
+    avatar: 'http://profile.actionsprout.com/default.jpeg',
     users: {
       2344: {
         uid: 2344,
@@ -23,6 +24,7 @@ export const circles = {
   2: {
     name: 'Circle of Trust',
     type: 'group',
+    avatar: '',
     users: {
       1234: {
         uid: 1234,
@@ -32,6 +34,17 @@ export const circles = {
       5678: {
         uid: 5678,
         name: 'Dr. Schmock',
+        avatar: 'http://profile.actionsprout.com/default.jpeg',
+      },
+    },
+  },
+  1: {
+    name: 'Coach Coughlin',
+    type: 'person',
+    users: {
+      3453: {
+        uid: 3453,
+        name: 'Coach Coughlin',
         avatar: 'http://profile.actionsprout.com/default.jpeg',
       },
     },

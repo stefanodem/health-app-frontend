@@ -20,11 +20,11 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class Circle extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      pan: new Animated.ValueXY(),
-      isInCircle: null,
+      position: new Animated.ValueXY(),
+      isInCircle: false,
       user: null,
       //dropAreaValues: null,
       //opacity: new Animated.Value(1),
@@ -32,41 +32,50 @@ class Circle extends Component {
   }
 
   componentWillMount() {
+    //http://facebook.github.io/react-native/docs/panresponder.html
     //this._val = { x: this.state.pan.x, y: this.state.pan.y }
     //this.state.pan.addListener((value) => this._val = value);
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (e, gesture) => true,
-      onPanResponderMove: Animated.event([
-        null, { dx: this.state.pan.x, dy: this.state.pan.y }
-      ]),
+      onPanResponderMove: (event, gesture) => {
+        this.state.position.setValue({ x: gesture.dx, y: gesture.dy });
+      },
       onPanResponderRelease: (e, gesture) => {
-        if (this._isCircleArea(gesture)) {
-          Animated.spring(this.state.pan, {
-            toValue: { x: SCREEN_WIDTH / 10, y: -300 },
-            friction: 5,
-          }).start(() => this.setState({
-            isInCircle: true,
-          }))
+        if (this._isInCircleArea(gesture)) {
+          this._moveToCircle(gesture);
         } else {
-          Animated.spring(this.state.pan, {
-            toValue: { x: 0, y: 0 },
-            friction: 5,
-          }).start(() => this.setState({
-            isInCircle: false,
-          }))
+          this._resetPosition();
         }
       },
     });
     //this.state.pan.setValue({ x: 0, y: 0})
   }
 
-  _isCircleArea(gesture) {
-    return gesture.moveY < SCREEN_HEIGHT / 2;
+  _moveToCircle(gesture) {
+    Animated.spring(this.state.position, {
+      toValue: { x: gesture.dx, y: gesture.moveY - SCREEN_HEIGHT + (SCREEN_HEIGHT / 4) },
+      friction: 1,
+    }).start(() => this.setState({
+      isInCircle: true,
+    }))
+  }
+
+  _resetPosition() {
+    Animated.spring(this.state.position, {
+      toValue: { x: 0, y: 0 },
+      friction: 5,
+    }).start(() => this.setState({
+      isInCircle: false,
+    }))
+  }
+
+  _isInCircleArea(gesture) {
+    return gesture.moveY < (SCREEN_HEIGHT - 300) ;
   }
 
   render() {
     const panStyle = {
-      transform: this.state.pan.getTranslateTransform(),
+      transform: this.state.position.getTranslateTransform(),
     }
 
     return (
@@ -80,7 +89,6 @@ class Circle extends Component {
 }
 
 class AddToCircleScreen extends Component {
-
   static navigationOptions = ({ navigation }) => {
     const { navigate, goBack } = navigation;
     return {
@@ -102,9 +110,14 @@ class AddToCircleScreen extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
+
     return (
-    <View>
-      <TouchableOpacity style={styles.container}>
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.circleContainer}
+        onPress={ () => navigate('NewPost') }
+      >
         <View style={styles.CircleShapeView} ></View>
       </TouchableOpacity>
       <View style={styles.circleList}>
@@ -122,11 +135,19 @@ class AddToCircleScreen extends Component {
 let CIRCLE_RADIUS = 30;
 
 const styles = StyleSheet.create({
-  circleList: {
-    flexDirection: 'row',
-    height: 200,
-    alignItems: 'center',
+  container: {
+    flex: 1,
+  },
+  circleContainer: {
+    flex: 3,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  circleList: {
+    flex: 1,
+    flexDirection: 'row',
+    // alignItems: 'center',
+    //justifyContent: 'center',
   },
   circle: {
     backgroundColor: "skyblue",
@@ -137,16 +158,10 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: 'pink',
   },
-  container: {
-    //flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 70,
-  },
   CircleShapeView: {
-    width: 300,
-    height: 300,
-    borderRadius: 300/2,
+    width: 325,
+    height: 325,
+    borderRadius: 325/2,
     //backgroundColor: 'grey',
     borderColor: 'blue',
     borderWidth: 5,
