@@ -17,7 +17,6 @@ const initialState = {
   isFetching: true,
   isPosting: false,
   error: '',
-  lastUpdated: '',
   newPostText: '',
   circle: [],
   entities: {},
@@ -74,14 +73,14 @@ export default function(state = initialState, action) {
     //   };
     case ADD_TO_CIRCLE:
       return state.circle.includes(action.entityId)
-      ? {
+      ? state
+      : {
         ...state,
         circle: [
           ...state.circle,
           action.entityId,
         ],
       }
-      : state
     case REMOVE_FROM_CIRCLE:
       return state.circle.includes(action.entityId)
       ? {

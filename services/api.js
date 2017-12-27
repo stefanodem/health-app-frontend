@@ -57,3 +57,8 @@ export const addReplyText = (userId, postId, replyText) => {
   return new Promise(resolve => setTimeout(() => resolve(reply), 1000));
 }
 
+export const fetchEntities = () => {}
+
+export const addNewPostText = () => {}
+
+

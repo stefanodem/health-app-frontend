@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
-  ScrollView,
-  FlatList,
   ActivityIndicator,
   StyleSheet,
   TouchableOpacity,
   PanResponder,
   Animated,
   Dimensions,
+  UIManager,
+  FlatList,
 } from 'react-native';
 import { connect } from 'react-redux';
+import _values from 'lodash/values';
 import * as actions from '../actions';
 import ButtonBack from '../components/Navigation/Header/ButtonBack';
 import ButtonRight from '../components/Navigation/Header/ButtonRight';
 
+import { entities } from '../testData/testUser2';
+
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
+
+const inCircleColor = 'green';
+const outOfCircleColor = 'pink';
 
 class Circle extends Component {
   constructor(props) {
@@ -25,16 +30,12 @@ class Circle extends Component {
     this.state = {
       position: new Animated.ValueXY(),
       isInCircle: false,
-      user: null,
-      //dropAreaValues: null,
-      //opacity: new Animated.Value(1),
+      borderColor: outOfCircleColor,
     };
   }
 
   componentWillMount() {
     //http://facebook.github.io/react-native/docs/panresponder.html
-    //this._val = { x: this.state.pan.x, y: this.state.pan.y }
-    //this.state.pan.addListener((value) => this._val = value);
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (e, gesture) => true,
       onPanResponderMove: (event, gesture) => {
@@ -48,7 +49,16 @@ class Circle extends Component {
         }
       },
     });
-    //this.state.pan.setValue({ x: 0, y: 0})
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data !== this.props.data) {
+      this.setState({ index: 0 });
+    }
+  }
+
+  componentWillUpdate() {
+    UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 
   _moveToCircle(gesture) {
@@ -57,7 +67,9 @@ class Circle extends Component {
       friction: 1,
     }).start(() => this.setState({
       isInCircle: true,
-    }))
+    }));
+    this.setState({ borderColor: inCircleColor });
+    this.props.addToCircle(this.props.entity.entityId);
   }
 
   _resetPosition() {
@@ -66,7 +78,9 @@ class Circle extends Component {
       friction: 5,
     }).start(() => this.setState({
       isInCircle: false,
-    }))
+    }));
+    this.setState({ borderColor: outOfCircleColor });
+    this.props.removeFromCircle(this.props.entity.entityId);
   }
 
   _isInCircleArea(gesture) {
@@ -78,11 +92,12 @@ class Circle extends Component {
       transform: this.state.position.getTranslateTransform(),
     }
 
+    const { avatar } = this.props.entity;
     return (
       <Animated.Image
         {...this.panResponder.panHandlers}
-        style={[panStyle, styles.circle]}
-        source={{uri: 'https://pbs.twimg.com/profile_images/420241225283674113/xoCDeFzV.jpeg'}}
+        style={[panStyle, styles.circle, {borderColor: this.state.borderColor}]}
+        source={{uri: avatar}}
       />
     );
   }
@@ -109,8 +124,40 @@ class AddToCircleScreen extends Component {
     }
   }
 
+  _keyExtractor = (item, index) => item.entityId;
+
+  _renderEntities = ({ item }) => {
+    const { addToCircle, removeFromCircle } = this.props;
+
+    return (
+      <Circle
+        entity={item}
+        addToCircle={addToCircle}
+        removeFromCircle={removeFromCircle}
+      />
+    )
+  }
+
   render() {
     const { navigate } = this.props.navigation;
+    const {  } = this.props.newPost;
+    const { addToCircle, removeFromCircle } = this.props;
+    console.log(this.props.newPost.circle)
+
+    //TODELETE:
+    const entity = {
+    name: 'Dr. Schmock',
+    type: 'person',
+    entityId: 1234,
+    avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+    users: {
+      1234: {
+        uid: 1234,
+        name: 'Dr. Schmock',
+        avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+      },
+    },
+  }
 
     return (
     <View style={styles.container}>
@@ -121,11 +168,28 @@ class AddToCircleScreen extends Component {
         <View style={styles.CircleShapeView} ></View>
       </TouchableOpacity>
       <View style={styles.circleList}>
-        <Circle />
-        <Circle />
-        <Circle />
-        <Circle />
-        <Circle />
+       {/* <FlatList
+          style={{ flex: 1 }}
+          horizontal
+          keyExtractor={this._keyExtractor}
+          data={ _values(entities) }
+          renderItem={ this._renderEntities }
+        />*/}
+        <Circle
+          entity={entity}
+          addToCircle={addToCircle}
+          removeFromCircle={removeFromCircle}
+        />
+        <Circle
+          entity={entity}
+          addToCircle={addToCircle}
+          removeFromCircle={removeFromCircle}
+        />
+        <Circle
+          entity={entity}
+          addToCircle={addToCircle}
+          removeFromCircle={removeFromCircle}
+        />
       </View>
     </View>
     );
@@ -169,8 +233,9 @@ const styles = StyleSheet.create({
 
 });
 
-function mapStateToProps ({  }) {
+function mapStateToProps ({ newPost }) {
   return {
+    newPost,
   }
 }
 

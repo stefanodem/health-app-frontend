@@ -36,14 +36,15 @@ class NewPostScreen extends Component {
   render() {
     return (
       <View style={{flex: 1}} >
-        <Text>Create a new post</Text>
+        <Text>{this.props.newPost.circle}</Text>
       </View>
     );
   }
 }
 
-function mapStateToProps ({  }) {
+function mapStateToProps ({ newPost }) {
   return {
+    newPost,
   }
 }
 

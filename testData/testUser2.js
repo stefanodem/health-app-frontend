@@ -8,23 +8,25 @@ export const user = {
   posts: [1, 2, 3, 4, 5, 6],
 }
 
-export const circles = {
-  1: {
+export const entities = {
+  1234: {
     name: 'Dr. Schmock',
     type: 'person',
-    avatar: 'http://profile.actionsprout.com/default.jpeg',
+    entityId: 1234,
+    avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
     users: {
-      2344: {
-        uid: 2344,
+      1234: {
+        uid: 1234,
         name: 'Dr. Schmock',
-        avatar: 'http://profile.actionsprout.com/default.jpeg',
+        avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
       },
     },
   },
-  2: {
+  9999: {
     name: 'Circle of Trust',
     type: 'group',
-    avatar: '',
+    entityId: 9999,
+    avatar: 'https://pbs.twimg.com/profile_images/420241225283674113/xoCDeFzV.jpeg',
     users: {
       1234: {
         uid: 1234,
@@ -38,14 +40,16 @@ export const circles = {
       },
     },
   },
-  1: {
+  3453: {
     name: 'Coach Coughlin',
     type: 'person',
+    entityId: 3453,
+    avatar: 'http://www.packers.com/assets/images/imported/GB/photos/article_images/2013/11-november/131114-coughlin-300.jpg',
     users: {
       3453: {
         uid: 3453,
         name: 'Coach Coughlin',
-        avatar: 'http://profile.actionsprout.com/default.jpeg',
+        avatar: 'http://www.packers.com/assets/images/imported/GB/photos/article_images/2013/11-november/131114-coughlin-300.jpg',
       },
     },
   },
