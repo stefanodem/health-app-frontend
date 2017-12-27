@@ -7,10 +7,10 @@ import {
   post,
 } from './styles';
 
-import Header from './Header/Header';
-import Body from './Body/Body';
-import InteractionBar from './InteractionBar/InteractionBar';
-import InteractionInfo from './InteractionBar/InteractionInfo';
+import PostHeader from './Header/PostHeader';
+import PostBody from './Body/PostBody';
+import PostInteractionBar from './InteractionBar/PostInteractionBar';
+import PostInteractionInfo from './InteractionBar/PostInteractionInfo';
 
 const Post = (props) => {
 
@@ -23,41 +23,32 @@ const Post = (props) => {
   const onProfilePress = props.onProfilePress;
 
   //TODO: add touchable opacity for clicking on whole post
-  const renderMessages = () => {
-    return (
-      <View style={ post.mainStyle }>
-
-        <Header
-          userName={name}
-          userAvatar={avatar}
-          createdAt={createdAt}
-          onProfilePress={onProfilePress}
-        />
-
-        <Body
-          postBody={body}
-        />
-
-        <InteractionInfo
-          likeCount={likeCount}
-          replyCount={replyCount}
-        />
-
-        <InteractionBar
-          liked={liked}
-          handleLikes={handleLikes}
-          handleComments={handleComments}
-          handleShares={handleShares}
-        />
-
-      </View>
-    )
-  }
 
   return (
-    <View>
+    <View style={ post.mainStyle }>
 
-      { renderMessages() }
+      <PostHeader
+        userName={name}
+        userAvatar={avatar}
+        createdAt={createdAt}
+        onProfilePress={onProfilePress}
+      />
+
+      <PostBody
+        postBody={body}
+      />
+
+      <PostInteractionInfo
+        likeCount={likeCount}
+        replyCount={replyCount}
+      />
+
+      <PostInteractionBar
+        liked={liked}
+        handleLikes={handleLikes}
+        handleComments={handleComments}
+        handleShares={handleShares}
+      />
 
     </View>
   );

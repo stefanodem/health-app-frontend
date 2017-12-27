@@ -10,7 +10,7 @@ import {
   interaction,
 } from '../styles';
 
-const InteractionInfo = ({ likeCount, replyCount, commentCount }) => {
+const PostInteractionInfo = ({ likeCount, replyCount, commentCount }) => {
 
   return (
     <View
@@ -33,4 +33,4 @@ const InteractionInfo = ({ likeCount, replyCount, commentCount }) => {
   );
 }
 
-export default InteractionInfo;
+export default PostInteractionInfo;

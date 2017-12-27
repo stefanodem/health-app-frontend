@@ -8,7 +8,7 @@ import {
   body,
 } from '../styles';
 
-const Body = (props) => {
+const PostBody = (props) => {
 
   const { postBody } = props;
 
@@ -21,4 +21,4 @@ const Body = (props) => {
   );
 }
 
-export default Body;
+export default PostBody;

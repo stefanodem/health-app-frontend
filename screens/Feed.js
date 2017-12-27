@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   View,
   ActivityIndicator,
-  FlatList } from 'react-native';
+  FlatList,
+} from 'react-native';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
 import * as actions from '../actions';

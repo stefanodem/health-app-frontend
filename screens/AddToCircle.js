@@ -158,7 +158,34 @@ class AddToCircleScreen extends Component {
       },
     },
   }
+    const entity2 = {
+    name: 'Dr. Schmock',
+    type: 'person',
+    entityId: 4567,
+    avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+    users: {
+      4567: {
+        uid: 4567,
+        name: 'Dr. Schmock',
+        avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+      },
+    },
+  }
+    const entity3 = {
+    name: 'Dr. Schmock',
+    type: 'person',
+    entityId: 8901,
+    avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+    users: {
+      8901: {
+        uid: 8901,
+        name: 'Dr. Schmock',
+        avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+      },
+    },
+  }
 
+    //TODO move CircleShape to components
     return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -181,12 +208,12 @@ class AddToCircleScreen extends Component {
           removeFromCircle={removeFromCircle}
         />
         <Circle
-          entity={entity}
+          entity={entity2}
           addToCircle={addToCircle}
           removeFromCircle={removeFromCircle}
         />
         <Circle
-          entity={entity}
+          entity={entity3}
           addToCircle={addToCircle}
           removeFromCircle={removeFromCircle}
         />

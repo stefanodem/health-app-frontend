@@ -11,7 +11,7 @@ import {
   header,
 } from '../styles';
 
-const Header = (props) => {
+const PostHeader = (props) => {
 
   const { userName, userAvatar, createdAt, onProfilePress } = props;
 
@@ -41,4 +41,4 @@ const Header = (props) => {
   );
 }
 
-export default Header;
+export default PostHeader;

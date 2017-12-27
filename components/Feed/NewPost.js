@@ -8,13 +8,19 @@ import {
 } from './styles';
 
 import PostHeader from './Header/PostHeader';
-import PostBody from './Body/PostBody';
 
-const Reply = (props) => {
+const NewPost = (props) => {
 
-  const { body, createdAt } = props.post;
-  const { name, avatar } = props.post.user;
+  const { body, createdAt, likeCount, postId, liked } = props.post;
+  const replyCount = props.post.replies.length;
+  const { name, avatar } = props.user;
+  const handleLikes = props.handleLikes;
+  const handleComments = props.handleComments;
+  const handleShares = props.handleShares;
   const onProfilePress = props.onProfilePress;
+
+  //TODO: add touchable opacity for clicking on whole post
+
 
   return (
     <View style={ post.mainStyle }>
@@ -26,12 +32,8 @@ const Reply = (props) => {
         onProfilePress={onProfilePress}
       />
 
-      <PostBody
-        postBody={body}
-      />
-
     </View>
   );
 }
 
-export default Reply;
+export default NewPost;

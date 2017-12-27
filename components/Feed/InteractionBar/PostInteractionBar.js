@@ -26,7 +26,7 @@ const InteractionComponent = ({ name, icon, callback, color }) => {
   )
 }
 
-const InteractionBar = ({ handleLikes, handleComments, handleShares, liked }) => {
+const PostInteractionBar = ({ handleLikes, handleComments, handleShares, liked }) => {
 
   const likeColor = liked ? 'red' : 'black';
   const replyColor = 'black';
@@ -58,4 +58,4 @@ const InteractionBar = ({ handleLikes, handleComments, handleShares, liked }) =>
   );
 }
 
-export default InteractionBar;
+export default PostInteractionBar;
