@@ -1,35 +1,39 @@
 import React from 'react';
 import {
   View,
+  Text,
+  TextInput,
 } from 'react-native';
 
 import {
-  post,
+  post, replyInput,
 } from './styles';
 
-import PostHeader from './Header/PostHeader';
+import NewPostHeader from './Header/NewPostHeader';
 
 const NewPost = (props) => {
+  const { newPostText, onChangeText, createdAt, sendTo } = props;
 
-  const { body, createdAt, likeCount, postId, liked } = props.post;
-  const replyCount = props.post.replies.length;
-  const { name, avatar } = props.user;
-  const handleLikes = props.handleLikes;
-  const handleComments = props.handleComments;
-  const handleShares = props.handleShares;
-  const onProfilePress = props.onProfilePress;
+  //TODO: change to user
+  const name = props.name;
 
   //TODO: add touchable opacity for clicking on whole post
-
 
   return (
     <View style={ post.mainStyle }>
 
-      <PostHeader
-        userName={name}
-        userAvatar={avatar}
+      <NewPostHeader
+        name={name}
+        sendTo={sendTo}
         createdAt={createdAt}
-        onProfilePress={onProfilePress}
+      />
+
+      <TextInput
+        value={ newPostText }
+        placeholder="What would you like to share?"
+        onChangeText={ (text) => onChangeText(text) }
+        //style={{flex: 1}}
+        multiline={ true }
       />
 
     </View>

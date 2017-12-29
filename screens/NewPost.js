@@ -4,11 +4,13 @@ import {
   Text,
   ScrollView,
   FlatList,
-  ActivityIndicator } from 'react-native';
+  ActivityIndicator,
+} from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import ButtonBack from '../components/Navigation/Header/ButtonBack';
 import ButtonRight from '../components/Navigation/Header/ButtonRight';
+import NewPost from '../components/Feed/NewPost';
 
 class NewPostScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -22,7 +24,7 @@ class NewPostScreen extends Component {
         <ButtonBack
           onPress={ goBack }
         />
-      ),
+      ), // TODO: change ButtonRight to receive onPress method (onNewPostSubmit)
       headerRight: (
         <ButtonRight
           icon="send"
@@ -33,11 +35,23 @@ class NewPostScreen extends Component {
     }
   }
 
+  //function: for each uid in this.props.newPost.cirlce
+  //--> retrieve entities object and send to NewPost component
+
   render() {
+    const { updateNewPostText, addAndHandleNewPost } = this.props;
+    const { newPostText, isPosting, circle } = this.props.newPost;
+
     return (
-      <View style={{flex: 1}} >
-        <Text>{this.props.newPost.circle}</Text>
-      </View>
+      <NewPost
+        name='Fridli'
+        //user={this.props.user}
+        createdAt={Date.now()}
+        body='Hi'
+        sendTo={circle}
+        newPostText={newPostText}
+        onChangeText={updateNewPostText}
+      />
     );
   }
 }

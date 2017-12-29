@@ -28,14 +28,14 @@ const Post = (props) => {
     <View style={ post.mainStyle }>
 
       <PostHeader
-        userName={name}
-        userAvatar={avatar}
+        name={name}
+        avatar={avatar}
         createdAt={createdAt}
         onProfilePress={onProfilePress}
       />
 
       <PostBody
-        postBody={body}
+        body={body}
       />
 
       <PostInteractionInfo

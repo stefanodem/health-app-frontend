@@ -7,34 +7,32 @@ import {
   Image,
 } from 'react-native';
 
+import Avatar from '../../UI/Avatar';
+
 import {
-  header,
+  postHeader,
 } from '../styles';
 
 const PostHeader = (props) => {
 
-  const { userName, userAvatar, createdAt, onProfilePress } = props;
+  const { name, avatar, createdAt, onProfilePress } = props;
 
   return (
     <View
-      style={ header.container }
+      style={ postHeader.container }
     >
-      <TouchableOpacity
+      <Avatar
         onPress={ onProfilePress }
-      >
-        <Image
-          style={ header.image }
-          source={{ uri: userAvatar }}
-        />
-      </TouchableOpacity>
+        source={ avatar }
+      />
       <TouchableOpacity
         onPress={ onProfilePress }
       >
         <View
-          style={ header.title }
+          style={ postHeader.title }
         >
-          <Text style={ header.name }> { userName } </Text>
-          <Text style={ header.date }> { createdAt } </Text>
+          <Text style={ postHeader.name }> { name } </Text>
+          <Text style={ postHeader.date }> { createdAt } </Text>
         </View>
       </TouchableOpacity>
     </View>

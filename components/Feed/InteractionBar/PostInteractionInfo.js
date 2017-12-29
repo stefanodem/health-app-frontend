@@ -7,24 +7,24 @@ import {
 } from 'react-native';
 
 import {
-  interaction,
+  postInteraction,
 } from '../styles';
 
 const PostInteractionInfo = ({ likeCount, replyCount, commentCount }) => {
 
   return (
     <View
-      style={ interaction.infoContainer }
+      style={ postInteraction.infoContainer }
     >
 
       <Text
-        style={ interaction.infoText }
+        style={ postInteraction.infoText }
       >
         { `Likes: ${likeCount}` }
       </Text>
 
       <Text
-        style={ interaction.infoText }
+        style={ postInteraction.infoText }
       >
         { `Replies: ${replyCount}` }
       </Text>

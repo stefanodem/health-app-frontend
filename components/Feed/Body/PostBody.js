@@ -5,18 +5,18 @@ import {
 } from 'react-native';
 
 import {
-  body,
+  postBody,
 } from '../styles';
 
 const PostBody = (props) => {
 
-  const { postBody } = props;
+  const { body } = props;
 
   return (
     <View
-      style={ body.container }
+      style={ postBody.container }
     >
-      <Text> { postBody } </Text>
+      <Text> { body } </Text>
     </View>
   );
 }

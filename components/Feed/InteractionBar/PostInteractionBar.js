@@ -7,21 +7,21 @@ import {
 } from 'react-native';
 
 import {
-  interaction,
+  postInteraction,
 } from '../styles';
 
 const InteractionComponent = ({ name, icon, callback, color }) => {
   return (
     <TouchableOpacity
-      style={ interaction.component }
+      style={ postInteraction.component }
       onPress={ callback }
     >
       <Icon
         name={icon}
         color={color}
-        style={ interaction.icon }
+        style={ postInteraction.icon }
       />
-      <Text style={ interaction.text }> {name} </Text>
+      <Text style={ postInteraction.text }> {name} </Text>
     </TouchableOpacity>
   )
 }
@@ -34,7 +34,7 @@ const PostInteractionBar = ({ handleLikes, handleComments, handleShares, liked }
 
   return (
     <View
-      style={ interaction.mainContainer }
+      style={ postInteraction.mainContainer }
     >
       <InteractionComponent
         name={"Like"}

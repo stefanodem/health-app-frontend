@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   View,
+  Text,
   ActivityIndicator,
   StyleSheet,
   TouchableOpacity,
@@ -17,6 +18,9 @@ import ButtonBack from '../components/Navigation/Header/ButtonBack';
 import ButtonRight from '../components/Navigation/Header/ButtonRight';
 
 import { entities } from '../testData/testUser2';
+
+//TODO: create userinfo state
+const UID = '11111';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -69,7 +73,7 @@ class Circle extends Component {
       isInCircle: true,
     }));
     this.setState({ borderColor: inCircleColor });
-    this.props.addToCircle(this.props.entity.entityId);
+    this.props.addToCircle(this.props.entity);
   }
 
   _resetPosition() {
@@ -80,7 +84,7 @@ class Circle extends Component {
       isInCircle: false,
     }));
     this.setState({ borderColor: outOfCircleColor });
-    this.props.removeFromCircle(this.props.entity.entityId);
+    this.props.removeFromCircle(this.props.entity);
   }
 
   _isInCircleArea(gesture) {
@@ -124,6 +128,12 @@ class AddToCircleScreen extends Component {
     }
   }
 
+  componentDidMount() {
+    //TODO: move to auth
+    this.props.clearCircle();
+    this.props.fetchAndHandleEntities(UID);
+  }
+
   _keyExtractor = (item, index) => item.entityId;
 
   _renderEntities = ({ item }) => {
@@ -142,7 +152,6 @@ class AddToCircleScreen extends Component {
     const { navigate } = this.props.navigation;
     const {  } = this.props.newPost;
     const { addToCircle, removeFromCircle } = this.props;
-    console.log(this.props.newPost.circle)
 
     //TODELETE:
     const entity = {
@@ -158,32 +167,47 @@ class AddToCircleScreen extends Component {
       },
     },
   }
+
     const entity2 = {
-    name: 'Dr. Schmock',
-    type: 'person',
-    entityId: 4567,
-    avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+    name: 'Circle of Trust',
+    type: 'group',
+    entityId: 9999,
+    avatar: 'https://pbs.twimg.com/profile_images/420241225283674113/xoCDeFzV.jpeg',
     users: {
-      4567: {
-        uid: 4567,
+      1234: {
+        uid: 1234,
+        name: 'Steve the Chief',
+        avatar: 'http://profile.actionsprout.com/default.jpeg',
+      },
+      5678: {
+        uid: 5678,
         name: 'Dr. Schmock',
-        avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+        avatar: 'http://profile.actionsprout.com/default.jpeg',
       },
     },
   }
+
     const entity3 = {
-    name: 'Dr. Schmock',
+    name: 'Coach Coughlin',
     type: 'person',
-    entityId: 8901,
-    avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+    entityId: 3453,
+    avatar: 'http://www.packers.com/assets/images/imported/GB/photos/article_images/2013/11-november/131114-coughlin-300.jpg',
     users: {
-      8901: {
-        uid: 8901,
-        name: 'Dr. Schmock',
-        avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
+      3453: {
+        uid: 3453,
+        name: 'Coach Coughlin',
+        avatar: 'http://www.packers.com/assets/images/imported/GB/photos/article_images/2013/11-november/131114-coughlin-300.jpg',
       },
     },
   }
+
+    if (this.props.newPost.isFetching) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
 
     //TODO move CircleShape to components
     return (

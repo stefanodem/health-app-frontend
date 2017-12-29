@@ -5,6 +5,7 @@ import Thread from '../../screens/Thread';
 import NewPost from '../../screens/NewPost';
 import AddToCircle from '../../screens/AddToCircle';
 import ButtonLeft from '../../components/Navigation/Header/ButtonLeft';
+import ButtonRight from '../../components/Navigation/Header/ButtonRight';
 import NewPostButton from '../../components/Navigation/Header/NewPostButton';
 
 const MainFeedOptions = {

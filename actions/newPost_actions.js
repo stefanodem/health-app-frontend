@@ -53,30 +53,33 @@ const postingNewPostError = (error) => {
   }
 }
 
-const addingToCircle = (entityId) => {
+const addingToCircle = (entity) => {
   return {
     type: ADD_TO_CIRCLE,
-    entityId,
+    entity,
   }
 }
 
-const removingFromCircle = (entityId) => {
+const removingFromCircle = (entity) => {
   return {
     type: REMOVE_FROM_CIRCLE,
-    entityId,
+    entity,
   }
 }
 
-const clearCircle = () => {
+export const clearCircle = () => {
   return {
     type: CLEAR_CIRCLE,
   }
 }
 
 export const fetchAndHandleEntities = (uid) => async (dispatch) => {
+
+  console.log(uid)
   dispatch(fetchingEntities());
   try {
     let entities = await fetchEntities(uid);
+    console.log(entities)
     if (entities) {
       dispatch(fetchingEntitiesSuccess(entities));
     } else {

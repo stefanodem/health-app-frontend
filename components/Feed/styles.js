@@ -4,6 +4,8 @@ const deviceWidth = Dimensions.get('window').width;
 const imageSize = deviceWidth / 11;
 const imageRadius = imageSize / 2;
 
+//TODO: use stylesheet.create() --> performance gains
+
 export const replyInput = {
   container: {
     flexDirection: 'row',
@@ -27,11 +29,11 @@ export const replyInput = {
   //   fontWeight: 'bold',
   //   padding: 20,
   // },
-}
+};
 
 export const reply = {
 
-}
+};
 
 export const post = {
   mainStyle: {
@@ -39,9 +41,9 @@ export const post = {
   },
 };
 
-export const header = {
+export const postHeader = {
   container: {
-    flex: 1,
+    //flex: 1,
     flexDirection: 'row',
     paddingTop: 2,
     paddingBottom: 2,
@@ -82,7 +84,7 @@ export const header = {
   }
 };
 
-export const body = {
+export const postBody = {
   container: {
     flex: 1,
     paddingTop: 10,
@@ -95,7 +97,7 @@ export const body = {
   },
 };
 
-export const interaction = {
+export const postInteraction = {
   mainContainer: {
     flex: 1,
     flexDirection: 'row',
