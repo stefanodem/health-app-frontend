@@ -10,8 +10,7 @@ class Tab extends Component {
 
     return <Icon
         name={icon}
-        style={[ styles.icon, { color: tintColor }]}
-    />
+        style={[ styles.icon, { color: tintColor }]} />
   }
 }
 

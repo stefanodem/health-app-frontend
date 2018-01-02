@@ -14,19 +14,20 @@ const PostInteractionInfo = ({ likeCount, replyCount, commentCount }) => {
 
   return (
     <View
-      style={ postInteraction.infoContainer }
-    >
+      style={ postInteraction.infoContainer } >
 
       <Text
-        style={ postInteraction.infoText }
-      >
+        style={ postInteraction.infoText } >
+
         { `Likes: ${likeCount}` }
+
       </Text>
 
       <Text
-        style={ postInteraction.infoText }
-      >
+        style={ postInteraction.infoText } >
+
         { `Replies: ${replyCount}` }
+
       </Text>
 
     </View>

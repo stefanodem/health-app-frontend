@@ -19,22 +19,25 @@ const PostHeader = (props) => {
 
   return (
     <View
-      style={ postHeader.container }
-    >
+      style={ postHeader.container } >
+
       <Avatar
         onPress={ onProfilePress }
-        source={ avatar }
-      />
+        source={ avatar } />
+
       <TouchableOpacity
-        onPress={ onProfilePress }
-      >
+        onPress={ onProfilePress } >
+
         <View
-          style={ postHeader.title }
-        >
+          style={ postHeader.title } >
+
           <Text style={ postHeader.name }> { name } </Text>
           <Text style={ postHeader.date }> { createdAt } </Text>
+
         </View>
+
       </TouchableOpacity>
+
     </View>
   );
 }

@@ -4,7 +4,46 @@ const deviceWidth = Dimensions.get('window').width;
 const imageSize = deviceWidth / 11;
 const imageRadius = imageSize / 2;
 
-export const avatarStyle = {
+export const titleStyle = {
+  stacked: StyleSheet.create({
+    title: {
+      justifyContent: 'center',
+      paddingLeft: 8,
+      paddingTop: 5,
+      paddingBottom: 5,
+      },
+    name: {
+      fontSize: 16,
+      color: '#333',
+      fontWeight: 'bold',
+    },
+    date: {
+      fontSize: 13,
+      fontWeight: '200',
+    },
+  }),
+  horizontal: StyleSheet.create({
+    title: {
+      flexDirection: 'row',
+      flex: 2,
+      justifyContent: 'center',
+      paddingLeft: 8,
+      paddingTop: 5,
+      paddingBottom: 5,
+      },
+    name: {
+      fontSize: 16,
+      color: '#333',
+      fontWeight: 'bold',
+    },
+    date: {
+      fontSize: 13,
+      fontWeight: '200',
+    },
+  }),
+}
+
+export const avatarStyle = StyleSheet.create({
   default: {
     justifyContent: 'center',
     width: imageSize,
@@ -14,10 +53,10 @@ export const avatarStyle = {
   },
   small: {
     justifyContent: 'center',
-    width: deviceWidth / 18,
-    height: deviceWidth / 18,
+    width: deviceWidth / 15,
+    height: deviceWidth / 15,
     margin: 2,
-    borderRadius: imageSize / 3,
+    borderRadius: imageSize / 2.5,
   },
   medium: {
     justifyContent: 'center',
@@ -33,9 +72,9 @@ export const avatarStyle = {
     margin: 2,
     borderRadius: imageRadius,
   },
-}
+})
 
-export const buttonStyle = {
+export const buttonStyle = StyleSheet.create({
   container: {
     height: 70,
     backgroundColor: '#22a3ed',
@@ -45,4 +84,4 @@ export const buttonStyle = {
   label: {
     color: 'white'
   }
-}
+})

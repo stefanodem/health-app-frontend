@@ -1,7 +1,7 @@
 // import { ref } from 'config/constants';
 // import axios from 'axios';
-import { testUser } from '../testData/testUser';
-import { user, posts, replies, entities } from '../testData/testUser2';
+import { testUser } from '../../testData/testUser';
+import { user, posts, replies, entities } from '../../testData/testUser2';
 
 // function saveUser (user, userId) {
 //   return ref.child(`usersDucks/${user.uid}/${userId}`)
@@ -61,6 +61,8 @@ export const fetchEntities = (uid) => {
   return new Promise(resolve => setTimeout(() => resolve(entities), 300));
 }
 
-export const addNewPostText = () => {}
+export const addNewPostText = (entityId, newPostText) => {
+
+}
 
 

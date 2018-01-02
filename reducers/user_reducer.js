@@ -7,6 +7,19 @@ import {
   REMOVE_FETCHING_USER,
 } from '../actions/types';
 
+//DUMMY USER:
+const DUMMYUSER = {
+  isFetching: true,
+  error: '',
+  lastUpdated: null,
+  userInfo: {
+    uid: '11111',
+    name: 'Steve the Chief',
+    avatar: 'http://profile.actionsprout.com/default.jpeg',
+  },
+  posts: [1, 2, 3, 4, 5, 6],
+}
+
 const initialUserState = {
   lastUpdated: 0,
   userInfo: {
@@ -17,7 +30,7 @@ const initialUserState = {
   posts: [],
 }
 
-function user(state = initialUserState, action) {
+function user(state = DUMMYUSER, action) {
   switch (action.type) {
     case FETCHING_USER_SUCCESS:
       return {
@@ -38,7 +51,7 @@ const initialState = {
   //authedId: '',
 }
 
-export default function(state = initialState, action) {
+export default function(state = DUMMYUSER, action) {
   switch (action.type) {
     case FETCHING_USER:
       return {

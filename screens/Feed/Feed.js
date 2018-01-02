@@ -6,12 +6,12 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
-import * as actions from '../actions';
-import Post from '../components/Feed/Post';
-import ButtonBack from '../components/Navigation/Header/ButtonBack';
+import * as actions from '../../actions';
+import Post from '../../components/Feed/Post';
+import ButtonBack from '../../components/Navigation/Header/ButtonBack';
 
 //import { testUser } from '../testData/testUser';
-import { user } from '../testData/testUser2';
+import { user } from '../../testData/testUser2';
 
 //TODO: where do we initially get the uid?
 //after authentication
@@ -24,7 +24,6 @@ class FeedScreen extends Component {
     //setAndHandleFeedListener?
     //move to authentication:
     //this.props.fetchAndHandleUser(UID);
-
     this.props.fetchAndHandleUserPosts(UID);
   }
 
@@ -32,8 +31,6 @@ class FeedScreen extends Component {
 
   }
 
-  //TODO: Handle with redux actions:
-  //TODO: allow only one like per user
   _handleLikes = (postId, likeCount, liked) => {
     console.log("Liked");
     if (liked) {
@@ -43,18 +40,21 @@ class FeedScreen extends Component {
     }
   }
 
-  _handleComments = (params) => {
+  _handleReplies = (params) => {
     console.log("Commented");
     this.props.navigation.navigate('Thread', params);
   }
 
   _handleShares = () => {
     console.log("Shared");
+    //TODO: build shareScreen
+    //this.props.navigation.navigate('Share', params);
   }
 
   _onProfilePress = (uid) => {
     console.log("Pressed profile")
-    //this.props.navigation.navigate('UserProfile');
+    //TODO:
+    //this.props.navigation.navigate('UserProfile', params);
 
     //move to User Profile Screen:
     //this.props.fetchAndHandleUser(uid)
@@ -62,21 +62,27 @@ class FeedScreen extends Component {
 
   _keyExtractor = (item, index) => item.postId;
 
-  //TODO: Hook up to backend
   //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
-  _renderPosts = ({ item }) => {
+  _renderPost = ({ item }) => {
     //TODO: think about using {...this.props} to pass props down to 'Post'
-    //console.log(this.props)
     return (
       <Post
         key={item.postId}
         post={item}
         user={item.user}
         handleLikes={() => this._handleLikes(item.postId, item.likeCount, item.liked)}
-        handleComments={() => this._handleComments({ post: item })}
+        handleReplies={() => this._handleReplies({ post: item })}
         handleShares={this._handleShares}
-        onProfilePress={this._onProfilePress}
-      />
+        onProfilePress={this._onProfilePress} />
+    )
+  }
+
+  _renderFeed = (keyExtractor, posts, renderPosts) => {
+    return (
+      <FlatList
+        keyExtractor={keyExtractor}
+        data={ posts }
+        renderItem={ renderPosts } />
     )
   }
 
@@ -86,8 +92,9 @@ class FeedScreen extends Component {
     //https://facebook.github.io/react-native/docs/flatlist.html
 
     const posts = this.props.feed.posts;
+    const isFetching = this.props.feed.isFetching;
 
-    if (this.props.feed.isFetching) {
+    if (isFetching) {
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <ActivityIndicator size="large" />
@@ -96,20 +103,24 @@ class FeedScreen extends Component {
     }
 
     return (
-      <FlatList
-        keyExtractor={this._keyExtractor}
-        data={ _values(posts) }
-        renderItem={ this._renderPosts }
-      />
+      <View>
+
+        {
+          this._renderFeed(
+              this._keyExtractor,
+              _values(posts),
+              this._renderPost)
+        }
+
+      </View>
     );
   }
 }
 
-//TODO: set up backend and connect to redux
-function mapStateToProps({ user, feed }) {
+function mapStateToProps({ feed, user }) {
   return {
-    user,
-    feed
+    feed,
+    user
   }
 }
 

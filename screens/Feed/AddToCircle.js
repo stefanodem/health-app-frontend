@@ -10,17 +10,15 @@ import {
   Dimensions,
   UIManager,
   FlatList,
+  ScrollView,
 } from 'react-native';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
-import * as actions from '../actions';
-import ButtonBack from '../components/Navigation/Header/ButtonBack';
-import ButtonRight from '../components/Navigation/Header/ButtonRight';
+import * as actions from '../../actions';
+import ButtonBack from '../../components/Navigation/Header/ButtonBack';
+import ButtonRight from '../../components/Navigation/Header/ButtonRight';
 
-import { entities } from '../testData/testUser2';
-
-//TODO: create userinfo state
-const UID = '11111';
+import { entities } from '../../testData/testUser2';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -39,7 +37,7 @@ class Circle extends Component {
   }
 
   componentWillMount() {
-    //http://facebook.github.io/react-native/docs/panresponder.html
+    //Documentation: http://facebook.github.io/react-native/docs/panresponder.html
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (e, gesture) => true,
       onPanResponderMove: (event, gesture) => {
@@ -115,23 +113,19 @@ class AddToCircleScreen extends Component {
       headerTitle: 'Add to circle',
       headerLeft: (
         <ButtonBack
-          onPress={ goBack }
-        />
+          onPress={ goBack } />
       ),
       headerRight: (
         <ButtonRight
           icon="create"
-          navigate={navigate}
-          to="NewPost"
-        />
+          onPress={() => navigate("NewPost")} />
       ),
     }
   }
 
   componentDidMount() {
-    //TODO: move to auth
     this.props.clearCircle();
-    this.props.fetchAndHandleEntities(UID);
+    this.props.fetchAndHandleEntities(this.props.user.userInfo.uid);
   }
 
   _keyExtractor = (item, index) => item.entityId;
@@ -150,56 +144,8 @@ class AddToCircleScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    const {  } = this.props.newPost;
+    const { entities } = this.props.newPost;
     const { addToCircle, removeFromCircle } = this.props;
-
-    //TODELETE:
-    const entity = {
-    name: 'Dr. Schmock',
-    type: 'person',
-    entityId: 1234,
-    avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
-    users: {
-      1234: {
-        uid: 1234,
-        name: 'Dr. Schmock',
-        avatar: 'https://vignette.wikia.nocookie.net/super-villain/images/9/91/3998596-dr-evil.jpg/revision/latest?cb=20140805055410',
-      },
-    },
-  }
-
-    const entity2 = {
-    name: 'Circle of Trust',
-    type: 'group',
-    entityId: 9999,
-    avatar: 'https://pbs.twimg.com/profile_images/420241225283674113/xoCDeFzV.jpeg',
-    users: {
-      1234: {
-        uid: 1234,
-        name: 'Steve the Chief',
-        avatar: 'http://profile.actionsprout.com/default.jpeg',
-      },
-      5678: {
-        uid: 5678,
-        name: 'Dr. Schmock',
-        avatar: 'http://profile.actionsprout.com/default.jpeg',
-      },
-    },
-  }
-
-    const entity3 = {
-    name: 'Coach Coughlin',
-    type: 'person',
-    entityId: 3453,
-    avatar: 'http://www.packers.com/assets/images/imported/GB/photos/article_images/2013/11-november/131114-coughlin-300.jpg',
-    users: {
-      3453: {
-        uid: 3453,
-        name: 'Coach Coughlin',
-        avatar: 'http://www.packers.com/assets/images/imported/GB/photos/article_images/2013/11-november/131114-coughlin-300.jpg',
-      },
-    },
-  }
 
     if (this.props.newPost.isFetching) {
       return (
@@ -209,39 +155,43 @@ class AddToCircleScreen extends Component {
       );
     }
 
-    //TODO move CircleShape to components
+    //TODO move CircleShape & EntityCircles to components
     return (
     <View style={styles.container}>
+
       <TouchableOpacity
         style={styles.circleContainer}
-        onPress={ () => navigate('NewPost') }
-      >
-        <View style={styles.CircleShapeView} ></View>
+        onPress={ () => navigate('NewPost') } >
+
+        <View style={styles.circleShapeView} ></View>
+
       </TouchableOpacity>
+
       <View style={styles.circleList}>
-       {/* <FlatList
-          style={{ flex: 1 }}
+        {/*<FlatList
           horizontal
           keyExtractor={this._keyExtractor}
           data={ _values(entities) }
           renderItem={ this._renderEntities }
         />*/}
+
         <Circle
-          entity={entity}
+          entity={entities["1234"]}
           addToCircle={addToCircle}
-          removeFromCircle={removeFromCircle}
-        />
+          removeFromCircle={removeFromCircle} />
+
         <Circle
-          entity={entity2}
+          entity={entities["3453"]}
           addToCircle={addToCircle}
-          removeFromCircle={removeFromCircle}
-        />
+          removeFromCircle={removeFromCircle} />
+
         <Circle
-          entity={entity3}
+          entity={entities["9999"]}
           addToCircle={addToCircle}
-          removeFromCircle={removeFromCircle}
-        />
+          removeFromCircle={removeFromCircle} />
+
       </View>
+
     </View>
     );
   }
@@ -261,8 +211,6 @@ const styles = StyleSheet.create({
   circleList: {
     flex: 1,
     flexDirection: 'row',
-    // alignItems: 'center',
-    //justifyContent: 'center',
   },
   circle: {
     backgroundColor: "skyblue",
@@ -273,20 +221,20 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: 'pink',
   },
-  CircleShapeView: {
+  circleShapeView: {
     width: 325,
     height: 325,
     borderRadius: 325/2,
-    //backgroundColor: 'grey',
-    borderColor: 'blue',
+    borderColor: 'red',
     borderWidth: 5,
 },
 
 });
 
-function mapStateToProps ({ newPost }) {
+function mapStateToProps ({ newPost, user }) {
   return {
     newPost,
+    user
   }
 }
 

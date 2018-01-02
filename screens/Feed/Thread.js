@@ -7,11 +7,11 @@ import {
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
-import * as actions from '../actions';
-import Post from '../components/Feed/Post';
-import ReplyInput from '../components/Feed/ReplyInput';
-import Reply from '../components/Feed/Reply';
-import ButtonBack from '../components/Navigation/Header/ButtonBack';
+import * as actions from '../../actions';
+import Post from '../../components/Feed/Post';
+import ReplyInput from '../../components/Feed/ReplyInput';
+import Reply from '../../components/Feed/Reply';
+import ButtonBack from '../../components/Navigation/Header/ButtonBack';
 
 //import { replies } from '../testData/testUser2';
 
@@ -25,8 +25,7 @@ class ThreadScreen extends Component {
       //TODO: Change drawer button from hamburger to profile picture (similar to Twitter)
       headerLeft: (
         <ButtonBack
-          onPress={ goBack }
-        />
+          onPress={ goBack } />
       ),
       headerRight: null,
     }
@@ -44,7 +43,6 @@ class ThreadScreen extends Component {
   _keyExtractor = (item, index) => item.replyId;
 
   _renderPost() {
-    //TODO: hook up to backend
     const { post } = this.props.navigation.state.params;
     const postId = post ? post.postId : null;
 
@@ -53,7 +51,7 @@ class ThreadScreen extends Component {
         <Text>No posts yet</Text>
       )
     }
-    //TODO: use {...this.props} to send pass all props to component
+
     return (
       <Post
         key={post.postId}
@@ -62,8 +60,7 @@ class ThreadScreen extends Component {
         handleLikes={this.handleLikes}
         //handleComments={this.handleComments.bind(this, post)}
         handleShares={this.handleShares}
-        onProfilePress={this.onProfilePress}
-      />
+        onProfilePress={this.onProfilePress} />
     );
   }
 
@@ -73,20 +70,20 @@ class ThreadScreen extends Component {
         key={item.replyId}
         post={item}
         user={item.user}
-        onProfilePress={this._onProfilePress}
-      />
+        onProfilePress={this._onProfilePress} />
     )
   }
 
   render() {
     //TODO decide whether to use updateReplyText/addAndHandleReply (redux action) or move to separate function in Thread component
-    const { updateReplyText, addAndHandleReply, replyText, isPosting } = this.props;
+    const { updateReplyText, addAndHandleReply } = this.props;
+    const { isPosting, isFetching, replyText } = this.props.feed;
     const { postId, user } = this.props.navigation.state.params.post;
-    const replies = this.props.postReplies[postId]
-                    ? this.props.postReplies[postId].replies
+    const replies = this.props.feed.postReplies[postId]
+                    ? this.props.feed.postReplies[postId].replies
                     : null;
 
-    if (this.props.isFetching) {
+    if (isFetching) {
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <ActivityIndicator size="large" />
@@ -104,8 +101,7 @@ class ThreadScreen extends Component {
           <FlatList
             keyExtractor={this._keyExtractor}
             data={ _values(replies) }
-            renderItem={ this._renderReplies }
-          />
+            renderItem={ this._renderReplies } />
 
         </ScrollView>
 
@@ -115,8 +111,7 @@ class ThreadScreen extends Component {
           replyText={replyText}
           onChangeReply={updateReplyText}
           onReplySubmit={addAndHandleReply}
-          isPosting={isPosting}
-        />
+          isPosting={isPosting} />
 
       </View>
     );
@@ -125,10 +120,7 @@ class ThreadScreen extends Component {
 
 function mapStateToProps ({ feed }) {
   return {
-    isPosting: feed.isPosting,
-    isFetching: feed.isFetching,
-    postReplies: feed.postReplies,
-    replyText: feed.feedActions.replyText,
+    feed,
   }
 }
 

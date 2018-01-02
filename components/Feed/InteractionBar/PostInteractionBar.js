@@ -14,19 +14,20 @@ const InteractionComponent = ({ name, icon, callback, color }) => {
   return (
     <TouchableOpacity
       style={ postInteraction.component }
-      onPress={ callback }
-    >
+      onPress={ callback } >
+
       <Icon
         name={icon}
         color={color}
-        style={ postInteraction.icon }
-      />
+        style={ postInteraction.icon } />
+
       <Text style={ postInteraction.text }> {name} </Text>
+
     </TouchableOpacity>
   )
 }
 
-const PostInteractionBar = ({ handleLikes, handleComments, handleShares, liked }) => {
+const PostInteractionBar = ({ handleLikes, handleReplies, handleShares, liked }) => {
 
   const likeColor = liked ? 'red' : 'black';
   const replyColor = 'black';
@@ -34,26 +35,26 @@ const PostInteractionBar = ({ handleLikes, handleComments, handleShares, liked }
 
   return (
     <View
-      style={ postInteraction.mainContainer }
-    >
+      style={ postInteraction.mainContainer } >
+
       <InteractionComponent
         name={"Like"}
         icon={"heart"}
         color={likeColor}
-        callback={ handleLikes }
-      />
+        callback={ handleLikes } />
+
       <InteractionComponent
         name={"Reply"}
         icon={"comment"}
         color={replyColor}
-        callback={ handleComments }
-      />
+        callback={ handleReplies } />
+
       <InteractionComponent
         name={"Share"}
         icon={"share"}
         color={shareColor}
-        callback={ handleShares }
-      />
+        callback={ handleShares } />
+
     </View>
   );
 }

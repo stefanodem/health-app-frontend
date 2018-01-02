@@ -1,6 +1,6 @@
 import React from 'react'
 import { StackNavigator } from 'react-navigation';
-import MyHealth from '../../screens/MyHealth';
+import MyHealth from '../../screens/MyHealth/MyHealth';
 import ButtonLeft from '../../components/Navigation/Header/ButtonLeft';
 
 const options = {
@@ -15,8 +15,7 @@ const options = {
         <ButtonLeft
           icon="menu"
           navigate={navigate}
-          to="DrawerOpen"
-        />
+          to="DrawerOpen" />
       )
     }
   }

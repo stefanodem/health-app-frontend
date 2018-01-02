@@ -1,9 +1,9 @@
 import React from 'react'
 import { StackNavigator } from 'react-navigation';
-import Feed from '../../screens/Feed';
-import Thread from '../../screens/Thread';
-import NewPost from '../../screens/NewPost';
-import AddToCircle from '../../screens/AddToCircle';
+import Feed from '../../screens/Feed/Feed';
+import Thread from '../../screens/Feed/Thread';
+import NewPost from '../../screens/Feed/NewPost';
+import AddToCircle from '../../screens/Feed/AddToCircle';
 import ButtonLeft from '../../components/Navigation/Header/ButtonLeft';
 import ButtonRight from '../../components/Navigation/Header/ButtonRight';
 import NewPostButton from '../../components/Navigation/Header/NewPostButton';
@@ -20,15 +20,13 @@ const MainFeedOptions = {
         <ButtonLeft
           icon="menu"
           navigate={navigate}
-          to="DrawerOpen"
-        />
+          to="DrawerOpen" />
       ),
       headerRight: (
         <NewPostButton
           color="red"
           navigate={navigate}
-          to="AddToCircle"
-        />
+          to="AddToCircle" />
       )
     }
   }

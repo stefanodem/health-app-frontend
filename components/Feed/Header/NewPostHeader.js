@@ -10,12 +10,12 @@ import {
 import Avatar from '../../UI/Avatar';
 
 import {
-  postHeader,
+  postHeader, newPost,
 } from '../styles';
 
 const NewPostHeader = (props) => {
 
-  const { name, sendTo, createdAt } = props;
+  const { name, sendTo, createdAt, avatar } = props;
 
   _renderSendTo = (entities) => {
     return entities.map(entity => {
@@ -23,8 +23,7 @@ const NewPostHeader = (props) => {
         <Avatar
           key={entity.entityId}
           size='small'
-          source={entity.avatar}
-        />
+          source={entity.avatar} />
       )
     })
   }
@@ -33,23 +32,29 @@ const NewPostHeader = (props) => {
     <View>
 
       <View
-        style={ postHeader.container }
-      >
+        style={ newPost.header.container } >
+
+        <Avatar
+          //onPress={ onProfilePress }
+          source={ avatar } />
 
         <View
-          style={ postHeader.title }
-        >
-          <Text style={ postHeader.name }> { name } </Text>
-          <Text style={ postHeader.date }> { createdAt } </Text>
+          style={ newPost.header.title } >
+
+          <Text style={ newPost.header.name }> { name } </Text>
+          <Text style={ newPost.header.date }> { createdAt } </Text>
+
         </View>
 
       </View>
 
       <View
-        style={{flexDirection: 'row'}}
-      >
-        <Text> { 'To: ' } </Text>
+        style={newPost.header.container} >
+
+        <Text style={newPost.header.title}> { 'To: ' } </Text>
+
         { this._renderSendTo(sendTo) }
+
       </View>
 
     </View>

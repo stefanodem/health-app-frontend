@@ -16,7 +16,7 @@ import {
   REMOVE_FETCHING,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText } from '../services/api';
+import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText } from '../services/api/feed_api';
 
 const fetchingFeedData = () => {
   return {
@@ -166,14 +166,10 @@ export const removeLike = (postId, likeCount) => async (dispatch) => {
 
 export const addAndHandleReply = (userId, postId, replyText) => async (dispatch) => {
   dispatch(postingFeedData())
-  console.log(userId)
-  console.log(postId)
-  console.log(replyText)
   let reply = await addReplyText(userId, postId, replyText);
   // if (reply) {
   //   dispatch(postingReplySuccess(reply));
   // }
-  console.log(reply)
   dispatch(postingReplySuccess(postId, reply.replyId, reply))
   try {
   } catch(e) {

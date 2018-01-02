@@ -7,58 +7,61 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import ButtonBack from '../components/Navigation/Header/ButtonBack';
-import ButtonRight from '../components/Navigation/Header/ButtonRight';
-import NewPost from '../components/Feed/NewPost';
+import * as actions from '../../actions';
+import ButtonBack from '../../components/Navigation/Header/ButtonBack';
+import ButtonRight from '../../components/Navigation/Header/ButtonRight';
+import NewPost from '../../components/Feed/NewPost';
 
 class NewPostScreen extends Component {
+
+  //TODO: research how to connect react navigation to redux
   static navigationOptions = ({ navigation }) => {
     const { navigate, goBack } = navigation;
+
+    const handleNewPostSubmit = async (onPress, navigate, to) => {
+        await onPress();
+        navigate(to);
+    }
+
     return {
       title: 'Add a new post',
-      headerTitle: 'Add a new post', //can be String, React Element or React Component
-      //header: can be React Element or a function --> for customizing headers
-      //TODO: Change drawer button from hamburger to profile picture (similar to Twitter)
+      headerTitle: 'Add a new post',
       headerLeft: (
         <ButtonBack
-          onPress={ goBack }
-        />
-      ), // TODO: change ButtonRight to receive onPress method (onNewPostSubmit)
+          onPress={ goBack } />
+      ),
       headerRight: (
         <ButtonRight
           icon="send"
-          navigate={navigate}
-          to="Feed"
-        />
+          onPress={() => handleNewPostSubmit(() => {}, navigate, "Feed")} />
       ),
     }
   }
 
-  //function: for each uid in this.props.newPost.cirlce
   //--> retrieve entities object and send to NewPost component
 
   render() {
     const { updateNewPostText, addAndHandleNewPost } = this.props;
     const { newPostText, isPosting, circle } = this.props.newPost;
+    const { userInfo } = this.props.user;
 
+    //TODO: create newPost bar that allows you to attach other formats besides text (e.g. health data)
     return (
       <NewPost
-        name='Fridli'
-        //user={this.props.user}
+        user={userInfo}
         createdAt={Date.now()}
-        body='Hi'
         sendTo={circle}
         newPostText={newPostText}
         onChangeText={updateNewPostText}
-      />
+        onNewPostSubmit={addAndHandleNewPost} />
     );
   }
 }
 
-function mapStateToProps ({ newPost }) {
+function mapStateToProps ({ newPost, user }) {
   return {
     newPost,
+    user,
   }
 }
 

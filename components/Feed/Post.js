@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   View,
+  TouchableHighlight,
 } from 'react-native';
 
 import {
@@ -14,43 +15,42 @@ import PostInteractionInfo from './InteractionBar/PostInteractionInfo';
 
 const Post = (props) => {
 
+  const { handleLikes, handleReplies, handleShares, onProfilePress } = props;
   const { body, createdAt, likeCount, postId, liked } = props.post;
   const replyCount = props.post.replies.length;
   const { name, avatar } = props.user;
-  const handleLikes = props.handleLikes;
-  const handleComments = props.handleComments;
-  const handleShares = props.handleShares;
-  const onProfilePress = props.onProfilePress;
-
-  //TODO: add touchable opacity for clicking on whole post
 
   return (
-    <View style={ post.mainStyle }>
+    <TouchableHighlight
+      onPress={handleReplies} >
 
-      <PostHeader
-        name={name}
-        avatar={avatar}
-        createdAt={createdAt}
-        onProfilePress={onProfilePress}
-      />
+      <View
+        style={post.mainStyle} >
 
-      <PostBody
-        body={body}
-      />
+        <PostHeader
+          name={name}
+          avatar={avatar}
+          createdAt={createdAt}
+          onProfilePress={onProfilePress} />
 
-      <PostInteractionInfo
-        likeCount={likeCount}
-        replyCount={replyCount}
-      />
+        <PostBody
+          body={body} />
 
-      <PostInteractionBar
-        liked={liked}
-        handleLikes={handleLikes}
-        handleComments={handleComments}
-        handleShares={handleShares}
-      />
+        <PostInteractionInfo
+          likeCount={likeCount}
+          replyCount={replyCount} />
 
-    </View>
+        <PostInteractionBar
+          liked={liked}
+          handleLikes={handleLikes}
+          handleReplies={handleReplies}
+          handleShares={handleShares}
+          likeCount={likeCount}
+          replyCount={replyCount} />
+
+      </View>
+
+    </TouchableHighlight>
   );
 }
 

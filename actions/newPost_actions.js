@@ -13,7 +13,7 @@ import {
   UPDATE_NEWPOST_TEXT,
 } from './types';
 
-import { fetchEntities, addNewPostText } from '../services/api';
+import { fetchEntities, addNewPostText } from '../services/api/feed_api';
 
 const fetchingEntities = () => {
   return {
@@ -74,12 +74,9 @@ export const clearCircle = () => {
 }
 
 export const fetchAndHandleEntities = (uid) => async (dispatch) => {
-
-  console.log(uid)
   dispatch(fetchingEntities());
   try {
     let entities = await fetchEntities(uid);
-    console.log(entities)
     if (entities) {
       dispatch(fetchingEntitiesSuccess(entities));
     } else {
@@ -108,12 +105,17 @@ export const removeFromCircle = (entityId) => async (dispatch) => {
   }
 }
 
-export const addAndHandleNewPost = (entityIds) => async (dispatch) => {
+export const addAndHandleNewPost = (entityIds, newPostText) => async (dispatch) => {
   dispatch(postingNewPost())
-  let newPost = await addNewPostText(entityIds);
+  console.log(newPostText)
+  console.log(entityIds)
+  let newPost = await addNewPostText(entityIds, newPostText);
   // if (reply) {
   //   dispatch(postingReplySuccess(reply));
   // }
+
+  //no post data is sent to reducer -->
+  //new post will be added through re-fetching the entire feed (handled in backend)
   dispatch(postingNewPostSuccess())
   try {
   } catch(e) {

@@ -3,7 +3,7 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/Entypo';
 
 class NewPostButton extends Component {
 
@@ -14,13 +14,13 @@ class NewPostButton extends Component {
         return (
             <TouchableOpacity
                 style={{ right: 10 }}
-                onPress={ () => navigate(to) }
-            >
+                onPress={ () => navigate(to) } >
+
                 <Icon
-                    name="add-box"
+                    name="circle"
                     style={[ styles.icon ]}
-                    color={color}
-                />
+                    color={color} />
+
             </TouchableOpacity>
         )
     }

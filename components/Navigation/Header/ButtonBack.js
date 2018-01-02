@@ -14,12 +14,12 @@ class ButtonBack extends Component {
         return (
             <TouchableOpacity
                 style={{ left: 10 }}
-                onPress={ () => onPress() }
-            >
+                onPress={ () => onPress() } >
+
                 <Icon
                     name="chevron-left"
-                    style={[ styles.icon ]}
-                />
+                    style={[ styles.icon ]} />
+
             </TouchableOpacity>
         )
     }

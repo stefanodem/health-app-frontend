@@ -1,5 +1,5 @@
 //import { saveUser } from 'services/api';
-import { fetchUser } from '../services/api';
+import { fetchUser } from '../services/api/feed_api';
 
 import {
   //AUTH_USER,

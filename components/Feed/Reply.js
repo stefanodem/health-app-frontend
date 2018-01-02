@@ -23,12 +23,10 @@ const Reply = (props) => {
         name={name}
         avatar={avatar}
         createdAt={createdAt}
-        onProfilePress={onProfilePress}
-      />
+        onProfilePress={onProfilePress} />
 
       <PostBody
-        body={body}
-      />
+        body={body} />
 
     </View>
   );

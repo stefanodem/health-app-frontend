@@ -14,12 +14,12 @@ class ButtonLeft extends Component {
         return (
             <TouchableOpacity
                 style={{ left: 15 }}
-                onPress={ () => navigate(to) }
-            >
+                onPress={ () => navigate(to) } >
+
                 <Icon
                     name={ icon }
-                    style={[ styles.icon ]}
-                />
+                    style={[ styles.icon ]} />
+
             </TouchableOpacity>
         )
     }

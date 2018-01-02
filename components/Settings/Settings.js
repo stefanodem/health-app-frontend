@@ -14,8 +14,7 @@ class Settings extends Component {
         return (
             <Button
                 onPress={() => goBack()}
-                title="Settings Screen"
-            />
+                title="Settings Screen" />
         );
     }
 }

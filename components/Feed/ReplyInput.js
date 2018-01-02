@@ -22,8 +22,7 @@ const _renderSendButton = (isPosting) => {
   return (
     <Icon
       name="send"
-      color="rgb(0,122,255)"
-    />
+      color="rgb(0,122,255)" />
   )
 }
 
@@ -37,27 +36,23 @@ const ReplyInput = (props) => {
   return (
     <KeyboardAvoidingView
       keyboardVerticalOffset={ 70 }
-      behavior="padding"
-    >
+      behavior="padding" >
+
       <View
-        style={ replyInput.container }
-      >
+        style={ replyInput.container } >
 
         <TextInput
           value={ replyText }
           placeholder="Reply"
           onChangeText={ (text) => onChangeReply(text) }
           style={ replyInput.input }
-          multiline={ true }
-        />
+          multiline={ true } />
 
         <TouchableOpacity
-          onPress={ () => onReplySubmit(userId, postId, replyText) }
-        >
+          onPress={ () => onReplySubmit(userId, postId, replyText) } >
 
           <View
-            style={ replyInput.sendButton }
-          >
+            style={ replyInput.sendButton } >
 
             {_renderSendButton(isPosting)}
 
@@ -66,6 +61,7 @@ const ReplyInput = (props) => {
         </TouchableOpacity>
 
       </View>
+
     </KeyboardAvoidingView>
   );
 }

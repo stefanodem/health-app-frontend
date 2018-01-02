@@ -22,20 +22,19 @@ const Avatar = ({ onPress, source, size }) => {
   if (onPress) {
     return (
       <TouchableOpacity
-        onPress={ onPress }
-      >
+        onPress={ onPress } >
+
         <Image
           style={ style }
-          source={{ uri: source }}
-        />
+          source={{ uri: source }} />
+
       </TouchableOpacity>
     )
   } else {
     return (
       <Image
         style={ style }
-        source={{ uri: source }}
-      />
+        source={{ uri: source }} />
     )
   }
 }
