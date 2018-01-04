@@ -4,6 +4,8 @@ const deviceWidth = Dimensions.get('window').width;
 const imageSize = deviceWidth / 11;
 const imageRadius = imageSize / 2;
 
+//TODO: make styles dynamic (research)
+
 export const newPost = {
   header: StyleSheet.create({
     container: {

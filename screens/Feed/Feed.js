@@ -10,13 +10,12 @@ import * as actions from '../../actions';
 import Post from '../../components/Feed/Post';
 import ButtonBack from '../../components/Navigation/Header/ButtonBack';
 
-//import { testUser } from '../testData/testUser';
 import { user } from '../../testData/testUser2';
 
 //TODO: where do we initially get the uid?
 //after authentication
 //or Async.Storage if auth is persisted through sessions
-const UID = '11111';
+//const UID = '11111';
 
 class FeedScreen extends Component {
 
@@ -24,7 +23,7 @@ class FeedScreen extends Component {
     //setAndHandleFeedListener?
     //move to authentication:
     //this.props.fetchAndHandleUser(UID);
-    this.props.fetchAndHandleUserPosts(UID);
+    this.props.fetchAndHandleUserPosts(this.props.user.userInfo.uid);
   }
 
   _fetchPosts = () => {

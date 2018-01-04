@@ -30,8 +30,6 @@ const ReplyInput = (props) => {
 
   const { onChangeReply, onReplySubmit, replyText, userId, postId, isPosting } = props;
 
-  //TODO: the value should be derived from redux
-  //--> hook up value to Reply.js and pass to ReplyInput as props
   //TODO: find better solution than hardcode keyboardVerticalOffset
   return (
     <KeyboardAvoidingView

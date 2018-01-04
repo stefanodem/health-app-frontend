@@ -13,8 +13,6 @@ import ReplyInput from '../../components/Feed/ReplyInput';
 import Reply from '../../components/Feed/Reply';
 import ButtonBack from '../../components/Navigation/Header/ButtonBack';
 
-//import { replies } from '../testData/testUser2';
-
 class ThreadScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     const { navigate, goBack } = navigation;
@@ -75,7 +73,6 @@ class ThreadScreen extends Component {
   }
 
   render() {
-    //TODO decide whether to use updateReplyText/addAndHandleReply (redux action) or move to separate function in Thread component
     const { updateReplyText, addAndHandleReply } = this.props;
     const { isPosting, isFetching, replyText } = this.props.feed;
     const { postId, user } = this.props.navigation.state.params.post;

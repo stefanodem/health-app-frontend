@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Avatar from '../../UI/Avatar';
+import { formatTimestamp } from '../../../services/utils';
 
 import {
   postHeader, newPost,
@@ -42,7 +43,7 @@ const NewPostHeader = (props) => {
           style={ newPost.header.title } >
 
           <Text style={ newPost.header.name }> { name } </Text>
-          <Text style={ newPost.header.date }> { createdAt } </Text>
+          <Text style={ newPost.header.date }> { formatTimestamp(createdAt) } </Text>
 
         </View>
 

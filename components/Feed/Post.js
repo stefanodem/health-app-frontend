@@ -12,6 +12,7 @@ import PostHeader from './Header/PostHeader';
 import PostBody from './Body/PostBody';
 import PostInteractionBar from './InteractionBar/PostInteractionBar';
 import PostInteractionInfo from './InteractionBar/PostInteractionInfo';
+import { formatTimestamp } from '../../services/utils';
 
 const Post = (props) => {
 
@@ -20,8 +21,11 @@ const Post = (props) => {
   const replyCount = props.post.replies.length;
   const { name, avatar } = props.user;
 
+  //TODO: move underLayColor to styles.js
+
   return (
     <TouchableHighlight
+      underlayColor={'grey'}
       onPress={handleReplies} >
 
       <View
@@ -30,7 +34,7 @@ const Post = (props) => {
         <PostHeader
           name={name}
           avatar={avatar}
-          createdAt={createdAt}
+          createdAt={formatTimestamp(createdAt)}
           onProfilePress={onProfilePress} />
 
         <PostBody

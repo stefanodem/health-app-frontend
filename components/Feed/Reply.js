@@ -9,6 +9,7 @@ import {
 
 import PostHeader from './Header/PostHeader';
 import PostBody from './Body/PostBody';
+import { formatTimestamp } from '../../services/utils';
 
 const Reply = (props) => {
 
@@ -22,7 +23,7 @@ const Reply = (props) => {
       <PostHeader
         name={name}
         avatar={avatar}
-        createdAt={createdAt}
+        createdAt={formatTimestamp(createdAt)}
         onProfilePress={onProfilePress} />
 
       <PostBody
