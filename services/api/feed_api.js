@@ -24,7 +24,7 @@ export const fetchPosts = (postId) => {
   return new Promise(resolve => setTimeout(() => resolve(posts), 1000));
 }
 
-export const fetchUserPosts = (uid) => {
+export const fetchUserPosts = (uid, circleId) => {
   return new Promise(resolve => setTimeout(() => resolve(posts), 1000));
 }
 

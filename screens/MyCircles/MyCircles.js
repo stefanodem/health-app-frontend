@@ -42,7 +42,8 @@ const SwipeableRow = ({ item, index, navigation, navParams }) => {
     );
 };
 
-export default class MyCirclesScreen extends Component {
+class MyCirclesScreen extends Component {
+
   static navigationOptions = ({ navigation }) => {
     const { navigate, goBack } = navigation;
 
@@ -58,9 +59,26 @@ export default class MyCirclesScreen extends Component {
     }
   }
 
+  componentDidMount () {
+    //setAndHandleFeedListener?
+    //move to authentication:
+    //this.props.fetchAndHandleUser(UID);
+    //this.props.fetchAndHandleCircles(this.props.user.userInfo.uid);
+  }
+
   render() {
     const { navigation } = this.props;
     //const { circleId } = this.props.circles;
+    //const circles = this.props.myCircles.circles;
+    // const isFetching = this.props.myCircles.isFetching;
+
+    // if (isFetching) {
+    //   return (
+    //     <View style={{ flex: 1, justifyContent: 'center' }}>
+    //       <ActivityIndicator size="large" />
+    //     </View>
+    //   );
+    // }
 
     return (
       <FlatList
@@ -78,6 +96,14 @@ export default class MyCirclesScreen extends Component {
     );
   }
 }
+
+function mapStateToProps({ user }) {
+  return {
+    user,
+  }
+}
+
+export default connect(mapStateToProps, actions)(MyCirclesScreen);
 
 const styles = StyleSheet.create({
   rectButton: {

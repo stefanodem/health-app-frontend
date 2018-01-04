@@ -105,10 +105,10 @@ export const fetchAndHandlePosts = (postId) => async (dispatch) => {
   }
 }
 
-export const fetchAndHandleUserPosts = (uid) => async (dispatch) => {
+export const fetchAndHandleUserPosts = (uid, circleId) => async (dispatch) => {
   dispatch(fetchingFeedData());
   try {
-    let posts = await fetchUserPosts(uid);
+    let posts = await fetchUserPosts(uid, circleId);
     if (posts) {
       dispatch(
         fetchingUserPostsSuccess(
@@ -118,7 +118,7 @@ export const fetchAndHandleUserPosts = (uid) => async (dispatch) => {
         )
       );
     } else {
-      //handle non posts
+      fetchingPostError('Circle not found');
     }
   } catch(e) {
     fetchingPostsError(e);
