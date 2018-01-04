@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {
   View,
+  Text,
   ActivityIndicator,
-  Text, Alert, StyleSheet,
+  Alert,
+  StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
 import * as actions from '../../actions';
-import Post from '../../components/Feed/Post';
 import ButtonBack from '../../components/Navigation/Header/ButtonBack';
 import NewPostButton from '../../components/Navigation/Header/NewPostButton';
 
@@ -54,7 +55,7 @@ class MyCirclesScreen extends Component {
         <NewPostButton
           color="red"
           navigate={navigate}
-          to="Feed" />
+          to="HealthGoals" />
       ),
     }
   }

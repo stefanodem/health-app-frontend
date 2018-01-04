@@ -28,7 +28,7 @@ class FeedScreen extends Component {
       headerTitle: 'Feed',
       headerLeft: (
         <ButtonBack
-          onPress={ goBack } />
+          onPress={ () => navigate('MyCircles') } />
       ),
       headerRight: (
         <NewPostButton

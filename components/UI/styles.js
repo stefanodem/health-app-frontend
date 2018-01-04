@@ -3,6 +3,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 const deviceWidth = Dimensions.get('window').width;
 const imageSize = deviceWidth / 11;
 const imageRadius = imageSize / 2;
+let CIRCLE_RADIUS = 30;
 
 export const titleStyle = {
   stacked: StyleSheet.create({
@@ -73,6 +74,18 @@ export const avatarStyle = StyleSheet.create({
     borderRadius: imageRadius,
   },
 })
+
+export const animatedAvatarStyle = StyleSheet.create({
+  circle: {
+    backgroundColor: "skyblue",
+    width: CIRCLE_RADIUS * 2,
+    height: CIRCLE_RADIUS * 2,
+    borderRadius: CIRCLE_RADIUS,
+    margin: 15,
+    borderWidth: 4,
+    borderColor: 'pink',
+  },
+});
 
 export const buttonStyle = StyleSheet.create({
   container: {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { StackNavigator } from 'react-navigation';
 import MyCircles from '../../screens/MyCircles/MyCircles';
+import HealthGoals from '../../screens/MyCircles/HealthGoals';
 import Feed from '../../screens/Feed/Feed';
 import Thread from '../../screens/Feed/Thread';
 import NewPost from '../../screens/Feed/NewPost';
@@ -45,6 +46,7 @@ const MainFeedNavigator = StackNavigator({
     Thread: { screen: Thread },
     AddToCircle: { screen: AddToCircle },
     NewPost: { screen: NewPost },
+    HealthGoals: { screen: HealthGoals },
 
 }, MainFeedOptions);
 
