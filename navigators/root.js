@@ -16,5 +16,7 @@ export default DrawerNavigator({
 
 }, {
   headerMode: 'screen',
-  initialRouteName: 'Home',
+  initialRouteName: 'Home',drawerOpenRoute: 'DrawerOpen',
+drawerCloseRoute: 'DrawerClose',
+drawerToggleRoute: 'DrawerToggle',
 });
