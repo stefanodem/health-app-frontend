@@ -46,8 +46,9 @@ class FeedScreen extends Component {
 
     // const { circleId } = this.props.navigation.state.params.circle;
     // this.props.fetchAndHandleCirclePosts(circleId)
-    console.log(this.props.navigation.state.params)
-    this.props.fetchAndHandleUserPosts(this.props.user.userInfo.uid);
+    const uid = this.props.user.userInfo.uid;
+    const circleId = this.props.navigation.state.params
+    this.props.fetchAndHandleUserPosts(uid, circleId);
   }
 
   _fetchPosts = () => {

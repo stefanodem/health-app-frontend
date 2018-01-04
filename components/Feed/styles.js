@@ -118,6 +118,9 @@ export const postBody = StyleSheet.create({
     borderBottomColor: '#bbb',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  text: {
+    fontSize: 15,
+  }
 })
 
 export const postInteraction = StyleSheet.create({

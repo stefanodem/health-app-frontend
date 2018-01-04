@@ -16,7 +16,7 @@ const PostBody = (props) => {
     <View
       style={ postBody.container } >
 
-      <Text> { body } </Text>
+      <Text style={ postBody.text }> { body } </Text>
 
     </View>
   );

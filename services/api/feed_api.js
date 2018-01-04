@@ -2,6 +2,7 @@
 // import axios from 'axios';
 import { testUser } from '../../testData/testUser';
 import { user, posts, replies, entities } from '../../testData/testUser2';
+import { feed } from '../../testData/feedDummyData';
 
 // function saveUser (user, userId) {
 //   return ref.child(`usersDucks/${user.uid}/${userId}`)
@@ -25,7 +26,9 @@ export const fetchPosts = (postId) => {
 }
 
 export const fetchUserPosts = (uid, circleId) => {
-  return new Promise(resolve => setTimeout(() => resolve(posts), 1000));
+  const feedz = typeof circleId === 'number' ? feed[circleId] : posts;
+
+  return new Promise(resolve => setTimeout(() => resolve(feedz), 1000));
 }
 
 export const fetchUserLikes = (uid) => {
