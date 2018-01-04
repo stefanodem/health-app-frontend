@@ -26,6 +26,10 @@ class FeedScreen extends Component {
     return {
       title: 'Feed',
       headerTitle: 'Feed',
+      headerLeft: (
+        <ButtonBack
+          onPress={ goBack } />
+      ),
       headerRight: (
         <NewPostButton
           color="red"
@@ -39,6 +43,10 @@ class FeedScreen extends Component {
     //setAndHandleFeedListener?
     //move to authentication:
     //this.props.fetchAndHandleUser(UID);
+
+    // const { circleId } = this.props.navigation.state.params.circle;
+    // this.props.fetchAndHandleCirclePosts(circleId)
+    console.log(this.props.navigation.state.params)
     this.props.fetchAndHandleUserPosts(this.props.user.userInfo.uid);
   }
 
