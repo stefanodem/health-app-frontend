@@ -22,12 +22,6 @@ const MainFeedOptions = {
           navigate={navigate}
           to="DrawerOpen" />
       ),
-      headerRight: (
-        <NewPostButton
-          color="red"
-          navigate={navigate}
-          to="AddToCircle" />
-      )
     }
   }
 }

@@ -9,6 +9,7 @@ import _values from 'lodash/values';
 import * as actions from '../../actions';
 import Post from '../../components/Feed/Post';
 import ButtonBack from '../../components/Navigation/Header/ButtonBack';
+import NewPostButton from '../../components/Navigation/Header/NewPostButton';
 
 import { user } from '../../testData/testUser2';
 
@@ -18,6 +19,21 @@ import { user } from '../../testData/testUser2';
 //const UID = '11111';
 
 class FeedScreen extends Component {
+
+  static navigationOptions = ({ navigation }) => {
+    const { navigate, goBack } = navigation;
+
+    return {
+      title: 'Feed',
+      headerTitle: 'Feed',
+      headerRight: (
+        <NewPostButton
+          color="red"
+          navigate={navigate}
+          to="AddToCircle" />
+      ),
+    }
+  }
 
   componentDidMount () {
     //setAndHandleFeedListener?
