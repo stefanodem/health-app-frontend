@@ -98,3 +98,17 @@ export const buttonStyle = StyleSheet.create({
     color: 'white'
   }
 })
+
+export const pageIndicatorStyle = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  indicator: {
+    height: 8,
+    width: 8,
+    backgroundColor: '#595959',
+    margin: 5,
+    borderRadius: 4
+  },
+})
