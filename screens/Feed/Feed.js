@@ -51,10 +51,6 @@ class FeedScreen extends Component {
     this.props.fetchAndHandleUserPosts(uid, circleId);
   }
 
-  _fetchPosts = () => {
-
-  }
-
   _handleLikes = (postId, likeCount, liked) => {
     console.log("Liked");
     if (liked) {
@@ -89,6 +85,7 @@ class FeedScreen extends Component {
   //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
   _renderPost = ({ item }) => {
     //TODO: think about using {...this.props} to pass props down to 'Post'
+    //TODO: change handleReplies: looks nasty
     return (
       <Post
         key={item.postId}

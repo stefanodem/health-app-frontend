@@ -34,17 +34,21 @@ class ThreadScreen extends Component {
     this.props.fetchAndHandleReplies(postId)
   }
 
-  _onReplySubmit() {
-
+  _handleLikes = (postId, likeCount, liked) => {
+    console.log("Liked");
+    if (liked) {
+      this.props.removeLike(postId, likeCount);
+    } else {
+      this.props.addLike(postId, likeCount);
+    }
   }
 
   _keyExtractor = (item, index) => item.replyId;
 
-  _renderPost() {
-    const { post } = this.props.navigation.state.params;
-    const postId = post ? post.postId : null;
+  _renderPost(item) {
+    const postId = item ? item.postId : null;
 
-    if (!post) {
+    if (!item) {
       return (
         <Text>No posts yet</Text>
       )
@@ -52,10 +56,10 @@ class ThreadScreen extends Component {
 
     return (
       <Post
-        key={post.postId}
-        post={post}
-        user={post.user}
-        handleLikes={this.handleLikes}
+        key={item.postId}
+        post={item}
+        user={item.user}
+        handleLikes={() => this._handleLikes(item.postId, item.likeCount, item.liked)}
         //handleComments={this.handleComments.bind(this, post)}
         handleShares={this.handleShares}
         onProfilePress={this.onProfilePress} />
@@ -74,8 +78,10 @@ class ThreadScreen extends Component {
 
   render() {
     const { updateReplyText, addAndHandleReply } = this.props;
-    const { isPosting, isFetching, replyText } = this.props.feed;
+    const { isPosting, isFetching } = this.props.feed;
+    const { replyText } = this.props.feed.feedActions;
     const { postId, user } = this.props.navigation.state.params.post;
+    const post = this.props.feed.posts[postId];
     const replies = this.props.feed.postReplies[postId]
                     ? this.props.feed.postReplies[postId].replies
                     : null;
@@ -93,7 +99,7 @@ class ThreadScreen extends Component {
 
         <ScrollView>
 
-          { this._renderPost() }
+          { this._renderPost(post) }
 
           <FlatList
             keyExtractor={this._keyExtractor}
