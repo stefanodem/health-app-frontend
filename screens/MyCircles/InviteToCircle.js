@@ -60,10 +60,10 @@ class InviteToCircleScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    const { entities } = this.props.newPost;
+    const { entities } = this.props.myCircles;
     const { addToCircle, removeFromCircle } = this.props;
 
-    if (this.props.newPost.isFetching) {
+    if (this.props.myCircles.isFetching) {
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <ActivityIndicator size="large" />
@@ -112,10 +112,10 @@ class InviteToCircleScreen extends Component {
   }
 }
 
-function mapStateToProps ({ newPost, user }) {
+function mapStateToProps ({ myCircles, user }) {
   return {
-    newPost,
-    user
+    myCircles,
+    user,
   }
 }
 

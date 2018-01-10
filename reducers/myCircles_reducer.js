@@ -5,12 +5,15 @@ import {
   POSTING_CIRCLES,
   POSTING_CIRCLES_SUCCESS,
   POSTING_CIRCLES_ERROR,
-  REMOVE_CIRCLES,
-  REMOVE_FETCHING,
-  REMOVE_POSTING,
+  FETCHING_ENTITIES,
+  FETCHING_ENTITIES_SUCCESS,
+  FETCHING_ENTITIES_ERROR,
   ADD_TO_CIRCLE,
   REMOVE_FROM_CIRCLE,
   CLEAR_CIRCLE,
+  REMOVE_CIRCLES,
+  REMOVE_FETCHING,
+  REMOVE_POSTING,
   UPDATE_NEWCIRCLE_TEXT,
 } from '../actions/types';
 
@@ -25,8 +28,8 @@ const initialState = {
     circleNameText: '',
     circleDescriptionText: '',
     usersInCircle: [],
-
   },
+  entities: {},
   circles: {},
 }
 
@@ -93,23 +96,67 @@ export default function(state = initialState, action) {
         error: '',
         isPosting: false,
       };
+    case FETCHING_ENTITIES:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case FETCHING_ENTITIES_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: '',
+        entities: action.entities,
+      };
+    case FETCHING_ENTITIES_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error,
+      };
     case ADD_TO_CIRCLE:
-      return isInCircle(action.entity, state.usersInCircle)
+      return isInCircle(action.entity, state.addCircle.usersInCircle)
       ? state
       : {
         ...state,
-        usersInCircle: [
-          ...state.usersInCircle,
-          action.entity,
-        ],
+        addCircle: {
+          ...state.addCircle,
+          usersInCircle: [
+            ...state.addCircle.usersInCircle,
+            action.entity,
+          ],
+        },
       }
     case REMOVE_FROM_CIRCLE:
-      return isInCircle(action.entity, state.usersInCircle)
+      return isInCircle(action.entity, state.addCircle.usersInCircle)
       ? {
         ...state,
-        usersInCircle: state.usersInCircle.filter(entity => entity.entityId !== action.entity.entityId),
+        addCircle: {
+          ...state.addCircle,
+          usersInCircle: [
+            ...state.addCircle.usersInCircle,
+            state.addCircle.usersInCircle.filter(entity => entity.entityId !== action.entity.entityId),,
+          ],
+        },
       }
       : state
+    // case ADD_TO_CIRCLE:
+    //   return isInCircle(action.entity, state.usersInCircle)
+    //   ? state
+    //   : {
+    //     ...state,
+    //     usersInCircle: [
+    //       ...state.usersInCircle,
+    //       action.entity,
+    //     ],
+    //   }
+    // case REMOVE_FROM_CIRCLE:
+    //   return isInCircle(action.entity, state.usersInCircle)
+    //   ? {
+    //     ...state,
+    //     usersInCircle: state.usersInCircle.filter(entity => entity.entityId !== action.entity.entityId),
+    //   }
+    //   : state
     case CLEAR_CIRCLE:
       return {
         ...state,
@@ -118,12 +165,15 @@ export default function(state = initialState, action) {
           circleDescriptionText: '',
           usersInCircle: [],
         },
-        usersInCircle: [],
       }
     case UPDATE_NEWCIRCLE_TEXT:
       return {
         ...state,
-        newPostText: action.newPostText,
+        addCircle: {
+          circleNameText: action.newCircleText,
+          ...state.addCircle.circleDescriptionText,
+          ...state.addCircle.usersInCircle,
+        },
       };
     default:
       return state;

@@ -7,6 +7,10 @@ import {
   POSTING_FEED_DATA,
   POSTING_REPLY_SUCCESS,
   POSTING_REPLY_ERROR,
+  POSTING_NEWPOST,
+  POSTING_NEWPOST_SUCCESS,
+  POSTING_NEWPOST_ERROR,
+  UPDATE_NEWPOST_TEXT,
   REMOVE_POSTING,
   ADD_POST,
   ADD_LIKE,
@@ -28,6 +32,7 @@ const initialState = {
   posts: {},
   postReplies: {},
   shares: {},
+  newPostText: '',
 }
 
 export default function(state = initialState, action) {
@@ -100,11 +105,43 @@ export default function(state = initialState, action) {
           }
         }
       };
+    case UPDATE_REPLY_TEXT:
+      return {
+        ...state,
+        feedActions: {
+          ...state.feedActions,
+          replyText: action.replyText,
+        }
+      };
     case POSTING_REPLY_ERROR:
       return {
         ...state,
         isPosting: false,
         error,
+      };
+    case POSTING_NEWPOST:
+      return {
+        ...state,
+        isPosting: true,
+      };
+    case POSTING_NEWPOST_SUCCESS:
+      return {
+        ...state,
+        isPosting: false,
+        error: '',
+        newPostText: '',
+      };
+    case POSTING_NEWPOST_ERROR:
+      return {
+        ...state,
+        isPosting: false,
+        error,
+        newPostText: '',
+      };
+    case UPDATE_NEWPOST_TEXT:
+      return {
+        ...state,
+        newPostText: action.newPostText,
       };
     case REMOVE_POSTING:
       return {
@@ -144,14 +181,6 @@ export default function(state = initialState, action) {
             liked: false,
           }
         },
-      };
-    case UPDATE_REPLY_TEXT:
-      return {
-        ...state,
-        feedActions: {
-          ...state.feedActions,
-          replyText: action.replyText,
-        }
       };
     default:
       return state;

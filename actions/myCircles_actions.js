@@ -5,13 +5,19 @@ import {
   POSTING_CIRCLES,
   POSTING_CIRCLES_SUCCESS,
   POSTING_CIRCLES_ERROR,
+  FETCHING_ENTITIES,
+  FETCHING_ENTITIES_SUCCESS,
+  FETCHING_ENTITIES_ERROR,
+  ADD_TO_CIRCLE,
+  REMOVE_FROM_CIRCLE,
+  CLEAR_CIRCLE,
   REMOVE_CIRCLES,
   REMOVE_FETCHING,
   REMOVE_POSTING,
   UPDATE_NEWCIRCLE_TEXT,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText } from '../services/api';
+import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities } from '../services/api';
 
 const fetchingCircles = () => {
   return {
@@ -53,6 +59,45 @@ const postingCirclesError = (error) => {
   return {
     type: POSTING_CIRCLES_ERROR,
     error: error,
+  }
+}
+
+const fetchingEntities = () => {
+  return {
+    type: FETCHING_ENTITIES,
+  }
+}
+
+const fetchingEntitiesSuccess = (entities) => {
+  return {
+    type: FETCHING_ENTITIES_SUCCESS,
+    entities,
+  }
+}
+const fetchingEntitiesError = (error) => {
+  return {
+    type: FETCHING_ENTITIES_ERROR,
+    error: error,
+  }
+}
+
+const addingToCircle = (entity) => {
+  return {
+    type: ADD_TO_CIRCLE,
+    entity,
+  }
+}
+
+const removingFromCircle = (entity) => {
+  return {
+    type: REMOVE_FROM_CIRCLE,
+    entity,
+  }
+}
+
+export const clearCircle = () => {
+  return {
+    type: CLEAR_CIRCLE,
   }
 }
 
@@ -109,5 +154,37 @@ export const updateNewCircleText = (newCircleText) => {
   return {
     type: UPDATE_NEWCIRCLE_TEXT,
     newCircleText,
+  }
+}
+
+export const fetchAndHandleEntities = (uid) => async (dispatch) => {
+  dispatch(fetchingEntities());
+  try {
+    let entities = await fetchEntities(uid);
+    if (entities) {
+      dispatch(fetchingEntitiesSuccess(entities));
+    } else {
+      //handle non posts
+    }
+  } catch(e) {
+    fetchingEntitiesError(e);
+  }
+}
+
+export const addToCircle = (entityId) => async (dispatch) => {
+  dispatch(addingToCircle(entityId));
+  try {
+    //dispatch(addingLike(postId));
+  } catch(e) {
+
+  }
+}
+
+export const removeFromCircle = (entityId) => async (dispatch) => {
+  dispatch(removingFromCircle(entityId));
+  try {
+    //dispatch(addingLike(postId));
+  } catch(e) {
+
   }
 }

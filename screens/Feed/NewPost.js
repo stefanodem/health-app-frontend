@@ -40,7 +40,8 @@ class NewPostScreen extends Component {
 
   render() {
     const { updateNewPostText, addAndHandleNewPost } = this.props;
-    const { newPostText, isPosting, usersInCircle } = this.props.newPost;
+    const { newPostText, isPosting } = this.props.feed;
+    const { usersInCircle } = this.props.myCircles.addCircle;
     const { userInfo } = this.props.user;
 
     //TODO: create newPost bar that allows you to attach other formats besides text (e.g. health data)
@@ -56,9 +57,10 @@ class NewPostScreen extends Component {
   }
 }
 
-function mapStateToProps ({ newPost, user }) {
+function mapStateToProps ({ feed, myCircles, user }) {
   return {
-    newPost,
+    feed,
+    myCircles,
     user,
   }
 }

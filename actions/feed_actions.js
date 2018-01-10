@@ -4,19 +4,23 @@ import {
   FETCHING_USER_POSTS_SUCCESS,
   FETCHING_REPLIES_SUCCESS,
   FETCHING_POSTS_ERROR,
-  ADD_LIKE,
-  REMOVE_LIKE,
-  ADD_REPLY,
   POSTING_FEED_DATA,
   POSTING_REPLY_SUCCESS,
   POSTING_REPLY_ERROR,
-  UPDATE_REPLY_TEXT,
+  POSTING_NEWPOST,
+  POSTING_NEWPOST_SUCCESS,
+  POSTING_NEWPOST_ERROR,
+  UPDATE_NEWPOST_TEXT,
+  REMOVE_POSTING,
   ADD_POST,
+  ADD_LIKE,
+  REMOVE_LIKE,
+  UPDATE_REPLY_TEXT,
   ADD_MULTIPLE_POSTS,
   REMOVE_FETCHING,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText } from '../services/api';
+import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities, addNewPostText } from '../services/api';
 
 const fetchingFeedData = () => {
   return {
@@ -70,6 +74,25 @@ const postingReplySuccess = (postId, replyId, reply) => {
 const postingReplyError = (error) => {
   return {
     type: POSTING_REPLY_ERROR,
+    error: error,
+  }
+}
+
+const postingNewPost = () => {
+  return {
+    type: POSTING_NEWPOST,
+  }
+}
+
+const postingNewPostSuccess = () => {
+  return {
+    type: POSTING_NEWPOST_SUCCESS,
+  }
+}
+
+const postingNewPostError = (error) => {
+  return {
+    type: POSTING_NEWPOST_ERROR,
     error: error,
   }
 }
@@ -181,5 +204,28 @@ export const updateReplyText = (replyText) => {
   return {
     type: UPDATE_REPLY_TEXT,
     replyText,
+  }
+}
+
+export const addAndHandleNewPost = (entityIds, newPostText) => async (dispatch) => {
+  dispatch(postingNewPost())
+  let newPost = await addNewPostText(entityIds, newPostText);
+  // if (reply) {
+  //   dispatch(postingReplySuccess(reply));
+  // }
+
+  //no post data is sent to reducer -->
+  //new post will be added through re-fetching the entire feed (handled in backend)
+  dispatch(postingNewPostSuccess())
+  try {
+  } catch(e) {
+    postingNewPostError(e);
+  }
+}
+
+export const updateNewPostText = (newPostText) => {
+  return {
+    type: UPDATE_NEWPOST_TEXT,
+    newPostText,
   }
 }

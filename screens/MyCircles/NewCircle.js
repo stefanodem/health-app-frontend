@@ -34,11 +34,12 @@ class NewCircleScreen extends Component {
     // const { updateNewPostText, addAndHandleNewPost } = this.props;
     // const { newPostText, isPosting, circle } = this.props.newPost;
     // const { userInfo } = this.props.user;
+    const { usersInCircle } = this.props.myCircles.addCircle;
 
     return (
       <NewCircle
         createdAt={Date.now()}
-        //sendTo={circle}
+        sendTo={usersInCircle}
         //newPostText={newPostText}
         //onChangeText={updateNewPostText}
         />
