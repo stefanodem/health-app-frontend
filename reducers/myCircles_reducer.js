@@ -25,8 +25,7 @@ const initialState = {
   error: '',
   lastUpdated: '',
   addCircle: {
-    circleNameText: '',
-    circleDescriptionText: '',
+    circleName: '',
     usersInCircle: [],
   },
   entities: {},
@@ -69,8 +68,7 @@ export default function(state = initialState, action) {
         isPosting: false,
         error: '',
         addCircle: {
-          circleNameText: '',
-          circleDescriptionText: '',
+          circleName: '',
           usersInCircle: [],
         },
         circles: {
@@ -161,8 +159,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         addCircle: {
-          circleNameText: '',
-          circleDescriptionText: '',
+          circleName: '',
           usersInCircle: [],
         },
       }
@@ -170,9 +167,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         addCircle: {
-          circleNameText: action.newCircleText,
-          ...state.addCircle.circleDescriptionText,
-          ...state.addCircle.usersInCircle,
+          ...state.addCircle,
+          circleName: action.newCircleText,
         },
       };
     default:

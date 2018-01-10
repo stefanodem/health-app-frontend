@@ -95,18 +95,26 @@ export const healthCardStyles = StyleSheet.create({
   }
 })
 
-export const newCircleStyles = {
-  input: StyleSheet.create({
-    container: {
-      flexDirection: 'row',
-      backgroundColor: '#eee',
+export const newCircleStyles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    //justifyContent: 'center',
+    paddingTop: 30,
+    paddingBottom: 10,
+    paddingLeft: 20,
+    backgroundColor: '#f6f6f6',
+  },
+  input: {
+    justifyContent: 'center',
+    paddingLeft: 8,
     },
-    text: {
-      alignSelf: 'center',
-      paddingHorizontal: 20,
-      paddingVertical: 10,
-      fontSize: 18,
-      flex: 1,
-    },
-  }),
-}
+  description: {
+    backgroundColor: '#f6f6f6',
+    paddingTop: 30,
+    paddingBottom: 40,
+    textAlign: 'center',
+    fontSize: 14,
+  },
+})
+

@@ -117,14 +117,15 @@ export const pageIndicatorStyle = StyleSheet.create({
 export const avatarRowListStyle = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    paddingTop: 2,
-    paddingBottom: 2,
+    paddingTop: 10,
+    paddingBottom: 10,
     paddingLeft: 10,
     backgroundColor: '#f6f6f6',
     borderBottomColor: '#bbb',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   title: {
+    fontSize: 14,
     justifyContent: 'center',
     paddingLeft: 8,
     paddingTop: 5,

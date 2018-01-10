@@ -27,7 +27,7 @@ const NewPost = (props) => {
         autoFocus
         style={newPost.textInput}
         value={newPostText}
-        placeholder="What would you like to share?"
+        placeholder={"What would you like to share?"}
         onChangeText={ (text) => onChangeText(text) }
         multiline={ true } />
 

@@ -34,7 +34,7 @@ class InviteToCircleScreen extends Component {
       headerRight: (
         <ButtonRight
           icon="create"
-          onPress={() => navigate("NewCircle")} />
+          onPress={() => navigate("NewCircleSettings")} />
       ),
     }
   }

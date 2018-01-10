@@ -5,7 +5,8 @@ import {
   MyCircles,
   HealthGoals,
   InviteToCircle,
-  NewCircle
+  NewCircleSettings,
+  NewCircleAccess,
 } from '../../screens/MyCircles';
 
 import {
@@ -55,7 +56,8 @@ const MainFeedNavigator = StackNavigator({
     NewPost: { screen: NewPost },
     HealthGoals: { screen: HealthGoals },
     InviteToCircle: { screen: InviteToCircle },
-    NewCircle: { screen: NewCircle },
+    NewCircleSettings: { screen: NewCircleSettings },
+    NewCircleAccess: { screen: NewCircleAccess },
 
 }, MainFeedOptions);
 

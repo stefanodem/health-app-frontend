@@ -7,8 +7,7 @@ import {
   Image,
 } from 'react-native';
 
-import Avatar from '../../UI/Avatar';
-import AvatarRowList from '../../UI/AvatarRowList';
+import { Avatar, AvatarRowList } from '../../UI';
 import { formatTimestamp } from '../../../services/utils/feed_utils';
 
 import {
@@ -24,7 +23,7 @@ const NewPostHeader = (props) => {
       return (
         <Avatar
           key={entity.entityId}
-          size='small'
+          size={'small'}
           source={entity.avatar} />
       )
     })

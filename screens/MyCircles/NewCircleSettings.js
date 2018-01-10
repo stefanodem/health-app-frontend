@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import { NewCircle, ButtonBack, ButtonRight} from '../../components';
+import { NewCircleSettings, ButtonBack, ButtonRight} from '../../components';
 
-class NewCircleScreen extends Component {
+class NewCircleSettingsScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
     const { navigate, goBack } = navigation;
@@ -25,23 +25,23 @@ class NewCircleScreen extends Component {
       headerRight: (
         <ButtonRight
           icon="create"
-          onPress={() => navigate("NewPost")} />
+          onPress={() => navigate("NewCircleAccess")} />
       ),
     }
   }
 
   render() {
-    // const { updateNewPostText, addAndHandleNewPost } = this.props;
-    // const { newPostText, isPosting, circle } = this.props.newPost;
-    // const { userInfo } = this.props.user;
-    const { usersInCircle } = this.props.myCircles.addCircle;
+    const { updateNewCircleText } = this.props;
+    const { usersInCircle, circleName } = this.props.myCircles.addCircle;
+    const defaultAvatar = 'http://www.free-icons-download.net/images/black-camera-logo-icon-47221.png'
 
     return (
-      <NewCircle
+      <NewCircleSettings
+        avatar={defaultAvatar}
         createdAt={Date.now()}
         sendTo={usersInCircle}
-        //newPostText={newPostText}
-        //onChangeText={updateNewPostText}
+        value={circleName}
+        onChangeText={updateNewCircleText}
         />
     );
   }
@@ -53,4 +53,4 @@ function mapStateToProps ({ myCircles }) {
   }
 }
 
-export default connect(mapStateToProps, actions)(NewCircleScreen);
+export default connect(mapStateToProps, actions)(NewCircleSettingsScreen);
