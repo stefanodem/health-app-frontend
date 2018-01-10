@@ -93,4 +93,20 @@ export const healthCardStyles = StyleSheet.create({
     fontSize: 18,
     padding: 5,
   }
-});
+})
+
+export const newCircleStyles = {
+  input: StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      backgroundColor: '#eee',
+    },
+    text: {
+      alignSelf: 'center',
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      fontSize: 18,
+      flex: 1,
+    },
+  }),
+}

@@ -8,8 +8,13 @@ import {
   REMOVE_CIRCLES,
   REMOVE_FETCHING,
   REMOVE_POSTING,
+  ADD_TO_CIRCLE,
+  REMOVE_FROM_CIRCLE,
+  CLEAR_CIRCLE,
   UPDATE_NEWCIRCLE_TEXT,
 } from '../actions/types';
+
+import { isInCircle } from '../services/utils'
 
 const initialState = {
   isFetching: true,
@@ -19,7 +24,7 @@ const initialState = {
   addCircle: {
     circleNameText: '',
     circleDescriptionText: '',
-    circleUsers: [],
+    usersInCircle: [],
 
   },
   circles: {},
@@ -36,7 +41,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        error: '',      };
+        error: '',
+      };
     case POSTING_CIRCLES_ERROR:
       return {
         ...state,
@@ -62,7 +68,7 @@ export default function(state = initialState, action) {
         addCircle: {
           circleNameText: '',
           circleDescriptionText: '',
-          circleUsers: [],
+          usersInCircle: [],
         },
         circles: {
           ...state.postReplies,
@@ -86,6 +92,38 @@ export default function(state = initialState, action) {
         ...state,
         error: '',
         isPosting: false,
+      };
+    case ADD_TO_CIRCLE:
+      return isInCircle(action.entity, state.usersInCircle)
+      ? state
+      : {
+        ...state,
+        usersInCircle: [
+          ...state.usersInCircle,
+          action.entity,
+        ],
+      }
+    case REMOVE_FROM_CIRCLE:
+      return isInCircle(action.entity, state.usersInCircle)
+      ? {
+        ...state,
+        usersInCircle: state.usersInCircle.filter(entity => entity.entityId !== action.entity.entityId),
+      }
+      : state
+    case CLEAR_CIRCLE:
+      return {
+        ...state,
+        addCircle: {
+          circleNameText: '',
+          circleDescriptionText: '',
+          usersInCircle: [],
+        },
+        usersInCircle: [],
+      }
+    case UPDATE_NEWCIRCLE_TEXT:
+      return {
+        ...state,
+        newPostText: action.newPostText,
       };
     default:
       return state;

@@ -13,7 +13,7 @@ import {
   UPDATE_NEWPOST_TEXT,
 } from './types';
 
-import { fetchEntities, addNewPostText } from '../services/api/feed_api';
+import { fetchEntities, addNewPostText } from '../services/api';
 
 const fetchingEntities = () => {
   return {

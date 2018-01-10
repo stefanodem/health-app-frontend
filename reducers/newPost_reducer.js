@@ -13,21 +13,14 @@ import {
   UPDATE_NEWPOST_TEXT,
 } from '../actions/types';
 
-const isInCircle = (entity, circle) => {
-  for (let i = 0; i < circle.length; i++) {
-    if (entity.entityId === circle[i].entityId) {
-      return true;
-    }
-  }
-  return false;
-}
+import { isInCircle } from '../services/utils'
 
 const initialState = {
   isFetching: true,
   isPosting: false,
   error: '',
   newPostText: '',
-  circle: [],
+  usersInCircle: [],
   entities: {},
 }
 
@@ -81,27 +74,27 @@ export default function(state = initialState, action) {
     //     isPosting: false,
     //   };
     case ADD_TO_CIRCLE:
-      return isInCircle(action.entity, state.circle)
+      return isInCircle(action.entity, state.usersInCircle)
       ? state
       : {
         ...state,
-        circle: [
-          ...state.circle,
+        usersInCircle: [
+          ...state.usersInCircle,
           action.entity,
         ],
       }
     case REMOVE_FROM_CIRCLE:
-      return isInCircle(action.entity, state.circle)
+      return isInCircle(action.entity, state.usersInCircle)
       ? {
         ...state,
-        circle: state.circle.filter(entity => entity.entityId !== action.entity.entityId),
+        usersInCircle: state.usersInCircle.filter(entity => entity.entityId !== action.entity.entityId),
       }
       : state
     case CLEAR_CIRCLE:
       return {
         ...state,
         newPostText: '',
-        circle: [],
+        usersInCircle: [],
       }
     case UPDATE_NEWPOST_TEXT:
       return {

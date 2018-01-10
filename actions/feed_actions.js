@@ -16,7 +16,7 @@ import {
   REMOVE_FETCHING,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText } from '../services/api/feed_api';
+import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText } from '../services/api';
 
 const fetchingFeedData = () => {
   return {

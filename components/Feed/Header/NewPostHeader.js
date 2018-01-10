@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 
 import Avatar from '../../UI/Avatar';
-import { formatTimestamp } from '../../../services/utils';
+import AvatarRowList from '../../UI/AvatarRowList';
+import { formatTimestamp } from '../../../services/utils/feed_utils';
 
 import {
   postHeader, newPost,
@@ -49,14 +50,9 @@ const NewPostHeader = (props) => {
 
       </View>
 
-      <View
-        style={newPost.header.container} >
-
-        <Text style={newPost.header.title}> { 'To: ' } </Text>
-
-        { this._renderSendTo(sendTo) }
-
-      </View>
+      <AvatarRowList
+        sendTo={sendTo}
+        rowText={'To:'} />
 
     </View>
   );

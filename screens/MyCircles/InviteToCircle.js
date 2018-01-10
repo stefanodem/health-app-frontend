@@ -20,7 +20,7 @@ import { Circle, ButtonBack, ButtonRight, AnimatedAvatar } from '../../componen
 
 import { entities } from '../../testData/testUser2';
 
-class AddToCircleScreen extends Component {
+class InviteToCircleScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
     const { navigate, goBack } = navigation;
@@ -34,7 +34,7 @@ class AddToCircleScreen extends Component {
       headerRight: (
         <ButtonRight
           icon="create"
-          onPress={() => navigate("NewPost")} />
+          onPress={() => navigate("NewCircle")} />
       ),
     }
   }
@@ -71,7 +71,6 @@ class AddToCircleScreen extends Component {
       );
     }
 
-    //TODO move CircleShape & EntityCircles to components
     return (
     <View style={{ flex: 1 }}>
 
@@ -120,4 +119,4 @@ function mapStateToProps ({ newPost, user }) {
   }
 }
 
-export default connect(mapStateToProps, actions)(AddToCircleScreen);
+export default connect(mapStateToProps, actions)(InviteToCircleScreen);

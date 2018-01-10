@@ -1,14 +1,21 @@
 import React from 'react'
 import { StackNavigator } from 'react-navigation';
-import MyCircles from '../../screens/MyCircles/MyCircles';
-import HealthGoals from '../../screens/MyCircles/HealthGoals';
-import Feed from '../../screens/Feed/Feed';
-import Thread from '../../screens/Feed/Thread';
-import NewPost from '../../screens/Feed/NewPost';
-import AddToCircle from '../../screens/Feed/AddToCircle';
-import ButtonLeft from '../../components/Navigation/Header/ButtonLeft';
-import ButtonRight from '../../components/Navigation/Header/ButtonRight';
-import NewPostButton from '../../components/Navigation/Header/NewPostButton';
+
+import {
+  MyCircles,
+  HealthGoals,
+  InviteToCircle,
+  NewCircle
+} from '../../screens/MyCircles';
+
+import {
+  Feed,
+  Thread,
+  NewPost,
+  AddToCircle,
+} from '../../screens/Feed';
+
+import { ButtonLeft, ButtonRight, NewPostButton } from '../../components';
 
 const MainFeedOptions = {
   navigationOptions: ({ navigation }) => {
@@ -47,6 +54,8 @@ const MainFeedNavigator = StackNavigator({
     AddToCircle: { screen: AddToCircle },
     NewPost: { screen: NewPost },
     HealthGoals: { screen: HealthGoals },
+    InviteToCircle: { screen: InviteToCircle },
+    NewCircle: { screen: NewCircle },
 
 }, MainFeedOptions);
 

@@ -7,9 +7,7 @@ import {
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
 import * as actions from '../../actions';
-import Post from '../../components/Feed/Post';
-import ButtonBack from '../../components/Navigation/Header/ButtonBack';
-import NewPostButton from '../../components/Navigation/Header/NewPostButton';
+import { Post, ButtonBack, NewPostButton } from '../../components';
 
 import { user } from '../../testData/testUser2';
 

@@ -8,10 +8,7 @@ import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
 import * as actions from '../../actions';
-import Post from '../../components/Feed/Post';
-import ReplyInput from '../../components/Feed/ReplyInput';
-import Reply from '../../components/Feed/Reply';
-import ButtonBack from '../../components/Navigation/Header/ButtonBack';
+import { Post, ReplyInput, Reply, ButtonBack } from '../../components';
 
 class ThreadScreen extends Component {
   static navigationOptions = ({ navigation }) => {

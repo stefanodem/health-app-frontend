@@ -12,7 +12,7 @@ import PostHeader from './Header/PostHeader';
 import PostBody from './Body/PostBody';
 import PostInteractionBar from './InteractionBar/PostInteractionBar';
 import PostInteractionInfo from './InteractionBar/PostInteractionInfo';
-import { formatTimestamp } from '../../services/utils';
+import { formatTimestamp } from '../../services/utils/feed_utils';
 
 const Post = (props) => {
 

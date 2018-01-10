@@ -1,7 +1,11 @@
 import React from 'react'
 import { StackNavigator } from 'react-navigation';
-import MyHealth from '../../screens/MyHealth/MyHealth';
-import ButtonLeft from '../../components/Navigation/Header/ButtonLeft';
+
+import {
+  MyHealth,
+} from '../../screens/MyHealth';
+
+import { ButtonLeft } from '../../components';
 
 const options = {
   navigationOptions: ({ navigation }) => {

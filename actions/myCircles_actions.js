@@ -11,7 +11,7 @@ import {
   UPDATE_NEWCIRCLE_TEXT,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText } from '../services/api/feed_api';
+import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText } from '../services/api';
 
 const fetchingCircles = () => {
   return {

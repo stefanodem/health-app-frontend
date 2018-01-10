@@ -112,3 +112,22 @@ export const pageIndicatorStyle = StyleSheet.create({
     borderRadius: 4
   },
 })
+
+
+export const avatarRowListStyle = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    paddingTop: 2,
+    paddingBottom: 2,
+    paddingLeft: 10,
+    backgroundColor: '#f6f6f6',
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  title: {
+    justifyContent: 'center',
+    paddingLeft: 8,
+    paddingTop: 5,
+    paddingBottom: 5,
+  },
+})

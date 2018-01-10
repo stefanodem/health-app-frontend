@@ -9,8 +9,7 @@ import {
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
 import * as actions from '../../actions';
-import ButtonBack from '../../components/Navigation/Header/ButtonBack';
-import NewPostButton from '../../components/Navigation/Header/NewPostButton';
+import { ButtonBack, NewPostButton } from '../../components';
 
 import { FlatList, RectButton } from 'react-native-gesture-handler';
 import AppleStyleSwipeableRow from './AppleStyleSwipeableRow';

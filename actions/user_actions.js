@@ -1,6 +1,4 @@
 //import { saveUser } from 'services/api';
-import { fetchUser } from '../services/api/feed_api';
-
 import {
   //AUTH_USER,
   //UNAUTH_USER,
@@ -9,6 +7,8 @@ import {
   FETCHING_USER_FAILURE,
   REMOVE_FETCHING_USER,
 } from './types';
+
+import { fetchUser } from '../services/api';
 
 //Description: this will probably be used for profile detail views
 

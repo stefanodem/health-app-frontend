@@ -8,9 +8,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import ButtonBack from '../../components/Navigation/Header/ButtonBack';
-import ButtonRight from '../../components/Navigation/Header/ButtonRight';
-import NewPost from '../../components/Feed/NewPost';
+import { NewPost, ButtonBack, ButtonRight } from '../../components';
 
 class NewPostScreen extends Component {
 
@@ -42,7 +40,7 @@ class NewPostScreen extends Component {
 
   render() {
     const { updateNewPostText, addAndHandleNewPost } = this.props;
-    const { newPostText, isPosting, circle } = this.props.newPost;
+    const { newPostText, isPosting, usersInCircle } = this.props.newPost;
     const { userInfo } = this.props.user;
 
     //TODO: create newPost bar that allows you to attach other formats besides text (e.g. health data)
@@ -50,7 +48,7 @@ class NewPostScreen extends Component {
       <NewPost
         user={userInfo}
         createdAt={Date.now()}
-        sendTo={circle}
+        sendTo={usersInCircle}
         newPostText={newPostText}
         onChangeText={updateNewPostText}
         onNewPostSubmit={addAndHandleNewPost} />

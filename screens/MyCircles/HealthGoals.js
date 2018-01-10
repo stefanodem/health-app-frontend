@@ -14,10 +14,7 @@ import {
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
 import * as actions from '../../actions';
-import ButtonBack from '../../components/Navigation/Header/ButtonBack';
-import ButtonRight from '../../components/Navigation/Header/ButtonRight';
-import HealthCardSection from '../../components/MyCircles/HealthCardSection';
-import PageIndicator from '../../components/UI/PageIndicator';
+import { HealthCardSection, PageIndicator, ButtonBack, ButtonRight } from '../../components';
 
 import { user } from '../../testData/testUser2';
 
@@ -36,7 +33,7 @@ class HealthGoalsScreen extends Component {
       headerRight: (
         <ButtonRight
           icon="create"
-          onPress={() => navigate("AddToCircle")} />
+          onPress={() => navigate("InviteToCircle")} />
       ),
     }
   }
@@ -48,7 +45,6 @@ class HealthGoalsScreen extends Component {
   _keyExtractor = (item, index) => item.id;
 
   _renderHealthCardSection = ({ item }) => {
-    console.log(item)
     return (
       <HealthCardSection
         title={item.title}
@@ -70,7 +66,6 @@ class HealthGoalsScreen extends Component {
     //     </View>
     //   );
     // }
-    console.log()
     return (
       <FlatList
         showsVerticalScrollIndicator={false}

@@ -13,7 +13,7 @@ import NewPostHeader from './Header/NewPostHeader';
 
 const NewPost = (props) => {
   const { newPostText, onChangeText, createdAt, sendTo, user } = props;
-console.log(user)
+
   return (
     <View style={ post.mainStyle }>
 

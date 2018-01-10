@@ -9,7 +9,7 @@ import {
 
 import PostHeader from './Header/PostHeader';
 import PostBody from './Body/PostBody';
-import { formatTimestamp } from '../../services/utils';
+import { formatTimestamp } from '../../services/utils/feed_utils';
 
 const Reply = (props) => {
 
