@@ -6,13 +6,13 @@ import {
   FlatList,
   ActivityIndicator,
 } from 'react-native';
+import _values from 'lodash/values';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import { NewCircleAccess, ButtonBack, ButtonRight } from '../../components';
 
-class NewPostScreen extends Component {
+class NewCircleAccessScreen extends Component {
 
-  //TODO: research how to connect react navigation to redux
   static navigationOptions = ({ navigation }) => {
     const { navigate, goBack } = navigation;
 
@@ -36,13 +36,29 @@ class NewPostScreen extends Component {
     }
   }
 
+  componentWillMount () {
+    this.props.getSelectedHealthGoals(this.props.myCircles.healthCards);
+  }
+
+  // _filterSelectedHealthGoals = (healthCards) => {
+  //   let selectedHealthGoals = [];
+
+  //   for (let i = 0; i < _values(healthCards).length; i++) {
+  //     let healthGoals = _values(_values(healthCards)[i].data)
+  //     healthGoals.forEach(goal => { if (goal.selected) selectedHealthGoals.push(goal) })
+  //   }
+
+  //   return selectedHealthGoals;
+  // }
+
   render() {
     const { addAndHandleCircles } = this.props;
-    const { newPostText, isPosting } = this.props.myCircles;
-    const { usersInCircle, circleName, circleAvatar } = this.props.myCircles.addCircle;
+    const { addCircle, isPostingCircles, healthCards } = this.props.myCircles;
+    const { usersInCircle, circleName, circleAvatar, healthGoals } = this.props.myCircles.addCircle;
 
     return (
       <NewCircleAccess
+        healthGoals={healthGoals}
         circleName={circleName}
         circleAvatar={circleAvatar}
         usersInCircle={usersInCircle}
@@ -57,4 +73,4 @@ function mapStateToProps ({ myCircles }) {
   }
 }
 
-export default connect(mapStateToProps, actions)(NewPostScreen);
+export default connect(mapStateToProps, actions)(NewCircleAccessScreen);

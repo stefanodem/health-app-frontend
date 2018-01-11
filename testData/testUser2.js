@@ -393,39 +393,39 @@ export const circles = {
 }
 
 const healthCards1 = {
-  1: { id: 1, name: 'Diabetes', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  2: { id: 2, name: 'Fitness', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  3: { id: 3, name: 'Diet', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  4: { id: 4, name: 'Sleep', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  5: { id: 5, name: 'Gagi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  6: { id: 6, name: 'Bisi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  7: { id: 7, name: 'Fudi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  8: { id: 8, name: 'Schnäbi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  9: { id: 9, name: 'Pimmeli', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  1: { id: 1, name: 'Diabetes', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  2: { id: 2, name: 'Fitness', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  3: { id: 3, name: 'Diet', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  4: { id: 4, name: 'Sleep', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  5: { id: 5, name: 'Gagi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  6: { id: 6, name: 'Bisi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  7: { id: 7, name: 'Fudi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  8: { id: 8, name: 'Schnäbi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  9: { id: 9, name: 'Pimmeli', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
 }
 
 const healthCards2 = {
-  10: { id: 10, name: 'Diabetes', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  11: { id: 11, name: 'Heart Disease', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  12: { id: 12, name: 'Depression', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  13: { id: 13, name: 'Insomnia', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  14: { id: 14, name: 'Gagi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  15: { id: 15, name: 'Bisi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  16: { id: 16, name: 'Fudi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  17: { id: 17, name: 'Schnäbi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  18: { id: 18, name: 'Pimmeli', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  10: { id: 10, name: 'Diabetes', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  11: { id: 11, name: 'Heart Disease', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  12: { id: 12, name: 'Depression', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  13: { id: 13, name: 'Insomnia', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  14: { id: 14, name: 'Gagi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  15: { id: 15, name: 'Bisi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  16: { id: 16, name: 'Fudi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  17: { id: 17, name: 'Schnäbi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  18: { id: 18, name: 'Pimmeli', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
 }
 
 const healthCards3 = {
-  19: { id: 19, name: 'Cycling', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  20: { id: 20, name: 'Fitness', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  21: { id: 21, name: 'Sleep Walking', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  22: { id: 22, name: 'Diet', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  23: { id: 23, name: 'Gagi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  24: { id: 24, name: 'Bisi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  25: { id: 25, name: 'Fudi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  26: { id: 26, name: 'Schnäbi', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
-  27: { id: 27, name: 'Pimmeli', selected: false, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  19: { id: 19, name: 'Cycling', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  20: { id: 20, name: 'Fitness', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  21: { id: 21, name: 'Sleep Walking', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  22: { id: 22, name: 'Diet', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  23: { id: 23, name: 'Gagi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  24: { id: 24, name: 'Bisi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  25: { id: 25, name: 'Fudi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  26: { id: 26, name: 'Schnäbi', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
+  27: { id: 27, name: 'Pimmeli', selected: false, circleHasDataAccess: true, backgroundImage: 'https://beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg', color: 'red' },
 }
 
 export const healthCardSections = {

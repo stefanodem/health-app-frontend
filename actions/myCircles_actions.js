@@ -19,7 +19,10 @@ import {
   FETCHING_HEALTHCARDS,
   FETCHING_HEALTHCARDS_SUCCESS,
   FETCHING_HEALTHCARDS_ERROR,
+  GET_SELECTED_HEALTH_GOALS,
 } from './types';
+
+import _values from 'lodash/values';
 
 import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities, fetchHealthCards } from '../services/api';
 
@@ -123,6 +126,24 @@ const togglingHealthGoal = (sectionId, healthCardId) => {
     type: TOGGLE_HEALTH_GOAL,
     sectionId,
     healthCardId,
+  }
+}
+
+const filterSelectedHealthGoals = (healthCards) => {
+  let selectedHealthGoals = [];
+
+  for (let i = 0; i < _values(healthCards).length; i++) {
+    let healthGoals = _values(_values(healthCards)[i].data)
+    healthGoals.forEach(goal => { if (goal.selected) selectedHealthGoals.push(goal) })
+  }
+
+  return selectedHealthGoals;
+}
+
+export const getSelectedHealthGoals = (healthCards) => {
+  return {
+    type: GET_SELECTED_HEALTH_GOALS,
+    healthGoals: filterSelectedHealthGoals(healthCards),
   }
 }
 

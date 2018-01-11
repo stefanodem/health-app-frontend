@@ -70,9 +70,9 @@ class MyCirclesScreen extends Component {
     const { navigation } = this.props;
     //const { circleId } = this.props.circles;
     //const circles = this.props.myCircles.circles;
-    // const isFetching = this.props.myCircles.isFetching;
+    // const isFetchingCircles = this.props.myCircles.isFetchingCircles;
 
-    // if (isFetching) {
+    // if (isFetchingCircles) {
     //   return (
     //     <View style={{ flex: 1, justifyContent: 'center' }}>
     //       <ActivityIndicator size="large" />

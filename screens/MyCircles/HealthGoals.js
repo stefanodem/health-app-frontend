@@ -58,12 +58,12 @@ class HealthGoalsScreen extends Component {
 
   render() {
     const { navigation } = this.props;
-    const { healthCards, isFetching } = this.props.myCircles;
+    const { healthCards, isFetchingHealthCards } = this.props.myCircles;
 
     //const { circleId } = this.props.circles;
     //const circles = this.props.myCircles.circles;
 
-    if (isFetching) {
+    if (isFetchingHealthCards) {
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <ActivityIndicator size="large" />

@@ -12,69 +12,18 @@ import {
   REMOVE_FROM_CIRCLE,
   CLEAR_CIRCLE,
   REMOVE_CIRCLES,
-  REMOVE_FETCHING,
   REMOVE_POSTING,
   UPDATE_NEWCIRCLE_TEXT,
   TOGGLE_HEALTH_GOAL,
   FETCHING_HEALTHCARDS,
   FETCHING_HEALTHCARDS_SUCCESS,
   FETCHING_HEALTHCARDS_ERROR,
+  GET_SELECTED_HEALTH_GOALS,
 } from '../actions/types';
 
 import { isInCircle } from '../services/utils'
 
 const DEFAULT_AVATAR = 'https://image.flaticon.com/icons/png/128/32/32441.png'
-const healthGoalsData = [
-  'Diabetes', 'Fitness', 'Diet', 'Sleep', 'Gagi', 'Bisi', 'Fudi', 'Schnäbi', 'Pimmeli'
-]
-
-const healthGoalsData2 = {
-  1: {
-    id: 1,
-    name: 'Diabetes',
-    selected: false,
-  },
-  2: {
-    id: 2,
-    name: 'Fitness',
-    selected: false,
-  },
-  3: {
-    id: 3,
-    name: 'Diet',
-    selected: false,
-  },
-  4: {
-    id: 4,
-    name: 'Sleep',
-    selected: false,
-  },
-  5: {
-    id: 5,
-    name: 'Gagi',
-    selected: false,
-  },
-  6: {
-    id: 6,
-    name: 'Bisi',
-    selected: false,
-  },
-  7: {
-    id: 7,
-    name: 'Fudi',
-    selected: false,
-  },
-  8: {
-    id: 8,
-    name: 'Schnäbi',
-    selected: false,
-  },
-  9: {
-    id: 9,
-    name: 'Pimmeli',
-    selected: false,
-  },
-}
 
 const toggleHealthCardSelection = (state, sectionId, healthCardId) => {
   let newState = Object.assign({}, state);
@@ -82,32 +31,21 @@ const toggleHealthCardSelection = (state, sectionId, healthCardId) => {
   return newState
 }
 
-// const removeProperty = (obj, prop) => {
-//   let newObj = Object.assign({}, obj);
-//   delete newObj[prop];
-//   return newObj;
-// }
-
 const initialState = {
-  isFetching: true,
-  isPosting: false,
+  isFetchingEntities: true,
+  isFetchingCircles: true,
+  isFetchingHealthCards: true,
+  isPostingCircles: false,
   error: '',
   lastUpdated: '',
   addCircle: {
     circleName: '',
     circleAvatar: DEFAULT_AVATAR,
     usersInCircle: [],
-    healthGoals: {},
+    circleDataAccess: [],
+    healthGoals: [],
   },
-  circleAcces: {
-
-  },
-  healthCards: {
-    // 1: {id: 1, title: 'RECOMMENDED FOR YOU', data: healthGoalsData2, selected: false},
-    // 2: {id: 2, title: 'HEALTH CONDITIONS', data: healthGoalsData2, selected: false},
-    // 3: {id: 3, title: 'LIFESTYLE', data: healthGoalsData2, selected: false},
-    // 4: {id: 4, title: 'EATING HEALTHY', data: healthGoalsData2, selected: false},
-  },
+  healthCards: {},
   entities: {},
   circles: {},
 }
@@ -117,40 +55,36 @@ export default function(state = initialState, action) {
     case FETCHING_CIRCLES:
       return {
         ...state,
-        isFetching: true,
+        isFetchingCircles: true,
       };
     case FETCHING_CIRCLES_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        isFetchingCircles: false,
         error: '',
       };
     case POSTING_CIRCLES_ERROR:
       return {
         ...state,
-        isFetching: false,
+        isFetchingCircles: false,
         error: action.error,
-      };
-    case REMOVE_FETCHING:
-      return {
-        ...state,
-        error: '',
-        isFetching: false,
       };
     case POSTING_CIRCLES:
       return {
         ...state,
-        isPosting: true,
+        isPostingCircles: true,
       };
     case POSTING_CIRCLES_SUCCESS:
       return {
         ...state,
-        isPosting: false,
+        isPostingCircles: false,
         error: '',
         addCircle: {
           circleName: '',
           circleAvatar: '',
           usersInCircle: [],
+          circleDataAccess: [],
+          healthGoals: [],
         },
         circles: {
           ...state.postReplies,
@@ -166,31 +100,31 @@ export default function(state = initialState, action) {
     case POSTING_CIRCLES_ERROR:
       return {
         ...state,
-        isPosting: false,
+        isPostingCircles: false,
         error,
       };
     case REMOVE_POSTING:
       return {
         ...state,
         error: '',
-        isPosting: false,
+        isPostingCircles: false,
       };
     case FETCHING_ENTITIES:
       return {
         ...state,
-        isFetching: true,
+        isFetchingEntities: true,
       };
     case FETCHING_ENTITIES_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        isFetchingEntities: false,
         error: '',
         entities: action.entities,
       };
     case FETCHING_ENTITIES_ERROR:
       return {
         ...state,
-        isFetching: false,
+        isFetchingEntities: false,
         error: action.error,
       };
     case ADD_TO_CIRCLE:
@@ -219,24 +153,6 @@ export default function(state = initialState, action) {
         },
       }
       : state
-    // case ADD_TO_CIRCLE:
-    //   return isInCircle(action.entity, state.usersInCircle)
-    //   ? state
-    //   : {
-    //     ...state,
-    //     usersInCircle: [
-    //       ...state.usersInCircle,
-    //       action.entity,
-    //     ],
-    //   }
-    // case REMOVE_FROM_CIRCLE:
-    //   return isInCircle(action.entity, state.usersInCircle)
-    //   ? {
-    //     ...state,
-    //     usersInCircle: state.usersInCircle.filter(entity => entity.entityId !== action.entity.entityId),
-    //   }
-    //   : state
-
     case CLEAR_CIRCLE:
       return {
         ...state,
@@ -244,6 +160,8 @@ export default function(state = initialState, action) {
           circleName: '',
           circleAvatar: DEFAULT_AVATAR,
           usersInCircle: [],
+          circleDataAccess: [],
+          healthGoals: [],
         },
       }
     case UPDATE_NEWCIRCLE_TEXT:
@@ -255,28 +173,35 @@ export default function(state = initialState, action) {
         },
       };
     case TOGGLE_HEALTH_GOAL:
-      //let updatedObj = removeProperty(state.addCircle.healthGoals, action.healthGoals.id);
       let newState = toggleHealthCardSelection(state, action.sectionId, action.healthCardId);
 
       return newState;
     case FETCHING_HEALTHCARDS:
       return {
         ...state,
-        isFetching: true,
+        isFetchingHealthCards: true,
       };
     case FETCHING_HEALTHCARDS_SUCCESS:
       return {
         ...state,
         healthCards: action.healthCards,
-        isFetching: false,
+        isFetchingHealthCards: false,
         error: '',
       };
     case FETCHING_HEALTHCARDS_ERROR:
       return {
         ...state,
-        isFetching: false,
+        isFetchingHealthCards: false,
         error: action.error,
       };
+    case GET_SELECTED_HEALTH_GOALS:
+      return {
+        ...state,
+        addCircle: {
+          ...state.addCircle,
+          healthGoals: action.healthGoals,
+        }
+      }
     default:
       return state;
   }

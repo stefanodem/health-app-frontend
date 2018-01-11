@@ -18,8 +18,6 @@ import { SearchBar } from 'react-native-elements';
 import * as actions from '../../actions';
 import { Circle, ButtonBack, ButtonRight, AnimatedAvatar } from '../../components';
 
-import { entities } from '../../testData/testUser2';
-
 class AddToCircleScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
@@ -60,10 +58,10 @@ class AddToCircleScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    const { entities } = this.props.myCircles;
+    const { entities, isFetchingEntities } = this.props.myCircles;
     const { addToCircle, removeFromCircle } = this.props;
-console.log(this.props.myCircles)
-    if (this.props.myCircles.isFetching) {
+
+    if (isFetchingEntities) {
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <ActivityIndicator size="large" />
