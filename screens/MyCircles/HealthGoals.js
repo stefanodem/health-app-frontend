@@ -39,14 +39,18 @@ class HealthGoalsScreen extends Component {
   }
 
   componentDidMount () {
-    //this.props.fetchAndHandleCircles(this.props.user.userInfo.uid);
+    this.props.fetchAndHandleHealthCards(this.props.user.userInfo.uid);
   }
 
   _keyExtractor = (item, index) => item.id;
 
   _renderHealthCardSection = ({ item }) => {
+    const { toggleHealthGoal } = this.props;
+
     return (
       <HealthCardSection
+        sectionId={item.id}
+        onPress={toggleHealthGoal}
         title={item.title}
         data={item.data} />
     )
@@ -54,44 +58,46 @@ class HealthGoalsScreen extends Component {
 
   render() {
     const { navigation } = this.props;
+    const { healthCards, isFetching } = this.props.myCircles;
 
     //const { circleId } = this.props.circles;
     //const circles = this.props.myCircles.circles;
-    // const isFetching = this.props.myCircles.isFetching;
 
-    // if (isFetching) {
-    //   return (
-    //     <View style={{ flex: 1, justifyContent: 'center' }}>
-    //       <ActivityIndicator size="large" />
-    //     </View>
-    //   );
-    // }
+    if (isFetching) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
+
     return (
       <FlatList
         showsVerticalScrollIndicator={false}
         keyExtractor={this._keyExtractor}
-        data={healthGoalsSections}
+        data={_values(healthCards)}
         renderItem={ this._renderHealthCardSection } />
     );
   }
 }
 
-const healthGoalsData = [
-  'Diabetes', 'Fitness', 'Diet', 'Sleep', 'Gagi', 'Bisi', 'Fudi', 'Schnäbi', 'Pimmeli'
-]
+// const healthGoalsData = [
+//   'Diabetes', 'Fitness', 'Diet', 'Sleep', 'Gagi', 'Bisi', 'Fudi', 'Schnäbi', 'Pimmeli'
+// ]
 
-const healthGoalsSections = [
-  {id: 1, title: 'RECOMMENDED FOR YOU', data: healthGoalsData},
-  {id: 2, title: 'HEALTH CONDITIONS', data: healthGoalsData},
-  {id: 3, title: 'LIFESTYLE', data: healthGoalsData},
-  {id: 4, title: 'EATING HEALTHY', data: healthGoalsData},
-]
+// const healthGoalsSections = [
+//   {id: 1, title: 'RECOMMENDED FOR YOU', data: healthGoalsData},
+//   {id: 2, title: 'HEALTH CONDITIONS', data: healthGoalsData},
+//   {id: 3, title: 'LIFESTYLE', data: healthGoalsData},
+//   {id: 4, title: 'EATING HEALTHY', data: healthGoalsData},
+// ]
 
 
 
-function mapStateToProps({ user }) {
+function mapStateToProps({ user, myCircles }) {
   return {
     user,
+    myCircles,
   }
 }
 

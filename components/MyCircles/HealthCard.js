@@ -15,7 +15,7 @@ import {
 
 const HealthCard = (props) => {
 
-  const { name, backgroundColor, image } = props;
+  const { name, backgroundColor, image, selected } = props;
 
   return (
     <Image

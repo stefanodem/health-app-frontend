@@ -118,3 +118,30 @@ export const newCircleStyles = StyleSheet.create({
   },
 })
 
+export const newCircleAccesStyles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    paddingTop: 2,
+    paddingBottom: 2,
+    paddingLeft: 10,
+    backgroundColor: '#f6f6f6',
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  title: {
+    justifyContent: 'center',
+    paddingLeft: 8,
+    paddingTop: 5,
+    paddingBottom: 5,
+    },
+  name: {
+    fontSize: 16,
+    color: '#333',
+    fontWeight: 'bold',
+  },
+  date: {
+    fontSize: 13,
+    fontWeight: '200',
+  },
+})
+

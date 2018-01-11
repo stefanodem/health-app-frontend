@@ -8,35 +8,45 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import { NewCircleSettings, ButtonBack, ButtonRight} from '../../components';
+import { NewCircleAccess, ButtonBack, ButtonRight } from '../../components';
 
-class NewCircleAccessScreen extends Component {
+class NewPostScreen extends Component {
 
+  //TODO: research how to connect react navigation to redux
   static navigationOptions = ({ navigation }) => {
     const { navigate, goBack } = navigation;
 
+    const handleNewCircleSubmit = async (onPress, navigate, to) => {
+        await onPress();
+        navigate(to);
+    }
+
     return {
-      title: 'New Circle',
-      headerTitle: 'New Circle',
+      title: 'Circle Access',
+      headerTitle: 'Circle Access',
       headerLeft: (
         <ButtonBack
           onPress={ goBack } />
       ),
       headerRight: (
         <ButtonRight
-          icon="create"
-          onPress={() => navigate("NewPost")} />
+          icon="send"
+          onPress={() => handleNewCircleSubmit(() => {}, navigate, "MyCircles")} />
       ),
     }
   }
 
   render() {
-    const { updateNewCircleText } = this.props;
-    const { usersInCircle, circleName } = this.props.myCircles.addCircle;
-    const defaultAvatar = 'http://www.free-icons-download.net/images/black-camera-logo-icon-47221.png'
+    const { addAndHandleCircles } = this.props;
+    const { newPostText, isPosting } = this.props.myCircles;
+    const { usersInCircle, circleName, circleAvatar } = this.props.myCircles.addCircle;
 
     return (
-      <Text>Hi there</Text>
+      <NewCircleAccess
+        circleName={circleName}
+        circleAvatar={circleAvatar}
+        usersInCircle={usersInCircle}
+        onNewCircleSubmit={addAndHandleCircles} />
     );
   }
 }
@@ -47,4 +57,4 @@ function mapStateToProps ({ myCircles }) {
   }
 }
 
-export default connect(mapStateToProps, actions)(NewCircleAccessScreen);
+export default connect(mapStateToProps, actions)(NewPostScreen);

@@ -18,17 +18,6 @@ const NewPostHeader = (props) => {
 
   const { name, sendTo, createdAt, avatar } = props;
 
-  _renderSendTo = (entities) => {
-    return entities.map(entity => {
-      return (
-        <Avatar
-          key={entity.entityId}
-          size={'small'}
-          source={entity.avatar} />
-      )
-    })
-  }
-
   return (
     <View>
 

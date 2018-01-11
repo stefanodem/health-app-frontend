@@ -15,9 +15,13 @@ import {
   REMOVE_FETCHING,
   REMOVE_POSTING,
   UPDATE_NEWCIRCLE_TEXT,
+  TOGGLE_HEALTH_GOAL,
+  FETCHING_HEALTHCARDS,
+  FETCHING_HEALTHCARDS_SUCCESS,
+  FETCHING_HEALTHCARDS_ERROR,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities } from '../services/api';
+import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities, fetchHealthCards } from '../services/api';
 
 const fetchingCircles = () => {
   return {
@@ -92,6 +96,33 @@ const removingFromCircle = (entity) => {
   return {
     type: REMOVE_FROM_CIRCLE,
     entity,
+  }
+}
+
+const fetchingHealthCards = () => {
+  return {
+    type: FETCHING_HEALTHCARDS,
+  }
+}
+
+const fetchingHealthCardsSuccess = (healthCards) => {
+  return {
+    type: FETCHING_HEALTHCARDS_SUCCESS,
+    healthCards,
+  }
+}
+const fetchingHealthCardsError = (error) => {
+  return {
+    type: FETCHING_HEALTHCARDS_ERROR,
+    error: error,
+  }
+}
+
+const togglingHealthGoal = (sectionId, healthCardId) => {
+  return {
+    type: TOGGLE_HEALTH_GOAL,
+    sectionId,
+    healthCardId,
   }
 }
 
@@ -188,3 +219,24 @@ export const removeFromCircle = (entityId) => async (dispatch) => {
 
   }
 }
+
+export const toggleHealthGoal = (sectionId, healthCardId) => async (dispatch) => {
+  dispatch(togglingHealthGoal(sectionId, healthCardId));
+}
+
+export const fetchAndHandleHealthCards = (uid) => async (dispatch) => {
+  dispatch(fetchingHealthCards());
+  try {
+    let healthCards = await fetchHealthCards(uid);
+    if (healthCards) {
+      dispatch(fetchingHealthCardsSuccess(healthCards));
+    } else {
+      //handle non posts
+    }
+  } catch(e) {
+    fetchingHealthCardsError(e);
+  }
+}
+
+
+

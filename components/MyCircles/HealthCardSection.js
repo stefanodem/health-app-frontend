@@ -8,8 +8,9 @@ import {
   FlatList,
   Dimensions,
   ScrollView,
-  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
+import _values from 'lodash/values';
 
 import HealthCard from './HealthCard';
 import PageIndicator from '../UI/PageIndicator';
@@ -21,13 +22,21 @@ import {
 class HealthCardSection extends Component {
 
   //TODO: Change to item.id
-  _keyExtractor = (item, index) => item;
+  _keyExtractor = (item, index) => item.id;
 
   _renderHealthCard = ({ item }) => {
+    const { onPress, sectionId } = this.props;
+
     return (
-      <HealthCard
-        name={item}
-      />
+      <TouchableOpacity
+        onPress={() => onPress(sectionId, item.id)} >
+        <HealthCard
+          name={item.name}
+          selected={item.selected}
+          //backgroundColor
+          //image
+        />
+      </TouchableOpacity>
     )
   }
 
@@ -35,7 +44,7 @@ class HealthCardSection extends Component {
 
   render () {
     const { title, data } = this.props;
-    const numberOfPages = Math.ceil(data.length / NUMBER_OF_HEALTHCARDS)
+    const numberOfPages = Math.ceil(_values(data).length / NUMBER_OF_HEALTHCARDS)
 
     //TODO: add error handling
 
@@ -54,7 +63,7 @@ class HealthCardSection extends Component {
           pagingEnabled
           showsHorizontalScrollIndicator={false}
           keyExtractor={this._keyExtractor}
-          data={data}
+          data={_values(data)}
           renderItem={ this._renderHealthCard }
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
