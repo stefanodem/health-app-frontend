@@ -8,13 +8,7 @@ import { connect } from 'react-redux';
 import _values from 'lodash/values';
 import * as actions from '../../actions';
 import { Post, ButtonBack, NewPostButton } from '../../components';
-
 import { user } from '../../testData/testUser2';
-
-//TODO: where do we initially get the uid?
-//after authentication
-//or Async.Storage if auth is persisted through sessions
-//const UID = '11111';
 
 class FeedScreen extends Component {
 
@@ -38,14 +32,9 @@ class FeedScreen extends Component {
   }
 
   componentDidMount () {
-    //setAndHandleFeedListener?
-    //move to authentication:
-    //this.props.fetchAndHandleUser(UID);
-
-    // const { circleId } = this.props.navigation.state.params.circle;
-    // this.props.fetchAndHandleCirclePosts(circleId)
     const uid = this.props.user.userInfo.uid;
     const circleId = this.props.navigation.state.params;
+    console.log(circleId)
     this.props.fetchAndHandleUserPosts(uid, circleId);
   }
 
@@ -65,8 +54,6 @@ class FeedScreen extends Component {
 
   _handleShares = () => {
     console.log("Shared");
-    //TODO: build shareScreen
-    //this.props.navigation.navigate('Share', params);
   }
 
   _onProfilePress = (uid) => {
@@ -80,10 +67,7 @@ class FeedScreen extends Component {
 
   _keyExtractor = (item, index) => item.postId;
 
-  //TODO: handleComments.bind(this, post) --> postId instead of passing full post? send postId and retrieve again when called instead of passing around
   _renderPost = ({ item }) => {
-    //TODO: think about using {...this.props} to pass props down to 'Post'
-    //TODO: change handleReplies: looks nasty
     return (
       <Post
         key={item.postId}
@@ -112,6 +96,7 @@ class FeedScreen extends Component {
 
     const posts = this.props.feed.posts;
     const isFetching = this.props.feed.isFetching;
+    const hasError = this.props.feed.error;
 
     if (isFetching) {
       return (

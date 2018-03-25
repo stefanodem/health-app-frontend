@@ -1,31 +1,39 @@
-// import { ref } from 'config/constants';
-// import axios from 'axios';
+import axios from 'axios';
+import { ROOT_URL } from '../../config/constants';
+import { normalize } from 'normalizr';
+import { postListSchema, replyListSchema } from '../../store/schema';
 import { testUser } from '../../testData/testUser';
 import { user, posts, replies, entities } from '../../testData/testUser2';
 import { feed } from '../../testData/feedDummyData';
 
-// function saveUser (user, userId) {
-//   return ref.child(`usersDucks/${user.uid}/${userId}`)
-//     .set({...user, userId})
-// }
+export const fetchUserPosts = async (uid, circleId) => {
+  try {
+    const url = ROOT_URL + `/circles/${circleId}/posts`;
+    let response = await axios.get(url);
+    const normalized_response = normalize(response.data.posts, postListSchema);
+    return normalized_response.entities.posts;
+  } catch(e) {
+    return e;
+  }
+}
 
-// export function fetchUser (uid) {
-//   return ref.child(`users/${uid}`).once('value')
-//     .then((snapshot) => snapshot.val())
-// }
-// --> current reducer expects following object:
-// {
-//   name: '',
-//   uid: '',
-//   avatar: '',
-// },
+export const fetchReplies = async (postId) => {
+  try {
+    const url = ROOT_URL + `/posts/${postId}/replies`;
+    let response = await axios.get(url);
+    const normalized_response = normalize(response.data.replies, replyListSchema);
+    return normalized_response.entities.replies;
+  } catch(e) {
+    return e;
+  }
+}
 
 //TODO: Hook up to backend
 export const fetchPosts = (postId) => {
   return new Promise(resolve => setTimeout(() => resolve(posts), 1000));
 }
 
-export const fetchUserPosts = (uid, circleId) => {
+export const fetchUserPosts2 = (uid, circleId) => {
   const feedz = typeof circleId === 'number' ? feed[circleId] : posts;
 
   return new Promise(resolve => setTimeout(() => resolve(feedz), 1000));
@@ -36,7 +44,7 @@ export const fetchUserLikes = (uid) => {
   return new Promise(resolve => setTimeout(() => resolve(user), 1000));
 }
 
-export const fetchReplies = (postId) => {
+export const fetchReplies2 = (postId) => {
   return new Promise(resolve => setTimeout(() => resolve({ [postId]: replies[postId] }), 500));
 }
 

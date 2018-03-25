@@ -18,7 +18,7 @@ const Post = (props) => {
 
   const { handleLikes, handleReplies, handleShares, onProfilePress } = props;
   const { body, createdAt, likeCount, postId, liked } = props.post;
-  const replyCount = props.post.replies.length;
+  const replyCount = props.post.replyCount;
   const { name, avatar } = props.user;
 
   //TODO: move underLayColor to styles.js

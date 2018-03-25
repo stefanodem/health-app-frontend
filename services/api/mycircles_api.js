@@ -8,8 +8,8 @@ export const fetchUserCircles = async (uid) => {
   try {
     const url = ROOT_URL + `/users/${uid}/circles`;
     let response = await axios.get(url);
-    const normalized_response = normalize(response.data.circles, circleListSchema);
-    return normalized_response.entities.circles;
+    //const normalized_response = normalize(response.data.circles, circleListSchema);
+    return response.data.circles;
   } catch(e) {
     return e;
   }

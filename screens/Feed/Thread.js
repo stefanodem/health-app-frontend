@@ -28,7 +28,8 @@ class ThreadScreen extends Component {
 
   componentDidMount() {
     const { postId } = this.props.navigation.state.params.post;
-    this.props.fetchAndHandleReplies(postId)
+    console.log(postId)
+    this.props.fetchAndHandleReplies(postId);
   }
 
   _handleLikes = (postId, likeCount, liked) => {
@@ -79,8 +80,8 @@ class ThreadScreen extends Component {
     const { replyText } = this.props.feed.feedActions;
     const { postId, user } = this.props.navigation.state.params.post;
     const post = this.props.feed.posts[postId];
-    const replies = this.props.feed.postReplies[postId]
-                    ? this.props.feed.postReplies[postId].replies
+    const replies = this.props.feed.postReplies
+                    ? this.props.feed.postReplies
                     : null;
 
     if (isFetching) {

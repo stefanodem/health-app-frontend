@@ -78,7 +78,7 @@ class MyCirclesScreen extends Component {
 
     return (
       <FlatList
-        data={_values(circles)}
+        data={circles}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         renderItem={({ item, index }) => (
           <SwipeableRow

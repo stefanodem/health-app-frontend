@@ -136,7 +136,7 @@ export const fetchAndHandleUserPosts = (uid, circleId) => async (dispatch) => {
       dispatch(
         fetchingUserPostsSuccess(
           posts,
-          //Object.keys(posts).sort((a, b) => posts[b].timestamp - posts[a].timestamp),
+          //Object.keys(posts).sort((a, b) => posts[b].createdAt - posts[a].createdAt),
           Date.now()
         )
       );
