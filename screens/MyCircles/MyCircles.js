@@ -20,9 +20,9 @@ const Row = ({ item, navigation, navParams }) => {
   //passing in circle name or id params
   return (
     <RectButton style={styles.rectButton} onPress={() => navigation.navigate('Feed', navParams)}>
-      <Text style={styles.fromText}>{item.circle}</Text>
+      <Text style={styles.fromText}>{item.name}</Text>
       <Text numberOfLines={2} style={styles.messageText}>
-        {item.message}
+        {item.description}
       </Text>
       <Text style={styles.dateText}>
         {item.lastUpdated} {'❭'}
@@ -60,29 +60,25 @@ class MyCirclesScreen extends Component {
   }
 
   componentDidMount () {
-    //setAndHandleFeedListener?
-    //move to authentication:
-    //this.props.fetchAndHandleUser(UID);
-    //this.props.fetchAndHandleCircles(this.props.user.userInfo.uid);
+    this.props.fetchAndHandleUserCircles(this.props.user.userInfo.uid);
   }
 
   render() {
     const { navigation } = this.props;
-    //const { circleId } = this.props.circles;
-    //const circles = this.props.myCircles.circles;
-    // const isFetchingCircles = this.props.myCircles.isFetchingCircles;
+    const { circles } = this.props.myCircles
+    const isFetchingCircles = this.props.myCircles.isFetchingCircles;
 
-    // if (isFetchingCircles) {
-    //   return (
-    //     <View style={{ flex: 1, justifyContent: 'center' }}>
-    //       <ActivityIndicator size="large" />
-    //     </View>
-    //   );
-    // }
+    if (isFetchingCircles) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
 
     return (
       <FlatList
-        data={DATA}
+        data={_values(circles)}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         renderItem={({ item, index }) => (
           <SwipeableRow
@@ -97,9 +93,10 @@ class MyCirclesScreen extends Component {
   }
 }
 
-function mapStateToProps({ user }) {
+function mapStateToProps({ user, myCircles }) {
   return {
     user,
+    myCircles,
   }
 }
 
@@ -140,28 +137,28 @@ const styles = StyleSheet.create({
 const DATA = [
   {
     circleId: 1,
-    circle: "Managing my Diabetes",
+    name: "Managing my Diabetes",
     lastUpdated: '3:11 PM',
     message:
       'Unus pro omnibus, omnes pro uno. Nunc scelerisque, massa non lacinia porta, quam odio dapibus enim, nec tincidunt dolor leo non neque',
   },
   {
     circleId: 2,
-    circle: 'Fitness',
+    name: 'Fitness',
     lastUpdated: '11:46 AM',
     message:
       'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus hendrerit ligula dignissim maximus aliquet. Integer tincidunt, tortor at finibus molestie, ex tellus laoreet libero, lobortis consectetur nisl diam viverra justo.',
   },
   {
     circleId: 3,
-    circle: 'Paleo Diet',
+    name: 'Paleo Diet',
     lastUpdated: '6:06 AM',
     message:
       'Sed non arcu ullamcorper, eleifend velit eu, tristique metus. Duis id sapien eu orci varius malesuada et ac ipsum. Ut a magna vel urna tristique sagittis et dapibus augue. Vivamus non mauris a turpis auctor sagittis vitae vel ex. Curabitur accumsan quis mauris quis venenatis.',
   },
   {
     circleId: 4,
-    circle: 'Sleep',
+    name: 'Sleep',
     lastUpdated: 'Yesterday',
     message:
       'Vivamus id condimentum lorem. Duis semper euismod luctus. Morbi maximus urna ut mi tempus fermentum. Nam eget dui sed ligula rutrum venenatis.',

@@ -1,7 +1,7 @@
 export const user = {
   lastUpdated: null,
   userInfo: {
-    uid: '11111',
+    uid: '4',
     name: 'Steve the Chief',
     avatar: 'http://profile.actionsprout.com/default.jpeg',
   },
@@ -364,28 +364,28 @@ export const replies = {
 export const circles = {
   1: {
     circleId: 1,
-    circle: "Managing my Diabetes",
+    name: "Managing my Diabetes",
     lastUpdated: '3:11 PM',
     message:
       'Unus pro omnibus, omnes pro uno. Nunc scelerisque, massa non lacinia porta, quam odio dapibus enim, nec tincidunt dolor leo non neque',
   },
   2: {
     circleId: 2,
-    circle: 'Fitness',
+    name: 'Fitness',
     lastUpdated: '11:46 AM',
     message:
       'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus hendrerit ligula dignissim maximus aliquet. Integer tincidunt, tortor at finibus molestie, ex tellus laoreet libero, lobortis consectetur nisl diam viverra justo.',
   },
   3: {
     circleId: 3,
-    circle: 'Paleo Diet',
+    name: 'Paleo Diet',
     lastUpdated: '6:06 AM',
     message:
       'Sed non arcu ullamcorper, eleifend velit eu, tristique metus. Duis id sapien eu orci varius malesuada et ac ipsum. Ut a magna vel urna tristique sagittis et dapibus augue. Vivamus non mauris a turpis auctor sagittis vitae vel ex. Curabitur accumsan quis mauris quis venenatis.',
   },
   4: {
     circleId: 4,
-    circle: 'Sleep',
+    name: 'Sleep',
     lastUpdated: 'Yesterday',
     message:
       'Vivamus id condimentum lorem. Duis semper euismod luctus. Morbi maximus urna ut mi tempus fermentum. Nam eget dui sed ligula rutrum venenatis.',

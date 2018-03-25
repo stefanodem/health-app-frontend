@@ -1,6 +1,6 @@
 export const testUser = {
   userInfo: {
-    uid: '11111',
+    uid: '4',
     name: 'Steve the Chief',
     avatar: 'http://profile.actionsprout.com/default.jpeg',
   },

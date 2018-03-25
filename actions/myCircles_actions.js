@@ -24,7 +24,7 @@ import {
 
 import _values from 'lodash/values';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities, fetchHealthCards } from '../services/api';
+import { fetchUserCircles, fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities, fetchHealthCards } from '../services/api';
 
 const fetchingCircles = () => {
   return {

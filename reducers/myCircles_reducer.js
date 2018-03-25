@@ -61,6 +61,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isFetchingCircles: false,
+        circles: action.circles,
+        lastUpdated: action.lastUpdated,
         error: '',
       };
     case POSTING_CIRCLES_ERROR:
