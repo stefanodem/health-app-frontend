@@ -41,9 +41,7 @@ const NewCircleSettings = (props) => {
 
         </View>
 
-
       </View>
-
 
       <Text style={newCircleStyles.description} >{'Please provide a circle subject and optional icon'}</Text>
 

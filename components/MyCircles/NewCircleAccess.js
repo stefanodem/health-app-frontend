@@ -12,15 +12,14 @@ import {
   newCircleAccesStyles
 } from './styles';
 
-const _renderSettingsListItems = (healthGoals) => {
+const _renderSettingsListItems = (healthGoals, onSwitchValueChange) => {
   return healthGoals.map(healthGoal => {
-
     return (
       <SettingsList.Item
         key={healthGoal.id}
         hasNavArrow={false}
-        switchState={() => {}}
-        switchOnValueChange={() => {}}
+        switchState={healthGoal.circleHasDataAccess}
+        switchOnValueChange={() => onSwitchValueChange(healthGoal.id)}
         hasSwitch={true}
         title={healthGoal.name}/>
     )
@@ -28,7 +27,7 @@ const _renderSettingsListItems = (healthGoals) => {
 }
 
 const NewCircleAccess = (props) => {
-  const { onNewCircleSubmit, usersInCircle, circleName, circleAvatar, healthGoals } = props;
+  const { onNewCircleSubmit, usersInCircle, circleName, circleAvatar, healthGoals, toggleCircleDataAccess } = props;
 
   return (
     <View>
@@ -55,8 +54,8 @@ const NewCircleAccess = (props) => {
 
       <View>
         <SettingsList>
-          <SettingsList.Header headerText='Define data access to your circle' headerStyle={{color:'black'}}/>
-            {_renderSettingsListItems(healthGoals)}
+          <SettingsList.Header headerText='Define data access to your circle:' headerStyle={{color:'black'}}/>
+            {_renderSettingsListItems(healthGoals, toggleCircleDataAccess)}
         </SettingsList>
       </View>
 

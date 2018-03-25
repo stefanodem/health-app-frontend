@@ -20,6 +20,7 @@ import {
   FETCHING_HEALTHCARDS_SUCCESS,
   FETCHING_HEALTHCARDS_ERROR,
   GET_SELECTED_HEALTH_GOALS,
+  TOGGLE_CIRCLE_DATA_ACCESS,
 } from './types';
 
 import _values from 'lodash/values';
@@ -129,12 +130,19 @@ const togglingHealthGoal = (sectionId, healthCardId) => {
   }
 }
 
+const togglingCircleDataAccess = (healthCardId) => {
+  return {
+    type: TOGGLE_CIRCLE_DATA_ACCESS,
+    healthCardId,
+  }
+}
+
 const filterSelectedHealthGoals = (healthCards) => {
-  let selectedHealthGoals = [];
+  let selectedHealthGoals = {};
 
   for (let i = 0; i < _values(healthCards).length; i++) {
     let healthGoals = _values(_values(healthCards)[i].data)
-    healthGoals.forEach(goal => { if (goal.selected) selectedHealthGoals.push(goal) })
+    healthGoals.forEach(goal => { if (goal.selected) selectedHealthGoals[goal.id] = goal })
   }
 
   return selectedHealthGoals;
@@ -145,6 +153,10 @@ export const getSelectedHealthGoals = (healthCards) => {
     type: GET_SELECTED_HEALTH_GOALS,
     healthGoals: filterSelectedHealthGoals(healthCards),
   }
+}
+
+export const toggleCircleDataAccess = (healthCardId) => async (dispatch) => {
+  dispatch(togglingCircleDataAccess(healthCardId));
 }
 
 export const clearCircle = () => {

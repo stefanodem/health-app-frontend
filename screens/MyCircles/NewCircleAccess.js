@@ -40,28 +40,18 @@ class NewCircleAccessScreen extends Component {
     this.props.getSelectedHealthGoals(this.props.myCircles.healthCards);
   }
 
-  // _filterSelectedHealthGoals = (healthCards) => {
-  //   let selectedHealthGoals = [];
-
-  //   for (let i = 0; i < _values(healthCards).length; i++) {
-  //     let healthGoals = _values(_values(healthCards)[i].data)
-  //     healthGoals.forEach(goal => { if (goal.selected) selectedHealthGoals.push(goal) })
-  //   }
-
-  //   return selectedHealthGoals;
-  // }
-
   render() {
-    const { addAndHandleCircles } = this.props;
+    const { addAndHandleCircles, toggleCircleDataAccess } = this.props;
     const { addCircle, isPostingCircles, healthCards } = this.props.myCircles;
     const { usersInCircle, circleName, circleAvatar, healthGoals } = this.props.myCircles.addCircle;
 
     return (
       <NewCircleAccess
-        healthGoals={healthGoals}
+        healthGoals={_values(healthGoals)}
         circleName={circleName}
         circleAvatar={circleAvatar}
         usersInCircle={usersInCircle}
+        toggleCircleDataAccess={toggleCircleDataAccess}
         onNewCircleSubmit={addAndHandleCircles} />
     );
   }

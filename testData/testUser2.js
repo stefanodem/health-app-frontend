@@ -211,11 +211,11 @@ export const replies = {
         replyId: 1,
         user: {
           uid: '123',
-          name: 'SpongeBob',
-          avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          name: 'Son McPatient',
+          avatar: 'https://cdn4.littlethings.com/app/uploads/2015/05/phil.jpg',
         },
         createdAt: 1511854675244,
-        body: "1 Thats so cool man"
+        body: "Great to hear!"
       },
       2: {
         replyId: 2,
@@ -263,21 +263,21 @@ export const replies = {
         replyId: 5,
         user: {
           uid: '123',
-          name: 'SpongeBob',
-          avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          name: 'User McPatient',
+          avatar: 'https://i.pinimg.com/474x/a9/6e/3c/a96e3c6c25c4c74e649e2ba693f5905b--short-grey-hair-grey-hair-natural.jpg',
         },
         createdAt: 1511854675244,
-        body: "5 Thats so cool man"
+        body: "I'm fine for now, thanks! But let's connect next week for a session."
       },
       6: {
         replyId: 6,
         user: {
           uid: '123',
-          name: 'SpongeBob',
-          avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          name: 'Diabetes Pro',
+          avatar: 'http://news.montanalions.org/wp-content/uploads/2017/03/f_diabetes.png',
         },
         createdAt: 1511854675244,
-        body: "6 No way bro"
+        body: "Sure thing! Will ping you next Tuesday."
       },
     }
   },
@@ -293,17 +293,27 @@ export const replies = {
           avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
         },
         createdAt: 1511854675244,
-        body: "7 Thats so cool man"
+        body: "Thanks for sharing!"
       },
       8: {
         replyId: 8,
         user: {
           uid: '123',
-          name: 'SpongeBob',
-          avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          name: 'Patrick Star',
+          avatar: 'http://1.bp.blogspot.com/-E_L4QYXaoo8/VA3MgoxIw0I/AAAAAAAAADM/JPUhl5rXHJg/s1600/Patrick_Star.png',
         },
         createdAt: 1511854675244,
-        body: "8 No way bro"
+        body: "Uooooooooh, blowz my mindz!"
+      },
+      9: {
+        replyId: 9,
+        user: {
+          uid: '123',
+          name: 'Fishy',
+          avatar: 'http://static.tvtropes.org/pmwiki/pub/images/tom1.PNG',
+        },
+        createdAt: 1511854675244,
+        body: "Fake news"
       },
     }
   },
@@ -315,21 +325,21 @@ export const replies = {
         replyId: 9,
         user: {
           uid: '123',
-          name: 'SpongeBob',
-          avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          name: 'User McPatient',
+          avatar: 'https://i.pinimg.com/474x/a9/6e/3c/a96e3c6c25c4c74e649e2ba693f5905b--short-grey-hair-grey-hair-natural.jpg',
         },
         createdAt: 1511854675244,
-        body: "9 Thats so cool man"
+        body: "I'm fine for now, thanks! But let's connect next week for a session."
       },
       10: {
         replyId: 10,
         user: {
           uid: '123',
-          name: 'SpongeBob',
-          avatar: 'http://www.avatarsdb.com/avatars/spongebob_happy.jpg',
+          name: 'Diabetes Pro',
+          avatar: 'http://news.montanalions.org/wp-content/uploads/2017/03/f_diabetes.png',
         },
         createdAt: 1511854675244,
-        body: "10 No way bro"
+        body: "Sure thing! Will ping you next Tuesday."
       },
     }
   },
@@ -434,4 +444,55 @@ export const healthCardSections = {
   3: {id: 3, title: 'LIFESTYLE', data: healthCards3},
 }
 
+export const headerCard = {
+  1: {
+    healthGoalId: 1,
+    healthGoal: 'Diabetes',
+    healthGoalDescription: 'abc',
+    metrics: {
+      1: {
+        metricId: 1,
+        metric: 'Average Blood Glucose Level',
+        metricDescription: 'abc',
+        absoluteValue: 123,
+        indexValue: 85,
+      },
+      2: {
+        metricId: 2,
+        metric: 'Blood Glucose Deviation',
+        metricDescription: 'abc',
+        absoluteValue: 123,
+        indexValue: 85,
+      },
+      3: {
+        metricId: 3,
+        metric: 'HbA1c',
+        metricDescription: 'abc',
+        absoluteValue: 123,
+        indexValue: 85,
+      },
+      4: {
+        metricId: 4,
+        metric: 'hypoglycemia',
+        metricDescription: 'abc',
+        absoluteValue: 123,
+        indexValue: 85,
+      },
+      5: {
+        metricId: 5,
+        metric: 'Blood Pressure',
+        metricDescription: 'abc',
+        absoluteValue: 123,
+        indexValue: 85,
+      },
+      6: {
+        metricId: 6,
+        metric: 'Weight',
+        metricDescription: 'abc',
+        absoluteValue: 123,
+        indexValue: 85,
+      },
+    },
+  }
+}
 

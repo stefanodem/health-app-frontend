@@ -21,8 +21,6 @@ const Post = (props) => {
   const replyCount = props.post.replies.length;
   const { name, avatar } = props.user;
 
-  //TODO: move underLayColor to styles.js
-
   return (
     <TouchableHighlight
       underlayColor={'grey'}

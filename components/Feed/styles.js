@@ -13,9 +13,9 @@ export const newPost = {
       paddingTop: 2,
       paddingBottom: 2,
       paddingLeft: 10,
-      backgroundColor: '#f6f6f6',
-      borderBottomColor: '#bbb',
-      borderBottomWidth: StyleSheet.hairlineWidth,
+      backgroundColor: 'white',
+      //borderBottomColor: '#bbb',
+      //borderBottomWidth: StyleSheet.hairlineWidth,
     },
     title: {
       justifyContent: 'center',
@@ -67,7 +67,10 @@ export const replyInput = StyleSheet.create({
 
 export const post = StyleSheet.create({
   mainStyle: {
-    paddingBottom: 15,
+    paddingTop: 12,
+    paddingBottom: 12,
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 })
 
@@ -77,9 +80,9 @@ export const postHeader = StyleSheet.create({
     paddingTop: 2,
     paddingBottom: 2,
     paddingLeft: 10,
-    backgroundColor: '#f6f6f6',
-    borderBottomColor: '#bbb',
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    backgroundColor: 'white',
+    //borderBottomColor: '#bbb',
+    //borderBottomWidth: StyleSheet.hairlineWidth,
   },
   title: {
     flexDirection: 'column',
@@ -110,13 +113,13 @@ export const postHeader = StyleSheet.create({
 export const postBody = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
     paddingLeft: 65,
     paddingRight: 10,
-    backgroundColor: '#f6f6f6',
-    borderBottomColor: '#bbb',
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    backgroundColor: 'white',
+    //borderBottomColor: '#bbb',
+    //borderBottomWidth: StyleSheet.hairlineWidth,
   },
   text: {
     fontSize: 15,
@@ -132,9 +135,9 @@ export const postInteraction = StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 65,
     paddingRight: 10,
-    backgroundColor: '#f6f6f6',
-    borderBottomColor: '#bbb',
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    backgroundColor: 'white',
+    //borderBottomColor: '#bbb',
+    //borderBottomWidth: StyleSheet.hairlineWidth,
   },
   component: {
     flexDirection: 'row',
@@ -154,8 +157,8 @@ export const postInteraction = StyleSheet.create({
     paddingBottom: 5,
     paddingLeft: 10,
     paddingRight: 10,
-    backgroundColor: '#f6f6f6',
-    borderBottomColor: '#bbb',
+    backgroundColor: 'white',
+    //borderBottomColor: '#bbb',
   },
   infoText: {
     color: 'grey',

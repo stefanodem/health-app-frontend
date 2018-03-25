@@ -81,19 +81,6 @@ class HealthGoalsScreen extends Component {
   }
 }
 
-// const healthGoalsData = [
-//   'Diabetes', 'Fitness', 'Diet', 'Sleep', 'Gagi', 'Bisi', 'Fudi', 'Schnäbi', 'Pimmeli'
-// ]
-
-// const healthGoalsSections = [
-//   {id: 1, title: 'RECOMMENDED FOR YOU', data: healthGoalsData},
-//   {id: 2, title: 'HEALTH CONDITIONS', data: healthGoalsData},
-//   {id: 3, title: 'LIFESTYLE', data: healthGoalsData},
-//   {id: 4, title: 'EATING HEALTHY', data: healthGoalsData},
-// ]
-
-
-
 function mapStateToProps({ user, myCircles }) {
   return {
     user,

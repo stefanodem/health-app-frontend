@@ -33,8 +33,8 @@ class HealthCardSection extends Component {
         <HealthCard
           name={item.name}
           selected={item.selected}
-          //backgroundColor
-          //image
+          backgroundImage={item.backgroundImage}
+          color={item.color}
         />
       </TouchableOpacity>
     )

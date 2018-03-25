@@ -19,6 +19,7 @@ import {
   FETCHING_HEALTHCARDS_SUCCESS,
   FETCHING_HEALTHCARDS_ERROR,
   GET_SELECTED_HEALTH_GOALS,
+  TOGGLE_CIRCLE_DATA_ACCESS,
 } from '../actions/types';
 
 import { isInCircle } from '../services/utils'
@@ -28,6 +29,12 @@ const DEFAULT_AVATAR = 'https://image.flaticon.com/icons/png/128/32/32441.png'
 const toggleHealthCardSelection = (state, sectionId, healthCardId) => {
   let newState = Object.assign({}, state);
   newState.healthCards[sectionId].data[healthCardId].selected = !newState.healthCards[sectionId].data[healthCardId].selected;
+  return newState
+}
+
+const toggleCircleDataAccess = (state, healthCardId) => {
+  let newState = Object.assign({}, state);
+  newState.addCircle.healthGoals[healthCardId].circleHasDataAccess = !newState.addCircle.healthGoals[healthCardId].circleHasDataAccess;
   return newState
 }
 
@@ -43,7 +50,7 @@ const initialState = {
     circleAvatar: DEFAULT_AVATAR,
     usersInCircle: [],
     circleDataAccess: [],
-    healthGoals: [],
+    healthGoals: {},
   },
   healthCards: {},
   entities: {},
@@ -84,7 +91,7 @@ export default function(state = initialState, action) {
           circleAvatar: '',
           usersInCircle: [],
           circleDataAccess: [],
-          healthGoals: [],
+          healthGoals: {},
         },
         circles: {
           ...state.postReplies,
@@ -161,7 +168,7 @@ export default function(state = initialState, action) {
           circleAvatar: DEFAULT_AVATAR,
           usersInCircle: [],
           circleDataAccess: [],
-          healthGoals: [],
+          healthGoals: {},
         },
       }
     case UPDATE_NEWCIRCLE_TEXT:
@@ -173,9 +180,7 @@ export default function(state = initialState, action) {
         },
       };
     case TOGGLE_HEALTH_GOAL:
-      let newState = toggleHealthCardSelection(state, action.sectionId, action.healthCardId);
-
-      return newState;
+      return toggleHealthCardSelection(state, action.sectionId, action.healthCardId);
     case FETCHING_HEALTHCARDS:
       return {
         ...state,
@@ -202,6 +207,8 @@ export default function(state = initialState, action) {
           healthGoals: action.healthGoals,
         }
       }
+    case TOGGLE_CIRCLE_DATA_ACCESS:
+      return toggleCircleDataAccess(state, action.healthCardId);
     default:
       return state;
   }
