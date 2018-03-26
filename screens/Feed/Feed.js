@@ -99,7 +99,6 @@ class FeedScreen extends Component {
     //https://facebook.github.io/react-native/docs/flatlist.html
 
     const posts = this.props.feed.posts;
-    console.log(this.props.feed.posts)
     const isFetching = this.props.feed.isFetching;
 
     if (isFetching) {

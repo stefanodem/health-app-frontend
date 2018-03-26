@@ -20,7 +20,7 @@ import {
   REMOVE_FETCHING,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, handleLike, addReplyText, fetchEntities, addNewPostText } from '../services/api';
+import { fetchPosts, fetchUserPosts, fetchReplies, handleLike, addReply, fetchEntities, addNewPostText } from '../services/api';
 
 const fetchingFeedData = () => {
   return {
@@ -62,12 +62,10 @@ const postingFeedData = () => {
   }
 }
 
-const postingReplySuccess = (postId, replyId, reply) => {
+const postingReplySuccess = (replies) => {
   return {
     type: POSTING_REPLY_SUCCESS,
-    postId,
-    replyId,
-    reply,
+    replies,
   }
 }
 
@@ -169,7 +167,6 @@ export const fetchAndHandleReplies = (postId) => async (dispatch) => {
 
 export const addLike = (uid, postId, likeCount, addLike) => async (dispatch) => {
   await handleLike(uid, postId, addLike);
-  console.log("success like")
   likeCount++
   dispatch(addingLike(postId, likeCount));
   try {
@@ -192,11 +189,11 @@ export const removeLike = (uid, postId, likeCount, addLike) => async (dispatch) 
 
 export const addAndHandleReply = (userId, postId, replyText) => async (dispatch) => {
   dispatch(postingFeedData())
-  let reply = await addReplyText(userId, postId, replyText);
+  let reply = await addReply(userId, postId, replyText);
   // if (reply) {
   //   dispatch(postingReplySuccess(reply));
   // }
-  dispatch(postingReplySuccess(postId, reply.replyId, reply))
+  dispatch(postingReplySuccess(reply))
   try {
   } catch(e) {
     postingReplyError(e);

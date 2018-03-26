@@ -94,16 +94,7 @@ export default function(state = initialState, action) {
           replyText: '',
           postText: '',
         },
-        postReplies: {
-          ...state.postReplies,
-          [action.postId] : {
-            ...state.postReplies[action.postId],
-            replies: {
-              ...state.postReplies[action.postId].replies,
-              [action.replyId]: action.reply,
-            }
-          }
-        }
+        postReplies: action.replies,
       };
     case UPDATE_REPLY_TEXT:
       return {

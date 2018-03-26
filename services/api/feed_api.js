@@ -38,6 +38,21 @@ export const handleLike = async (uid, postId, addLike) => {
   }
 }
 
+export const addReply = async (uid, postId, replyText) => {
+  try {
+    const url = ROOT_URL + `/posts/${postId}/replies`;
+    const reply = {
+      userId: uid,
+      body: replyText,
+    }
+    let response = await axios.post(url, reply)
+    const normalized_response = normalize(response.data.replies, replyListSchema);
+    return normalized_response.entities.replies;
+  } catch(e) {
+    return e;
+  }
+}
+
 //TODO: Hook up to backend
 export const fetchPosts = (postId) => {
   return new Promise(resolve => setTimeout(() => resolve(posts), 1000));
@@ -63,12 +78,12 @@ export const fetchUser = (uid) => {
   return new Promise(resolve => setTimeout(() => resolve(user), 1000));
 }
 
-export const addReplyText = (userId, postId, replyText) => {
+export const addReplyText2 = (userId, postId, replyText) => {
   //TODO: handle replyId generation --> probably on backend side
   const reply = {
-      replyId: 13,
+      replyId: 34,
       user: {
-        uid: '123456',
+        uid: '4',
         name: 'Stefano De Micheli',
         avatar: 'http://profile.actionsprout.com/default.jpeg',
       },
