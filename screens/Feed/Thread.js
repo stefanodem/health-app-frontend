@@ -34,10 +34,11 @@ class ThreadScreen extends Component {
 
   _handleLikes = (postId, likeCount, liked) => {
     console.log("Liked");
+    const uid = this.props.user.userInfo.uid;
     if (liked) {
-      this.props.removeLike(postId, likeCount);
+      this.props.removeLike(uid, postId, likeCount);
     } else {
-      this.props.addLike(postId, likeCount);
+      this.props.addLike(uid, postId, likeCount);
     }
   }
 
@@ -119,9 +120,10 @@ class ThreadScreen extends Component {
   }
 }
 
-function mapStateToProps ({ feed }) {
+function mapStateToProps ({ feed, user }) {
   return {
     feed,
+    user
   }
 }
 

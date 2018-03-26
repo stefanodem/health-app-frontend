@@ -20,7 +20,7 @@ import {
   REMOVE_FETCHING,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities, addNewPostText } from '../services/api';
+import { fetchPosts, fetchUserPosts, fetchReplies, handleLike, addReplyText, fetchEntities, addNewPostText } from '../services/api';
 
 const fetchingFeedData = () => {
   return {
@@ -167,7 +167,9 @@ export const fetchAndHandleReplies = (postId) => async (dispatch) => {
   }
 }
 
-export const addLike = (postId, likeCount) => async (dispatch) => {
+export const addLike = (uid, postId, likeCount, addLike) => async (dispatch) => {
+  await handleLike(uid, postId, addLike);
+  console.log("success like")
   likeCount++
   dispatch(addingLike(postId, likeCount));
   try {
@@ -177,7 +179,8 @@ export const addLike = (postId, likeCount) => async (dispatch) => {
   }
 }
 
-export const removeLike = (postId, likeCount) => async (dispatch) => {
+export const removeLike = (uid, postId, likeCount, addLike) => async (dispatch) => {
+  await handleLike(uid, postId, addLike);
   likeCount--
   dispatch(removingLike(postId, likeCount));
   try {

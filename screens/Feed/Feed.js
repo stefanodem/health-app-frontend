@@ -40,10 +40,14 @@ class FeedScreen extends Component {
 
   _handleLikes = (postId, likeCount, liked) => {
     console.log("Liked");
+    const uid = this.props.user.userInfo.uid;
+    let addLike;
     if (liked) {
-      this.props.removeLike(postId, likeCount);
+      addLike = false;
+      this.props.removeLike(uid, postId, likeCount, addLike);
     } else {
-      this.props.addLike(postId, likeCount);
+      addLike = true;
+      this.props.addLike(uid, postId, likeCount, addLike);
     }
   }
 
@@ -95,8 +99,8 @@ class FeedScreen extends Component {
     //https://facebook.github.io/react-native/docs/flatlist.html
 
     const posts = this.props.feed.posts;
+    console.log(this.props.feed.posts)
     const isFetching = this.props.feed.isFetching;
-    const hasError = this.props.feed.error;
 
     if (isFetching) {
       return (

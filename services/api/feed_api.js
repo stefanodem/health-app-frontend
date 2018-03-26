@@ -8,7 +8,7 @@ import { feed } from '../../testData/feedDummyData';
 
 export const fetchUserPosts = async (uid, circleId) => {
   try {
-    const url = ROOT_URL + `/circles/${circleId}/posts`;
+    const url = ROOT_URL + `/users/${uid}/circles/${circleId}/posts`;
     let response = await axios.get(url);
     const normalized_response = normalize(response.data.posts, postListSchema);
     return normalized_response.entities.posts;
@@ -23,6 +23,16 @@ export const fetchReplies = async (postId) => {
     let response = await axios.get(url);
     const normalized_response = normalize(response.data.replies, replyListSchema);
     return normalized_response.entities.replies;
+  } catch(e) {
+    return e;
+  }
+}
+
+export const handleLike = async (uid, postId, addLike) => {
+  try {
+    const url = ROOT_URL + `/users/${uid}/posts/${postId}/like`;
+    let response = addLike ? await axios.post(url) : await axios.delete(url);
+    return response;
   } catch(e) {
     return e;
   }
