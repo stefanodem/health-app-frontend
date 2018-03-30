@@ -84,7 +84,7 @@ class ThreadScreen extends Component {
     const replies = this.props.feed.postReplies
                     ? this.props.feed.postReplies
                     : null;
-    console.log(replies)
+
     if (isFetching) {
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>

@@ -20,7 +20,7 @@ import {
   REMOVE_FETCHING,
 } from './types';
 
-import { fetchPosts, fetchUserPosts, fetchReplies, handleLike, addReply, fetchEntities, addNewPostText } from '../services/api';
+import { fetchPosts, fetchUserPosts, fetchReplies, handleLike, addReply, addPost, fetchEntities } from '../services/api';
 
 const fetchingFeedData = () => {
   return {
@@ -34,10 +34,11 @@ const fetchingPostsSuccess = () => {
   }
 }
 
-const fetchingUserPostsSuccess = (posts, lastUpdated) => {
+const fetchingUserPostsSuccess = (posts, circleId, lastUpdated) => {
   return {
     type: FETCHING_USER_POSTS_SUCCESS,
     posts,
+    circleId,
     lastUpdated,
   }
 }
@@ -134,6 +135,7 @@ export const fetchAndHandleUserPosts = (uid, circleId) => async (dispatch) => {
       dispatch(
         fetchingUserPostsSuccess(
           posts,
+          circleId,
           //Object.keys(posts).sort((a, b) => posts[b].createdAt - posts[a].createdAt),
           Date.now()
         )
@@ -207,16 +209,12 @@ export const updateReplyText = (replyText) => {
   }
 }
 
-export const addAndHandleNewPost = (entityIds, newPostText) => async (dispatch) => {
+export const addAndHandleNewPost = (uid, circleId, newPostText) => async (dispatch) => {
   dispatch(postingNewPost())
-  let newPost = await addNewPostText(entityIds, newPostText);
-  // if (reply) {
-  //   dispatch(postingReplySuccess(reply));
-  // }
-
-  //no post data is sent to reducer -->
-  //new post will be added through re-fetching the entire feed (handled in backend)
-  dispatch(postingNewPostSuccess())
+  let newPost = await addPost(uid, circleId, newPostText);
+  if (newPost) {
+    dispatch(postingReplySuccess());
+  }
   try {
   } catch(e) {
     postingNewPostError(e);

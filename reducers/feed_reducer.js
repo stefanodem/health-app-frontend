@@ -25,6 +25,7 @@ const initialState = {
   isPosting: false,
   error: '',
   lastUpdated: '',
+  circleId: '',
   feedActions: {
     replyText: '',
     postText: '',
@@ -57,6 +58,7 @@ export default function(state = initialState, action) {
         error: '',
         lastUpdated: action.lastUpdated,
         posts: action.posts,
+        circleId: action.circleId,
         //[action.message.messageId]: action.message,
       };
     case FETCHING_REPLIES_SUCCESS:

@@ -53,6 +53,21 @@ export const addReply = async (uid, postId, replyText) => {
   }
 }
 
+export const addPost = async (uid, circleId, newPostText) => {
+  try {
+    const url = ROOT_URL + `/users/${uid}/circles/${circleId}/posts`;
+    const post = {
+      body: newPostText,
+    };
+    let response = await axios.post(url, post);
+    return response;
+    // const normalized_response = normalize(response.data.posts, postListSchema);
+    // return normalized_response.entities.posts;
+  } catch(e) {
+    return e;
+  }
+}
+
 //TODO: Hook up to backend
 export const fetchPosts = (postId) => {
   return new Promise(resolve => setTimeout(() => resolve(posts), 1000));

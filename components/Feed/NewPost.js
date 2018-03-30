@@ -12,7 +12,15 @@ import {
 import NewPostHeader from './Header/NewPostHeader';
 
 const NewPost = (props) => {
-  const { newPostText, onChangeText, createdAt, sendTo, user } = props;
+  const {
+    newPostText,
+    onChangeText,
+    createdAt,
+    sendTo,
+    user,
+    circleId,
+    setParams
+  } = props;
 
   return (
     <View style={ post.mainStyle }>
@@ -28,7 +36,7 @@ const NewPost = (props) => {
         style={newPost.textInput}
         value={newPostText}
         placeholder={"What would you like to share?"}
-        onChangeText={ (text) => onChangeText(text) }
+        onChangeText={ (text) => { onChangeText(text); setParams() } }
         multiline={ true } />
 
     </View>

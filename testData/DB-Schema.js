@@ -9,10 +9,6 @@ const users = {
   location:,
   description:,
   createdAt:,
-  friendsCount:,
-  friends: [
-    1, 2, 3, 4
-  ],
   timeZone:,
   lastUpdate:,
   posts:

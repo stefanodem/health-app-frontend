@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
+import { isEmpty } from 'lodash';
 import * as actions from '../../actions';
 import { Post, ButtonBack, NewPostButton } from '../../components';
 import { user } from '../../testData/testUser2';
@@ -34,12 +35,12 @@ class FeedScreen extends Component {
   componentDidMount () {
     const uid = this.props.user.userInfo.uid;
     const circleId = this.props.navigation.state.params;
-    console.log(circleId)
+    // Add circleInfo --> send circleInfo via action to feed_reducer --> store circleInfo in feed_reducer
+    // make circleId available for newPosts
     this.props.fetchAndHandleUserPosts(uid, circleId);
   }
 
   _handleLikes = (postId, likeCount, liked) => {
-    console.log("Liked");
     const uid = this.props.user.userInfo.uid;
     let addLike;
     if (liked) {
@@ -107,6 +108,14 @@ class FeedScreen extends Component {
           <ActivityIndicator size="large" />
         </View>
       );
+    }
+
+    if (isEmpty(posts)) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <Text style={{ textAlign: 'center' }}> {'No circles yet'} </Text>
+        </View>
+      )
     }
 
     return (

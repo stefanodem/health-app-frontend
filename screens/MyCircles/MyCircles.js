@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import _values from 'lodash/values';
+import { isEmpty } from 'lodash';
 import * as actions from '../../actions';
 import { ButtonBack, NewPostButton } from '../../components';
 
@@ -74,6 +75,14 @@ class MyCirclesScreen extends Component {
           <ActivityIndicator size="large" />
         </View>
       );
+    }
+
+    if (isEmpty(circles)) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <Text style={{ textAlign: 'center' }}> {'No circles yet'} </Text>
+        </View>
+      )
     }
 
     return (
