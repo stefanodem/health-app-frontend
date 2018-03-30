@@ -28,7 +28,7 @@ const _renderSettingsListItems = (healthGoals) => {
 }
 
 const NewCircleAccess = (props) => {
-  const { onNewCircleSubmit, usersInCircle, circleName, circleAvatar, healthGoals } = props;
+  const { usersInCircle, circleName, circleAvatar, healthGoals } = props;
 
   return (
     <View>

@@ -24,7 +24,7 @@ import {
 
 import _values from 'lodash/values';
 
-import { fetchUserCircles, fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities, fetchHealthCards } from '../services/api';
+import { fetchUserCircles, addCircle, fetchPosts, fetchUserPosts, fetchReplies, addReplyText, fetchEntities, fetchHealthCards } from '../services/api';
 
 const fetchingCircles = () => {
   return {
@@ -53,12 +53,9 @@ const postingCircles = () => {
   }
 }
 //TODO: think about how circle will be updated (similar to replies: post-call --> return the new circle object --> add to circles)
-const postingCirclesSuccess = (circleName, circleDescription, circleUsers) => {
+const postingCirclesSuccess = () => {
   return {
     type: POSTING_CIRCLES_SUCCESS,
-    circleName,
-    circleDescription,
-    circleUsers,
   }
 }
 
@@ -188,13 +185,13 @@ export const fetchAndHandleUserCircles = (uid) => async (dispatch) => {
   }
 }
 
-export const addAndHandleCircles = (uid, circleName, circleDescription, circleUsers) => async (dispatch) => {
-  dispatch(postingFeedData())
-  let newCircle = await addCircle(uid, circleName, circleDescription, circleUsers);
+export const addAndHandleCircles = (uid, name, description) => async (dispatch) => {
+  dispatch(postingCircles())
+  let newCircle = await addCircle(uid, name, description);
   // if (newCircle) {
   //   dispatch(postingCirclesSuccess(newCircle));
   // }
-  dispatch(postingCirclesSuccess(circleName, circleDescription, circleUsers))
+  dispatch(postingCirclesSuccess())
   try {
   } catch(e) {
     postingReplyError(e);

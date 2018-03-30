@@ -81,23 +81,6 @@ export default function(state = initialState, action) {
         ...state,
         isPostingCircles: false,
         error: '',
-        addCircle: {
-          circleName: '',
-          circleAvatar: '',
-          usersInCircle: [],
-          circleDataAccess: [],
-          healthGoals: [],
-        },
-        circles: {
-          ...state.postReplies,
-          [action.postId] : {
-            ...state.postReplies[action.postId],
-            replies: {
-              ...state.postReplies[action.postId].replies,
-              [action.replyId]: action.reply,
-            }
-          }
-        }
       };
     case POSTING_CIRCLES_ERROR:
       return {

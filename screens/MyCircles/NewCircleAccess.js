@@ -21,23 +21,38 @@ class NewCircleAccessScreen extends Component {
         navigate(to);
     }
 
-    return {
-      title: 'Circle Access',
-      headerTitle: 'Circle Access',
-      headerLeft: (
-        <ButtonBack
-          onPress={ goBack } />
-      ),
-      headerRight: (
-        <ButtonRight
-          icon="send"
-          onPress={() => handleNewCircleSubmit(() => {}, navigate, "MyCircles")} />
-      ),
+    if (navigation.state.params) {
+      const { uid, name, description, addAndHandleCircles } = navigation.state.params;
+      return {
+        title: 'Circle Access',
+        headerTitle: 'Circle Access',
+        headerLeft: (
+          <ButtonBack
+            onPress={ goBack } />
+        ),
+        headerRight: (
+          <ButtonRight
+            icon="send"
+            onPress={() => handleNewCircleSubmit(() => addAndHandleCircles(uid, name, description), navigate, "MyCircles")} />
+        ),
+      }
     }
   }
 
   componentWillMount () {
     this.props.getSelectedHealthGoals(this.props.myCircles.healthCards);
+  }
+
+  componentDidMount(){
+    //set navigation params so it can access props data
+    const { setParams } = this.props.navigation;
+    console.log(this.props)
+    setParams({
+      uid: this.props.user.userInfo.uid,
+      name: this.props.myCircles.addCircle.circleName,
+      description: '',
+      addAndHandleCircles: this.props.addAndHandleCircles,
+    });
   }
 
   // _filterSelectedHealthGoals = (healthCards) => {
@@ -61,15 +76,15 @@ class NewCircleAccessScreen extends Component {
         healthGoals={healthGoals}
         circleName={circleName}
         circleAvatar={circleAvatar}
-        usersInCircle={usersInCircle}
-        onNewCircleSubmit={addAndHandleCircles} />
+        usersInCircle={usersInCircle} />
     );
   }
 }
 
-function mapStateToProps ({ myCircles }) {
+function mapStateToProps ({ myCircles, user }) {
   return {
     myCircles,
+    user,
   }
 }
 

@@ -112,8 +112,3 @@ export const fetchEntities = (uid) => {
   return new Promise(resolve => setTimeout(() => resolve(entities), 300));
 }
 
-export const addNewPostText = (entityId, newPostText) => {
-
-}
-
-
