@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   View,
+  Text,
   ActivityIndicator,
   FlatList,
 } from 'react-native';
@@ -113,7 +114,7 @@ class FeedScreen extends Component {
     if (isEmpty(posts)) {
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
-          <Text style={{ textAlign: 'center' }}> {'No circles yet'} </Text>
+          <Text style={{ textAlign: 'center' }}> {'No posts yet'} </Text>
         </View>
       )
     }

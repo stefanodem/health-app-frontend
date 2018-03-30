@@ -169,17 +169,13 @@ export const fetchAndHandleUserCircles = (uid) => async (dispatch) => {
   dispatch(fetchingCircles());
   try {
     let circles = await fetchUserCircles(uid);
-    if (circles) {
-      dispatch(
-        fetchingCirclesSuccess(
-          circles,
-          //Object.keys(posts).sort((a, b) => posts[b].timestamp - posts[a].timestamp),
-          Date.now()
-        )
-      );
-    } else {
-      fetchingCirclesError('There are no circles yet');
-    }
+    dispatch(
+      fetchingCirclesSuccess(
+        circles,
+        //Object.keys(posts).sort((a, b) => posts[b].timestamp - posts[a].timestamp),
+        Date.now()
+      )
+    );
   } catch(e) {
     fetchingCirclesError(e);
   }
@@ -210,11 +206,7 @@ export const fetchAndHandleEntities = (uid) => async (dispatch) => {
   dispatch(fetchingEntities());
   try {
     let entities = await fetchEntities(uid);
-    if (entities) {
-      dispatch(fetchingEntitiesSuccess(entities));
-    } else {
-      //handle non posts
-    }
+    dispatch(fetchingEntitiesSuccess(entities));
   } catch(e) {
     fetchingEntitiesError(e);
   }

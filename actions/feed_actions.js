@@ -120,7 +120,8 @@ export const fetchAndHandlePosts = (postId) => async (dispatch) => {
       dispatch(fetchingPostsSuccess());
       return posts;
     } else {
-      //handle non posts
+      dispatch(fetchingPostsSuccess());
+      return 'No posts yet'
     }
   } catch(e) {
     fetchingPostsError(e);
@@ -131,18 +132,14 @@ export const fetchAndHandleUserPosts = (uid, circleId) => async (dispatch) => {
   dispatch(fetchingFeedData());
   try {
     let posts = await fetchUserPosts(uid, circleId);
-    if (posts) {
-      dispatch(
-        fetchingUserPostsSuccess(
-          posts,
-          circleId,
-          //Object.keys(posts).sort((a, b) => posts[b].createdAt - posts[a].createdAt),
-          Date.now()
-        )
-      );
-    } else {
-      fetchingPostError('Circle not found');
-    }
+    dispatch(
+      fetchingUserPostsSuccess(
+        posts,
+        circleId,
+        //Object.keys(posts).sort((a, b) => posts[b].createdAt - posts[a].createdAt),
+        Date.now()
+      )
+    );
   } catch(e) {
     fetchingPostsError(e);
   }
@@ -152,16 +149,12 @@ export const fetchAndHandleReplies = (postId) => async (dispatch) => {
   dispatch(fetchingFeedData());
   try {
     let replies = await fetchReplies(postId);
-    if (replies) {
-      dispatch(
-        fetchingRepliesSuccess(
-          replies,
-          //Object.keys(replies).sort((a, b) => replies[b].timestamp - replies[a].timestamp),
-        )
-      );
-    } else {
-      //handle non posts
-    }
+    dispatch(
+      fetchingRepliesSuccess(
+        replies,
+        //Object.keys(replies).sort((a, b) => replies[b].timestamp - replies[a].timestamp),
+      )
+    );
   } catch(e) {
     fetchingPostsError(e);
   }
